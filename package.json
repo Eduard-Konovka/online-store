@@ -1,0 +1,19 @@
+{
+  "name": "feb101-course-task",
+  "version": "1.0.0",
+  "description": "Course project \"Book online store\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eduard-Konovka/FEB101-course-task.git"
+  },
+  "author": "Eduard Konovka <ed098ua@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eduard-Konovka/FEB101-course-task/issues"
+  },
+  "homepage": "https://github.com/Eduard-Konovka/FEB101-course-task#readme"
+}
