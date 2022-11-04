@@ -5,45 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Specific book</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <hr />
-      <h1>JS BAND STORE / Your full name</h1>
-      <img src="../images/cart.svg" width="32" height="32" alt="cart" />
-      <button type="button">Sign out</button>
-      Test user
-      <hr />
+    <header class="header">
+      <div>
+        <h1>JS BAND STORE / Your full name</h1>
+      </div>
+      <div class="header__userbar">
+        <img
+          src="../images/cart.svg"
+          width="48"
+          height="48"
+          alt="cart"
+          class="mlr"
+        />
+        <button type="button" class="btn mlr">Sign out</button>
+        <div class="header__check mlr"></div>
+        <p class="header__username mlr">Username</p>
+      </div>
     </header>
 
-    <main>
-      <img
-        src="../db/books/javascript_the_definitive_guide.jpg"
-        alt="cover book"
-      />
+    <main class="card">
+      <div class="card__item card__thumb">
+        <img
+          src="../db/books/javascript_the_definitive_guide.jpg"
+          alt="cover book"
+        />
 
-      <p><b>Book name:</b> JavaScript: The Definitive Guide, 7th Edition</p>
-      <p><b>Book author:</b> David Flanagan</p>
-      <p><b>Book level:</b> Beginner</p>
-      <p><b>Book tags:</b> core</p>
-      <p><b>Price:</b> 10.99</p>
-      <label><b>Count:</b> <input type="number" value="1" min="1" /></label>
-      <p><b>Total price:</b> 10.99</p>
-      <button type="button">Add to cart</button>
-      <p>
-        <b>Description:</b> JavaScript is the programming language of the web
-        and is used by more software developers today than any other programming
-        language. For nearly 25 years this best seller has been the go-to guide
-        for JavaScript programmers. The seventh edition is fully updated to
-        cover the 2020 version of JavaScript, and new chapters cover classes,
-        modules, iterators, generators, Promises, async/await, and
-        metaprogramming. You’ll find illuminating and engaging example code
-        throughout. This book is for programmers who want to learn JavaScript
-        and for web developers who want to take their understanding and mastery
-        to the next level. It begins by explaining the JavaScript language
-        itself, in detail, from the bottom up. It then builds on that foundation
-        to cover the web platform and Node.js.
-      </p>
+        <p class="card__description">
+          JavaScript is the programming language of the web and is used by more
+          software developers today than any other programming language. For
+          nearly 25 years this best seller has been the go-to guide for
+          JavaScript programmers. The seventh edition is fully updated to cover
+          the 2020 version of JavaScript, and new chapters cover classes,
+          modules, iterators, generators, Promises, async/await, and
+          metaprogramming. You’ll find illuminating and engaging example code
+          throughout. This book is for programmers who want to learn JavaScript
+          and for web developers who want to take their understanding and
+          mastery to the next level. It begins by explaining the JavaScript
+          language itself, in detail, from the bottom up. It then builds on that
+          foundation to cover the web platform and Node.js.
+        </p>
+      </div>
+
+      <div class="card__item">
+        <h2 class="card__bookname mb">
+          JavaScript: The Definitive Guide, 7th Edition
+        </h2>
+
+        <p class="mb">
+          <span class="boldfont">Book author: </span>David Flanagan
+        </p>
+
+        <p class="mb"><span class="boldfont">Book level: </span>Beginner</p>
+
+        <p class="mb"><span class="boldfont">Book tags: </span>core</p>
+      </div>
+
+      <div class="card__item card__control">
+        <p class="card__count mb">
+          <span class="boldfont">Price, $</span>10.99
+        </p>
+
+        <p class="card__count mb">
+          <label for="count" class="boldfont">Count, units</label>
+
+          <input
+            name="count"
+            type="number"
+            value="1"
+            min="1"
+            max="999"
+            class="card__intut"
+          />
+        </p>
+
+        <p class="card__count mb">
+          <span class="boldfont">Total price, $</span>10.99
+        </p>
+
+        <button type="button" class="btn">Add to cart</button>
+      </div>
     </main>
   </body>
 </html>
