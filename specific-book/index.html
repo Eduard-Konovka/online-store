@@ -65,10 +65,11 @@
 
       <div class="card__item card__control">
         <p class="card__count mb">
-          <span class="boldfont">Price, $</span>10.99
+          <span class="boldfont">Price, $</span>
+          <span data-name="price">10.99</span>
         </p>
 
-        <form onChange="" class="card__count mb">
+        <form class="card__count mb">
           <label for="count" class="boldfont">Count, units</label>
 
           <input
@@ -77,13 +78,13 @@
             value="1"
             min="1"
             max="42"
-            defaultValue="1"
             class="card__intut"
           />
         </form>
 
         <p class="card__count mb">
-          <span class="boldfont">Total price, $</span>10.99
+          <span class="boldfont">Total price, $</span>
+          <span data-name="totalPrice">10.99</span>
         </p>
 
         <button type="button" class="btn">Add to cart</button>
