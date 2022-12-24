@@ -12,3 +12,5 @@ refs.form.onchange = (e) => {
       ).toFixed(2))
     : refs.count.value < 1 && alert("Please enter a value between 0 and 43!");
 };
+
+console.log(db.books[0].author);
