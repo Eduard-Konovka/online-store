@@ -1,5 +1,6 @@
 {
   "name": "feb101-course-task",
+  "description": "Course project \"Book online store\"",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,5 +35,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,css,scss,md}": "prettier --write"
   }
 }
