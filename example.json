@@ -2,11 +2,15 @@
   "name": "feb101-course-task",
   "version": "0.1.0",
   "private": true,
+  "description": "Course project \"Book online store\"",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -18,12 +22,6 @@
     "url": "https://github.com/Eduard-Konovka/feb101-course-task/issues"
   },
   "homepage": "https://github.com/Eduard-Konovka/feb101-course-task#readme",
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -48,7 +46,7 @@
     "react-icons": "^4.7.1",
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.6.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^2.1.3",
     "react-toastify": "^9.1.1",
     "web-vitals": "^2.1.4"
   },
@@ -57,5 +55,9 @@
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,css,scss,md}": "prettier --write"
   }
 }
