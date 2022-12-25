@@ -21,6 +21,16 @@
     "deploy": "netlify deploy -p",
     "prepare": "husky install"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eduard-Konovka/feb101-course-task.git"
+  },
+  "author": "Eduard Konovka <ed098ua@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eduard-Konovka/feb101-course-task/issues"
+  },
+  "homepage": "https://github.com/Eduard-Konovka/feb101-course-task#readme",
   "eslintConfig": {
     "extends": [
       "react-app",
