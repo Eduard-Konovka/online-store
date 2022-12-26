@@ -1,0 +1,25 @@
+.nav {
+  padding-bottom: 8px;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  color: #2a363b;
+  font-size: 28px;
+}
+
+.active {
+  composes: link;
+  color: #2196f3;
+}
+
+.delimiter {
+  display: inline-block;
+  padding: 12px;
+  font-weight: 300;
+  color: #2a363b;
+  font-size: 34px;
+}
