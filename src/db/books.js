@@ -6,6 +6,7 @@ var db = {
       price: 10.99,
       image:
         'https://courses.prometheus.org.ua/asset-v1:Ciklum+FEB101+2022_T3+type@asset+block@javascript_the_definitive_guide.jpg',
+      // eslint-disable-next-line no-script-url
       title: 'JavaScript: The Definitive Guide, 7th Edition',
       shortDescription:
         'JavaScript is the programming language of the web and is used by more software developers today than any other programming language.',
@@ -251,3 +252,5 @@ var db = {
     },
   ],
 };
+
+export { db };

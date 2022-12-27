@@ -7,6 +7,7 @@ import sendСart from 'api/ordersApi';
 import Container from 'components/Container';
 import AppBar from 'components/AppBar';
 import errorImage from 'pages/NotFoundView/error.jpg';
+import { db } from 'db/books.js';
 import 'api/baseUrl';
 import 'App.css';
 
@@ -27,6 +28,7 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
+  const [level, setLevel] = useState('Beginner');
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [user, setUser] = useState({});
@@ -134,7 +136,16 @@ export default function App() {
       >
         <Routes>
           <Route path="" element={<BooksView onClick={addToCart} />} />
-          <Route path="/book" element={<BookView />} />
+          <Route
+            path="/book"
+            element={
+              <BookView
+                book={db.books[7]}
+                level={level}
+                addToCart={id => console.log(id)}
+              />
+            }
+          />
           <Route
             path="/cart"
             element={
