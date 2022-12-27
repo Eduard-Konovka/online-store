@@ -27,7 +27,7 @@ export default function ProductsBar({ shopId, onClick }) {
     <div className={s.productsbar}>
       {error && <p>Whoops, something went wrong: {error.message}</p>}
       {loading && <Spinner size={70} color="blue" />}
-      {shopId === null && (
+      {!loading && shopId === null && (
         <Blank title="Choose a shop" image={imageBlank} alt="Open shop" />
       )}
       {products.length > 0 && (

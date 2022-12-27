@@ -2,7 +2,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 80px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #2a363b;
+  border-radius: 10px;
+  padding: 1vw;
+  margin: 1vw 0 1vw 0;
+  color: #2a363b;
+  background-image: linear-gradient(350deg, #e7e7e7, #61676b);
+}
+
+.title {
+  margin: 0;
+}
+
+.userbar {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  margin-right: 1vw;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  margin-left: 1vw;
+}
+
+.username {
+  font-size: 1.4vw;
+  font-weight: 600;
+  margin-left: 1vw;
 }

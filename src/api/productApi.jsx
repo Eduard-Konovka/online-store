@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const productApi = id => {
-  return axios.get(`/api/products/${id}`).then(response => response.data);
+const productApi = async id => {
+  const response = await axios.get(`/api/products/${id}`);
+
+  return response.data;
 };
 
 export default productApi;

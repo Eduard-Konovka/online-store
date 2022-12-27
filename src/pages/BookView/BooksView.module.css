@@ -1,0 +1,63 @@
+.thumb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mb {
+  margin-bottom: 1.5vw;
+}
+
+.boldfont {
+  font-weight: 600;
+}
+
+.item {
+  width: 30%;
+  height: 100%;
+}
+
+.img {
+  composes: item;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookname {
+  composes: mb;
+  font-size: 1.5vw;
+  font-weight: 700;
+}
+
+.control {
+  composes: item;
+  border: 2px dashed #333333;
+  padding: 1vw;
+  text-align: end;
+}
+
+.count {
+  composes: mb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+
+.input {
+  width: 7.3vw;
+  height: 2.2vw;
+  border: 1px solid #56ca21;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
+  font-family: inherit;
+  font-size: 1.2vw;
+  font-weight: 700;
+  color: #505050;
+}
+
+.description {
+  font-size: 1.1vw;
+  font-weight: 500;
+}

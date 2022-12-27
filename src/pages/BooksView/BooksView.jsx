@@ -2,9 +2,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ShopsBar from 'components/ShopsBar';
 import ProductsBar from 'components/ProductsBar';
-import s from './ShopsView.module.css';
+import s from './BooksView.module.css';
 
-export default function ShopsView({ onClick }) {
+export default function BooksView({ onClick }) {
   const [shopId, setShopId] = useState(null);
 
   return (

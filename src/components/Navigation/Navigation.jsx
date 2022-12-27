@@ -8,7 +8,16 @@ export default function Navigation() {
         to=""
         className={({ isActive }) => (isActive ? s.active : s.link)}
       >
-        Shop
+        Books
+      </NavLink>
+
+      <span className={s.delimiter}>|</span>
+
+      <NavLink
+        to="/book"
+        className={({ isActive }) => (isActive ? s.active : s.link)}
+      >
+        Book
       </NavLink>
 
       <span className={s.delimiter}>|</span>
@@ -17,7 +26,16 @@ export default function Navigation() {
         to="/cart"
         className={({ isActive }) => (isActive ? s.active : s.link)}
       >
-        Shopping Cart
+        Cart
+      </NavLink>
+
+      <span className={s.delimiter}>|</span>
+
+      <NavLink
+        to="/signin"
+        className={({ isActive }) => (isActive ? s.active : s.link)}
+      >
+        Sign in
       </NavLink>
     </nav>
   );

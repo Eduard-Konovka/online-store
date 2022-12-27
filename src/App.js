@@ -5,16 +5,22 @@ import { Puff } from 'react-loader-spinner';
 import fetchProduct from 'api/productApi';
 import sendСart from 'api/ordersApi';
 import Container from 'components/Container';
-import AppBar from 'components/AppBar/AppBar';
+import AppBar from 'components/AppBar';
 import errorImage from 'pages/NotFoundView/error.jpg';
 import 'api/baseUrl';
 import 'App.css';
 
-const ShopsView = lazy(() =>
-  import('pages/ShopsView' /* webpackChunkName: "ShopsView" */),
+const BooksView = lazy(() =>
+  import('pages/BooksView' /* webpackChunkName: "BooksView" */),
+);
+const BookView = lazy(() =>
+  import('pages/BookView' /* webpackChunkName: "BookView" */),
 );
 const CartView = lazy(() =>
   import('pages/CartView' /* webpackChunkName: "CartView" */),
+);
+const SignInView = lazy(() =>
+  import('pages/SignInView' /* webpackChunkName: "SignInView" */),
 );
 const NotFoundView = lazy(() =>
   import('pages/NotFoundView' /* webpackChunkName: "NotFoundView" */),
@@ -100,8 +106,8 @@ export default function App() {
   };
 
   return (
-    <Container title="Delivery App">
-      <AppBar />
+    <Container>
+      <AppBar username={user.name || 'Hello guest!'} />
 
       <Suspense
         fallback={
@@ -127,7 +133,8 @@ export default function App() {
         }
       >
         <Routes>
-          <Route path="" element={<ShopsView onClick={addToCart} />} />
+          <Route path="" element={<BooksView onClick={addToCart} />} />
+          <Route path="/book" element={<BookView />} />
           <Route
             path="/cart"
             element={
@@ -143,6 +150,7 @@ export default function App() {
               />
             }
           />
+          <Route path="/signin" element={<SignInView />} />
           <Route
             path="*"
             element={
