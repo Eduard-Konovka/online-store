@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import fetchProducts from 'api/productsApi';
 import Spinner from 'components/Spinner';
-import ProductsList from 'components/ProductsList';
+import ProductsList from 'components/BooksList';
 import Blank from 'components/Blank';
 import imageBlank from 'images/shop.jpg';
 import s from './ProductsBar.module.css';

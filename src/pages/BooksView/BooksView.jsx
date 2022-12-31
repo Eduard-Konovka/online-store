@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import fetchProducts from 'api/productsApi';
+import fetchBooks from 'api/productsApi';
 import Spinner from 'components/Spinner';
-import ProductsList from 'components/ProductsList';
+import BooksList from 'components/BooksList';
 import Blank from 'components/Blank';
 import imageBlank from 'images/shop.jpg';
 import s from './BooksView.module.css';
 
 export default function BooksView({ onClick }) {
-  const [shopId, setShopId] = useState(null);
-  const [products, setProducts] = useState([]);
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
 
-    fetchProducts()
-      .then(products => {
-        setProducts(products);
+    fetchBooks()
+      .then(books => {
+        setBooks(books);
       })
       .catch(error => setError(error))
       .finally(() => setLoading(false));
@@ -28,12 +27,10 @@ export default function BooksView({ onClick }) {
     <div className={s.bookpage}>
       {error && <p>Whoops, something went wrong: {error.message}</p>}
       {loading && <Spinner size={70} color="blue" />}
-      {!loading && shopId === null && (
-        <Blank title="Choose a shop" image={imageBlank} alt="Open shop" />
+      {!loading && books.length === 0 && (
+        <Blank title="Choose a book" image={imageBlank} alt="Open shop" />
       )}
-      {products.length > 0 && (
-        <ProductsList products={products} shopId={shopId} onClick={onClick} />
-      )}
+      {books.length > 0 && <BooksList books={books} onClick={onClick} />}
     </div>
   );
 }
@@ -41,14 +38,3 @@ export default function BooksView({ onClick }) {
 BooksView.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-
-// CartBar.propTypes = {
-//   cart: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       _id: PropTypes.string.isRequired,
-//     }),
-//   ),
-//   totalPrice: PropTypes.number.isRequired,
-//   onSelectQwantity: PropTypes.func.isRequired,
-//   onDeleteProduct: PropTypes.func.isRequired,
-// };

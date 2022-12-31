@@ -1,32 +1,20 @@
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
-import s from './Product.module.css';
+import s from './Book.module.css';
 import defaultImage from './default.jpg';
 
-export default function Product({
-  imageUrl,
-  title,
-  description,
-  category,
-  price,
-  available,
-  onClick,
-}) {
+export default function Book({ book, onClick }) {
+  const { id, author, price, image, title, shortDescription, description } =
+    book;
+
   return (
     <div className={s.container}>
-      <img
-        src={
-          imageUrl
-            ? `${process.env.REACT_APP_URL}/images/${imageUrl}`
-            : defaultImage
-        }
-        alt={title}
-      />
+      <img src={image ?? defaultImage} alt={title} />
       <h2>{title}</h2>
-      <p>{description}</p>
-      <p>Category: {category}</p>
+      <p>{shortDescription}</p>
+      <p>Category: {author}</p>
       <p>Price: ${price}</p>
-      <p>In stock: {available} units</p>
+      <p>In stock: {id} units</p>
       <Button type="button" onClick={onClick}>
         Add to Cart
       </Button>
@@ -34,7 +22,7 @@ export default function Product({
   );
 }
 
-Product.propTypes = {
+Book.propTypes = {
   imageUrl: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,

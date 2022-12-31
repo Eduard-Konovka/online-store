@@ -2,8 +2,7 @@
   display: flex;
   justify-content: space-between;
 
-  width: 1000px;
-  min-height: 500px;
+  min-height: 600px;
   border: 1px solid #757575;
   border-radius: 10px;
   margin-bottom: 10px;

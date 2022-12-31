@@ -178,3 +178,14 @@ export default function App() {
     </Container>
   );
 }
+
+// CartBar.propTypes = {
+//   cart: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       _id: PropTypes.string.isRequired,
+//     }),
+//   ),
+//   totalPrice: PropTypes.number.isRequired,
+//   onSelectQwantity: PropTypes.func.isRequired,
+//   onDeleteProduct: PropTypes.func.isRequired,
+// };
