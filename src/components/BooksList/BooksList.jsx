@@ -6,7 +6,7 @@ export default function BooksList({ books, onClick }) {
   return (
     <ul className={s.list}>
       {books.map(item => (
-        <li key={item.id}>
+        <li key={item.id} className={s.item}>
           <Book book={item} onClick={() => onClick(item.id)} />
         </li>
       ))}

@@ -14,8 +14,8 @@ import 'App.css';
 const BooksView = lazy(() =>
   import('pages/BooksView' /* webpackChunkName: "BooksView" */),
 );
-const BookView = lazy(() =>
-  import('pages/BookView' /* webpackChunkName: "BookView" */),
+const SpecificBookView = lazy(() =>
+  import('pages/SpecificBookView' /* webpackChunkName: "SpecificBookView" */),
 );
 const CartView = lazy(() =>
   import('pages/CartView' /* webpackChunkName: "CartView" */),
@@ -139,7 +139,7 @@ export default function App() {
           <Route
             path="/book"
             element={
-              <BookView
+              <SpecificBookView
                 book={db.books[7]}
                 level={level}
                 addToCart={id => console.log(id)}
@@ -178,14 +178,3 @@ export default function App() {
     </Container>
   );
 }
-
-// CartBar.propTypes = {
-//   cart: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       _id: PropTypes.string.isRequired,
-//     }),
-//   ),
-//   totalPrice: PropTypes.number.isRequired,
-//   onSelectQwantity: PropTypes.func.isRequired,
-//   onDeleteProduct: PropTypes.func.isRequired,
-// };

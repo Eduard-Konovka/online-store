@@ -1,9 +1,45 @@
-.container {
-  padding: 10px;
-  width: 420px;
-  background: #ffffff;
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 1px 3px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
-  margin: 10px;
+.image {
+  height: 328px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.thumb {
+  height: 15vw;
+  margin-bottom: 1vw;
+}
+
+.title {
+  height: 4.5vw;
+}
+
+.paragraph {
+  margin: 0;
+}
+
+.value {
+  font-weight: 400;
+}
+
+.shortDescription {
+  composes: paragraph;
+  height: 9vw;
+  overflow: auto;
+}
+
+.author {
+  composes: paragraph;
+  margin-bottom: 1vw;
+  font-weight: 500;
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  composes: paragraph;
+  font-weight: 500;
 }

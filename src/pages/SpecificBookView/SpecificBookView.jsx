@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Button from 'components/Button';
 import Tags from 'components/Tags';
 import imageNotFound from 'images/imageNotFound.png';
-import s from './BookView.module.css';
+import s from './SpecificBookView.module.css';
 
-export default function BookView({ book, level, addToCart }) {
+export default function SpecificBookView({ book, level, addToCart }) {
   const [qwantity, setQwantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(book.price);
 
@@ -103,7 +103,7 @@ export default function BookView({ book, level, addToCart }) {
   );
 }
 
-BookView.propTypes = {
+SpecificBookView.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired,
   }),
