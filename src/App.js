@@ -42,15 +42,16 @@ export default function App() {
     setUser({ ...user, ...obj });
   };
 
-  const addToCart = _id => {
-    const productDuplication = cart.filter(obj => obj._id === _id);
+  const addToCart = id => {
+    console.log(id);
+    const productDuplication = cart.filter(obj => obj.id === id);
 
     if (productDuplication.length > 0) {
       toast.error('This item is already in the cart!');
       return;
     }
 
-    fetchProduct(_id).then(product => {
+    fetchProduct(id).then(product => {
       product.qwantity = 1;
       product.cost = product.price;
       setCart([...cart, product]);
