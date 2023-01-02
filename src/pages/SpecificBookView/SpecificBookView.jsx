@@ -6,7 +6,7 @@ import Tags from 'components/Tags';
 import imageNotFound from 'images/imageNotFound.png';
 import s from './SpecificBookView.module.css';
 
-export default function SpecificBookView({ book, level, addToCart }) {
+export default function SpecificBookView({ book, addToCart }) {
   const [qwantity, setQwantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(book.price);
 
@@ -47,11 +47,6 @@ export default function SpecificBookView({ book, level, addToCart }) {
             <p className={s.mb}>
               <span className={s.boldfont}>Book author: </span>
               {book.author}
-            </p>
-
-            <p className={s.mb}>
-              <span className={s.boldfont}>Book level: </span>
-              {level}
             </p>
 
             <p className={s.mb}>
@@ -107,6 +102,5 @@ SpecificBookView.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired,
   }),
-  level: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
 };

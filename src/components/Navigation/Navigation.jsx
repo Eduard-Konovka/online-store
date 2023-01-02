@@ -14,15 +14,6 @@ export default function Navigation() {
       <span className={s.delimiter}>|</span>
 
       <NavLink
-        to="/book"
-        className={({ isActive }) => (isActive ? s.active : s.link)}
-      >
-        Book
-      </NavLink>
-
-      <span className={s.delimiter}>|</span>
-
-      <NavLink
         to="/cart"
         className={({ isActive }) => (isActive ? s.active : s.link)}
       >

@@ -43,3 +43,8 @@
   composes: paragraph;
   font-weight: 500;
 }
+
+.btn {
+  text-decoration: none;
+  color: inherit;
+}

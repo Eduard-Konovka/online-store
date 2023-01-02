@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
 import s from './Book.module.css';
@@ -8,7 +9,7 @@ export default function Book({ book, onClick }) {
     <article>
       <img
         className={s.image}
-        src={book.image !== '' ? book.image : defaultImage}
+        src={book.image && book.image !== '' ? book.image : defaultImage}
         alt={book.title}
       />
 
@@ -27,8 +28,14 @@ export default function Book({ book, onClick }) {
           Price: <span className={s.value}>${book.price}</span>
         </p>
 
-        <Button type="button" onClick={() => onClick(book.id)}>
-          View
+        <Button
+          type="button"
+          title="More about the book"
+          onClick={() => onClick(book.id)}
+        >
+          <Link to="/:book" className={s.btn}>
+            View
+          </Link>
         </Button>
       </div>
     </article>

@@ -28,7 +28,7 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
-  const [level, setLevel] = useState('Beginner');
+  const [selectedBook, setSelectedBook] = useState(null);
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [user, setUser] = useState({});
@@ -136,14 +136,16 @@ export default function App() {
         }
       >
         <Routes>
-          <Route path="" element={<BooksView onClick={addToCart} />} />
           <Route
-            path="/book"
+            path=""
+            element={<BooksView onClick={id => setSelectedBook(id)} />}
+          />
+          <Route
+            path="/:book"
             element={
               <SpecificBookView
-                book={db.books[7]}
-                level={level}
-                addToCart={id => console.log(id)}
+                book={db.books[selectedBook - 1]}
+                addToCart={addToCart}
               />
             }
           />
