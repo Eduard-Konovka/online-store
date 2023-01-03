@@ -29,9 +29,9 @@ const NotFoundView = lazy(() =>
 
 export default function App() {
   const [selectedBook, setSelectedBook] = useState(null);
+  const [user, setUser] = useState({});
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [user, setUser] = useState({});
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
@@ -110,7 +110,7 @@ export default function App() {
 
   return (
     <Container>
-      <AppBar username={user.name || 'Hello guest!'} />
+      <AppBar user={user} onSignOut={() => setUser({})} />
 
       <Suspense
         fallback={

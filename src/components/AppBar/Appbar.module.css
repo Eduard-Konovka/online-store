@@ -1,7 +1,4 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-radius: 10px;
   padding: 1vw;
   margin: 1vw 0 1vw 0;
@@ -9,6 +6,26 @@
   background-image: linear-gradient(350deg, #e7e7e7, #61676b);
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  color: #2a363b;
+  font-size: 28px;
+}
+
+.active {
+  composes: link;
+  color: #2196f3;
 }
 
 .title {
@@ -20,19 +37,28 @@
   align-items: center;
 }
 
-.img {
-  margin-right: 1vw;
+.cart {
+  composes: link;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart:hover {
+  transform: scale(1.1);
+}
+
+.btn {
+  text-decoration: none;
+  color: inherit;
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #000000;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   margin-left: 1vw;
 }
 
-.username {
+.user {
   font-size: 1.4vw;
   font-weight: 600;
   margin-left: 1vw;
