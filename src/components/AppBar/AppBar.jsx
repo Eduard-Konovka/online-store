@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
-import cartImg from './cart.svg';
 import defaultAvatar from './defaultAvatar.png';
 import s from './Appbar.module.css';
 
@@ -11,21 +10,20 @@ export default function Appbar({ user, onSignOut }) {
       <nav className={s.nav}>
         <NavLink
           to=""
-          className={({ isActive }) => (isActive ? s.active : s.link)}
+          className={({ isActive }) =>
+            isActive ? s.activeLink : s.inactiveLink
+          }
         >
           <h1 className={s.title}>JS BAND STORE</h1>
         </NavLink>
 
         <div className={s.userbar}>
-          <NavLink to="/cart" className={s.cart}>
-            <img
-              // FIXME to 'react-icons' (SVG)
-              src={cartImg}
-              width="48"
-              height="48"
-              alt="cart"
-            />
-          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              isActive ? s.activeCart : s.inactiveCart
+            }
+          />
 
           <Button
             type="button"
