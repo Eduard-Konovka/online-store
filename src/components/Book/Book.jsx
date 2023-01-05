@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
-import s from './Book.module.css';
 import defaultImage from './imageNotFound2.png';
+import s from './Book.module.css';
 
 export default function Book({ book, onClick }) {
   return (

@@ -164,7 +164,7 @@ export default function App() {
               />
             }
           />
-          <Route path="/signin" element={<SignInView />} />
+          <Route path="/signin" element={<SignInView onClick={null} />} />
           <Route
             path="*"
             element={
