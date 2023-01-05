@@ -11,7 +11,7 @@
 import { db } from 'db/books.js';
 
 const productsApi = async () => {
-  return await db.books;
+  return db.books;
 };
 
 export default productsApi;

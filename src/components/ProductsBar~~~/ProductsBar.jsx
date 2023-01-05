@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import fetchProducts from 'api/productsApi';
+import fetchProducts from 'api/booksApi';
 import Spinner from 'components/Spinner';
 import ProductsList from 'components/BooksList';
 import Blank from 'components/Blank';
