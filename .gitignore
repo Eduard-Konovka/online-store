@@ -3,6 +3,10 @@
 .vscode/ 
 .idea/
 
+# Production
+build/
+dist/
+
 # Logs
 logs
 *.log
@@ -42,9 +46,11 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directories
+# Dependencies
 node_modules/
 jspm_packages/
+/.pnp
+.pnp.js
 
 # TypeScript v1 declaration files
 typings/
@@ -107,3 +113,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Local Netlify folder
+.netlify
