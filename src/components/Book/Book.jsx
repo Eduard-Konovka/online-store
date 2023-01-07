@@ -31,9 +31,9 @@ export default function Book({ book, onClick }) {
         <Button
           type="button"
           title="More about the book"
-          onClick={() => onClick(book.id)}
+          onClick={() => onClick(book._id)}
         >
-          <Link to="/:book" className={s.btn}>
+          <Link to="/books/:id" className={s.btn}>
             View
           </Link>
         </Button>
@@ -44,7 +44,7 @@ export default function Book({ book, onClick }) {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,

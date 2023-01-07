@@ -2,12 +2,9 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
-import fetchProduct from 'api/productApi';
 import sendСart from 'api/ordersApi';
 import Container from 'components/Container';
 import AppBar from 'components/AppBar';
-import errorImage from 'pages/NotFoundView/error.jpg';
-import { db } from 'db/books.js';
 import 'api/baseUrl';
 import 'App.css';
 
@@ -42,20 +39,15 @@ export default function App() {
     setUser({ ...user, ...obj });
   };
 
-  const addToCart = id => {
-    console.log(id);
-    const productDuplication = cart.filter(obj => obj.id === id);
+  const addToCart = bookData => {
+    const productDuplication = cart.filter(obj => obj._id === bookData.id);
 
     if (productDuplication.length > 0) {
       toast.error('This item is already in the cart!');
       return;
     }
 
-    fetchProduct(id).then(product => {
-      product.qwantity = 1;
-      product.cost = product.price;
-      setCart([...cart, product]);
-    });
+    setCart([...cart, bookData]);
   };
 
   const removeFromCart = _id => {
@@ -141,12 +133,9 @@ export default function App() {
             element={<BooksView onClick={id => setSelectedBook(id)} />}
           />
           <Route
-            path="/:book"
+            path="/books/:id"
             element={
-              <SpecificBookView
-                book={db.books[selectedBook - 1]}
-                addToCart={addToCart}
-              />
+              <SpecificBookView bookId={selectedBook} addToCart={addToCart} />
             }
           />
           <Route
@@ -167,12 +156,7 @@ export default function App() {
           <Route path="/signin" element={<SignInView onClick={null} />} />
           <Route
             path="*"
-            element={
-              <NotFoundView
-                errorImage={errorImage}
-                messadge="Page not found :("
-              />
-            }
+            element={<NotFoundView message="Page not found :(" />}
           />
         </Routes>
       </Suspense>

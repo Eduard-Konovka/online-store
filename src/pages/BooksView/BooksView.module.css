@@ -1,6 +1,7 @@
 .bookpage {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 
   min-height: 600px;
   border-radius: 10px;
@@ -8,4 +9,43 @@
     0px 1px 3px rgba(68, 38, 38, 0.14), 0px 1px 2px rgba(139, 77, 77, 0.12);
   margin-bottom: 10px;
   background-color: #f9fcf0;
+}
+
+.formBar {
+  display: flex;
+  align-items: flex-end;
+}
+
+.formByName {
+  display: flex;
+  align-items: flex-end;
+}
+
+.input {
+  height: 2.2vw;
+  border: 1px solid #56ca21;
+  border-radius: 10px;
+  padding: 0 10px 0 10px;
+  margin: 1vw 1vw 0 1vw;
+  font-family: inherit;
+  font-size: 1.2vw;
+  font-weight: 400;
+  color: #505050;
+}
+
+.inputByName {
+  composes: input;
+  width: 20vw;
+  margin-right: -40px;
+  align-items: flex-end;
+}
+
+.inputByPrice {
+  composes: input;
+  width: 11vw;
+  margin-left: 60px;
+}
+
+.reset {
+  margin-left: 4vw;
 }

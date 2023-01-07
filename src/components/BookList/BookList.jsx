@@ -1,23 +1,23 @@
 import PropTypes from 'prop-types';
 import Book from 'components/Book';
-import s from './BooksList.module.css';
+import s from './BookList.module.css';
 
-export default function BooksList({ books, onClick }) {
+export default function BookList({ books, onClick }) {
   return (
     <ul className={s.list}>
       {books.map(item => (
-        <li key={item.id} className={s.item}>
-          <Book book={item} onClick={() => onClick(item.id)} />
+        <li key={item._id} className={s.item}>
+          <Book book={item} onClick={() => onClick(item._id)} />
         </li>
       ))}
     </ul>
   );
 }
 
-BooksList.propTypes = {
+BookList.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      _id: PropTypes.string.isRequired,
     }),
   ),
   onClick: PropTypes.func.isRequired,

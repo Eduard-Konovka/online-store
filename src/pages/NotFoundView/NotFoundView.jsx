@@ -1,8 +1,20 @@
-export default function NotFoundView({ errorImage, messadge }) {
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import sound from './glassBreak.mp3';
+import s from './NotFoundView.module.css';
+
+export default function NotFoundView({ message }) {
+  useEffect(() => {
+    new Audio(sound).play();
+  }, []);
+
   return (
-    <div role="alert">
-      <img src={errorImage} alt="Error 404" />
-      <p>{messadge}</p>
-    </div>
+    <main className={s.bookpage} role="alert">
+      <p className={s.text}>{message}</p>
+    </main>
   );
 }
+
+NotFoundView.propTypes = {
+  message: PropTypes.string.isRequired,
+};

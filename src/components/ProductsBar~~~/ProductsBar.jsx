@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import fetchProducts from 'api/booksApi';
 import Spinner from 'components/Spinner';
-import ProductsList from 'components/BooksList';
+import BookList from 'components/BookList';
 import Blank from 'components/Blank';
 import imageBlank from 'images/shop.jpg';
 import s from './ProductsBar.module.css';
@@ -31,7 +31,7 @@ export default function ProductsBar({ shopId, onClick }) {
         <Blank title="Choose a shop" image={imageBlank} alt="Open shop" />
       )}
       {products.length > 0 && (
-        <ProductsList products={products} shopId={shopId} onClick={onClick} />
+        <BookList products={products} shopId={shopId} onClick={onClick} />
       )}
     </div>
   );
