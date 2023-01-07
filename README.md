@@ -16,11 +16,11 @@ The web server project is located
 ## Application launch instructions
 
 This app uses a back end server at
-[https://delivery-app-eduard-konovka.herokuapp.com](https://delivery-app-eduard-konovka.herokuapp.com).
+[https://feb101-course-task-api-eduard-konovka.onrender.com](https://feb101-course-task-api-eduard-konovka.onrender.com).
 
 Accordingly, the REACT_APP_URL environment variable equal to
-https://delivery-app-eduard-konovka.herokuapp.com is used as the base URL for
-accessing the API.
+https://feb101-course-task-api-eduard-konovka.onrender.com is used as the base
+URL for accessing the API.
 
 - The `/api/shops` endpoint is used to get the list of stores
 - The `/api/products` endpoint is used to get the list of stores
