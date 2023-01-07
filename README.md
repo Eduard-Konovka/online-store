@@ -11,7 +11,7 @@ The project was created using the "React" framework in combination with the
 to the "MongoDB" database.
 
 The web server project is located
-[here](https://github.com/Eduard-Konovka/eliftech-school--delivery-app-api).
+[here](https://github.com/Eduard-Konovka/feb101-course-task-api).
 
 ## Application launch instructions
 
