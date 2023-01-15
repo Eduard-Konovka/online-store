@@ -111,7 +111,7 @@ export default function App() {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              paddingTop: '150px',
+              paddingTop: '25vh',
             }}
           >
             <Puff
