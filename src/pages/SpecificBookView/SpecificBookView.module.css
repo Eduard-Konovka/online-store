@@ -1,6 +1,9 @@
 .bookpage {
   display: flex;
   justify-content: space-between;
+  position: relative;
+
+  min-height: 600px;
 }
 
 .img {
