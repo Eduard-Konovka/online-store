@@ -11,7 +11,7 @@ export default function SignInView({ onClick }) {
         <img src={avatar} alt="avatar" className={s.avatar} />
 
         <form action="/" method="post" className={s.form}>
-          <label for="username" className={s.label}>
+          <label htmlFor="username" className={s.label}>
             Username
           </label>
 
@@ -34,6 +34,10 @@ export default function SignInView({ onClick }) {
   );
 }
 
+Button.defaultProps = {
+  onClick: () => null,
+};
+
 SignInView.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
