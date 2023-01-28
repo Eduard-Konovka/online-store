@@ -3,8 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
 import sendСart from 'api/ordersApi';
-import Container from 'components/Container';
-import AppBar from 'components/AppBar';
+import { Container, AppBar, Footer } from 'components';
 import 'api/baseUrl';
 import 'App.css';
 
@@ -160,6 +159,8 @@ export default function App() {
           />
         </Routes>
       </Suspense>
+
+      <Footer />
 
       <ToastContainer />
     </Container>
