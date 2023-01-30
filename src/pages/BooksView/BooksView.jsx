@@ -17,6 +17,7 @@ export default function BooksView({ onClick }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchByName, setSearchByName] = useState('');
+  const [optionList, setOptionList] = useState(true);
   const [visibleBooks, setVisibleBooks] = useState([]);
 
   useEffect(() => {
@@ -31,34 +32,57 @@ export default function BooksView({ onClick }) {
       .finally(() => setLoading(false));
   }, []);
 
-  function handleNameChange() {
-    const targetBooks = visibleBooks.filter(book =>
-      book.title.includes(searchByName),
+  useEffect(() => {
+    setOptionList(true);
+  }, [optionList]);
+
+  function handleNameChange(event) {
+    if (event.target.value) {
+      setSearchByName(event.target.value);
+    } else {
+      setSearchByName('');
+    }
+  }
+
+  function handleNameClick() {
+    const visibleBooksToLowerCase = visibleBooks.map(book => ({
+      ...book,
+      title: book.title.toLowerCase(),
+    }));
+
+    const targetBooksToLowerCase = visibleBooksToLowerCase.filter(book =>
+      book.title.includes(searchByName.toLowerCase()),
     );
+
+    const bookIds = targetBooksToLowerCase.map(
+      bookToLowerCase => bookToLowerCase._id,
+    );
+
+    const targetBooks = visibleBooks.filter(book => bookIds.includes(book._id));
 
     if (targetBooks.length > 0) {
       setVisibleBooks(targetBooks);
     } else {
       toast.error('Please enter the correct book title!');
-      setVisibleBooks(books);
-      setSearchByName('');
+      // setVisibleBooks(visibleBooks);
     }
   }
 
   function handlePriceChange(event) {
     if (event.target.value === 'All prices') {
-      setVisibleBooks(books);
+      setVisibleBooks(visibleBooks);
     } else {
-      const targetBooks = books.filter(
+      const targetBooks = visibleBooks.filter(
         book => book.price === Number(event.target.value),
       );
-
       setVisibleBooks(targetBooks);
     }
   }
 
   function Reset() {
     setSearchByName('');
+    setVisibleBooks(books);
+    setOptionList(false);
   }
 
   return (
@@ -85,14 +109,14 @@ export default function BooksView({ onClick }) {
                 type="text"
                 placeholder="Search by book name"
                 value={searchByName}
-                onChange={event => setSearchByName(event.target.value)}
+                onChange={handleNameChange}
               />
 
               <IconButton
                 type="button"
                 title="Search by book name"
                 aria-label="Search by book name"
-                onClick={handleNameChange}
+                onClick={handleNameClick}
               >
                 <SearchIcon width="24" height="24" />
               </IconButton>
@@ -106,7 +130,7 @@ export default function BooksView({ onClick }) {
 
             <form>
               <select className={s.inputByPrice} onChange={handlePriceChange}>
-                <OptionList books={books} />
+                {optionList && <OptionList books={books} />}
               </select>
             </form>
           </section>
