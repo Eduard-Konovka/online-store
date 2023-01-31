@@ -13,12 +13,14 @@ import imageBlank from 'images/shop.jpg';
 import s from './BooksView.module.css';
 
 export default function BooksView({ onClick }) {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [books, setBooks] = useState([]);
+  const [booksByName, setBooksByName] = useState([]);
+  const [booksByPrice, setBooksByPrice] = useState([]);
+  const [visibleBooks, setVisibleBooks] = useState([]);
   const [searchByName, setSearchByName] = useState('');
   const [optionList, setOptionList] = useState(true);
-  const [visibleBooks, setVisibleBooks] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -26,63 +28,75 @@ export default function BooksView({ onClick }) {
     fetchBooks()
       .then(books => {
         setBooks(books);
-        setVisibleBooks(books);
+        setBooksByName(books);
+        setBooksByPrice(books);
       })
       .catch(error => setError(error))
       .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
+    const difference = booksByName.filter(book => booksByPrice.includes(book));
+    setVisibleBooks(difference);
+  }, [booksByName, booksByPrice]);
+
+  useEffect(() => {
     setOptionList(true);
   }, [optionList]);
 
-  function handleNameChange(event) {
-    if (event.target.value) {
-      setSearchByName(event.target.value);
-    } else {
-      setSearchByName('');
-    }
-  }
-
   function handleNameClick() {
-    const visibleBooksToLowerCase = visibleBooks.map(book => ({
+    const visibleBooksToLowerCase = books.map(book => ({
       ...book,
       title: book.title.toLowerCase(),
     }));
 
-    const targetBooksToLowerCase = visibleBooksToLowerCase.filter(book =>
-      book.title.includes(searchByName.toLowerCase()),
-    );
+    const queryArr = searchByName
+      .toLowerCase()
+      .split(' ')
+      .filter(word => word !== '');
+
+    const targetBooksToLowerCase = visibleBooksToLowerCase.filter(book => {
+      let result = !book;
+
+      for (let i = 0; i < queryArr.length; i++) {
+        if (book.title.includes(queryArr[i])) {
+          result = book;
+        }
+      }
+
+      return result;
+    });
 
     const bookIds = targetBooksToLowerCase.map(
       bookToLowerCase => bookToLowerCase._id,
     );
 
-    const targetBooks = visibleBooks.filter(book => bookIds.includes(book._id));
+    const targetBooks = books.filter(book => bookIds.includes(book._id));
 
     if (targetBooks.length > 0) {
-      setVisibleBooks(targetBooks);
+      setBooksByName(targetBooks);
     } else {
       toast.error('Please enter the correct book title!');
-      // setVisibleBooks(visibleBooks);
+      setBooksByName([]);
     }
   }
 
   function handlePriceChange(event) {
     if (event.target.value === 'All prices') {
-      setVisibleBooks(visibleBooks);
+      setBooksByPrice(books);
     } else {
-      const targetBooks = visibleBooks.filter(
+      const targetBooks = books.filter(
         book => book.price === Number(event.target.value),
       );
-      setVisibleBooks(targetBooks);
+      setBooksByPrice(targetBooks);
     }
   }
 
-  function Reset() {
+  function reset() {
     setSearchByName('');
-    setVisibleBooks(books);
     setOptionList(false);
+    setBooksByName(books);
+    setBooksByPrice(books);
   }
 
   return (
@@ -109,7 +123,7 @@ export default function BooksView({ onClick }) {
                 type="text"
                 placeholder="Search by book name"
                 value={searchByName}
-                onChange={handleNameChange}
+                onChange={e => setSearchByName(e.target.value)}
               />
 
               <IconButton
@@ -122,17 +136,17 @@ export default function BooksView({ onClick }) {
               </IconButton>
             </form>
 
-            <div className={s.reset}>
-              <Button type="button" title="Reset filters" onClick={Reset}>
-                Reset filters
-              </Button>
-            </div>
-
             <form>
               <select className={s.inputByPrice} onChange={handlePriceChange}>
                 {optionList && <OptionList books={books} />}
               </select>
             </form>
+
+            <div className={s.reset}>
+              <Button type="button" title="Reset all filters" onClick={reset}>
+                Reset filters
+              </Button>
+            </div>
           </section>
 
           <BookList books={visibleBooks} onClick={onClick} />
