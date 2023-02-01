@@ -64,7 +64,7 @@ export default function SpecificBookView({ bookId, addToCart }) {
           <div className={s.thumb}>
             <div className={s.display}>
               <div className={s.title}>
-                <h2 className={s.bookname}>{book.title}</h2>
+                <h3 className={s.bookname}>{book.title}</h3>
 
                 <p className={s.mb}>
                   <span className={s.boldfont}>Book author: </span>

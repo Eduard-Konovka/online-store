@@ -11,7 +11,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .link {
@@ -38,8 +38,27 @@
   color: #2196f3;
 }
 
+.logo {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.resume {
+  composes: link;
+  margin: 0 auto 1px 0;
+  color: #3f5761;
+  text-shadow: 1px 1px 1px #000000;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resume:hover {
+  transform: scale(1.02, 1.1);
+}
+
 .title {
   margin: 0;
+  font-size: 2.1vw;
+  font-style: italic;
 }
 
 .userbar {

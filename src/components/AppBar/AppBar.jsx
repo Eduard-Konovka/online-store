@@ -14,8 +14,16 @@ export default function Appbar({ user, onSignOut }) {
             isActive ? s.activeLink : s.inactiveLink
           }
         >
-          <h1 className={s.title}>JS BAND STORE</h1>
+          <h1 className={s.logo}>JS Band Store</h1>
         </NavLink>
+
+        <a
+          href="https://eduard-konovka.github.io/resume-pdf/"
+          rel="noopener noreferrer"
+          className={s.resume}
+        >
+          <h2 className={s.title}>...by Eduard Konovka</h2>
+        </a>
 
         <div className={s.userbar}>
           <NavLink

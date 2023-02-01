@@ -29,7 +29,7 @@
 
 .author {
   composes: paragraph;
-  margin-bottom: 1vw;
+  height: 4vw;
   font-weight: 500;
 }
 

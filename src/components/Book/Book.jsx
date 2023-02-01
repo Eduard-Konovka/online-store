@@ -14,7 +14,7 @@ export default function Book({ book, onClick }) {
       />
 
       <div className={s.thumb}>
-        <h2 className={s.title}>{book.title}</h2>
+        <h3 className={s.title}>{book.title}</h3>
 
         <p className={s.shortDescription}>{book.shortDescription}</p>
       </div>
