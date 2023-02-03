@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import SelectedProduct from 'components/SelectedProduct';
+import SelectedBook from 'components/SelectedBook';
 import s from './CartList.module.css';
 
 export default function CartList({ cart, onSelectQwantity, onDeleteProduct }) {
@@ -7,9 +7,9 @@ export default function CartList({ cart, onSelectQwantity, onDeleteProduct }) {
     <ul className={s.list}>
       {cart.map(item => (
         <li key={item._id}>
-          <SelectedProduct
+          <SelectedBook
             _id={item._id}
-            imageUrl={item.imgUrl}
+            image={item.image}
             title={item.title}
             category={item.category}
             price={item.price}

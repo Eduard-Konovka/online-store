@@ -12,10 +12,9 @@ import { ReactComponent as SearchIcon } from './search.svg';
 import imageBlank from 'images/shop.jpg';
 import s from './BooksView.module.css';
 
-export default function BooksView({ onClick }) {
+export default function BooksView({ books, setBooks, onClick }) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [books, setBooks] = useState([]);
   const [booksByName, setBooksByName] = useState([]);
   const [booksByPrice, setBooksByPrice] = useState([]);
   const [visibleBooks, setVisibleBooks] = useState([]);

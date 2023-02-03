@@ -24,14 +24,15 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
+  const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [user, setUser] = useState({});
   const [cart, setCart] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalCost, setTotalCost] = useState(0);
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
-    setTotalPrice(cart.reduce((acc, obj) => acc + obj.cost, 0));
+    setTotalCost(cart.reduce((acc, obj) => acc + Number(obj.totalPrice), 0));
   }, [cart]);
 
   const hendleUser = obj => {
@@ -92,7 +93,7 @@ export default function App() {
     setCart([]);
     setUser({});
     setSending(true);
-    sendСart({ user, cart, totalPrice }).finally(
+    sendСart({ user, cart, totalCost }).finally(
       setTimeout(() => {
         setSending(false);
       }, 5000),
@@ -129,7 +130,13 @@ export default function App() {
         <Routes>
           <Route
             path=""
-            element={<BooksView onClick={id => setSelectedBook(id)} />}
+            element={
+              <BooksView
+                books={books}
+                setBooks={books => setBooks(books)}
+                onClick={id => setSelectedBook(id)}
+              />
+            }
           />
           <Route
             path="/books/:id"
@@ -141,11 +148,9 @@ export default function App() {
             path="/cart"
             element={
               <CartView
-                user={user}
-                setUser={hendleUser}
                 sending={sending}
                 cart={cart}
-                totalPrice={totalPrice}
+                totalCost={totalCost}
                 onSelectQwantity={changeQwantity}
                 onDeleteProduct={removeFromCart}
                 onSubmit={submitCart}

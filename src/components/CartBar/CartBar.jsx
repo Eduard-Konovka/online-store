@@ -9,7 +9,7 @@ import s from './CartBar.module.css';
 export default function CartBar({
   sending,
   cart,
-  totalPrice,
+  totalCost,
   onSelectQwantity,
   onDeleteProduct,
   onSubmit,
@@ -25,10 +25,10 @@ export default function CartBar({
           />
 
           <div className={s.priceBox}>
-            <p className={s.totalPrice}>Total price: ${totalPrice}</p>
+            <p className={s.totalCost}>Total cost: ${totalCost}</p>
 
             <Button type="button" onClick={onSubmit}>
-              Send
+              Purchase
             </Button>
           </div>
         </>
@@ -51,7 +51,7 @@ CartBar.propTypes = {
       _id: PropTypes.string.isRequired,
     }),
   ),
-  totalPrice: PropTypes.number.isRequired,
+  totalCost: PropTypes.number.isRequired,
   onSelectQwantity: PropTypes.func.isRequired,
   onDeleteProduct: PropTypes.func.isRequired,
 };

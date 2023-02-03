@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
 import defaultImage from './default.jpg';
-import s from './SelectedProduct.module.css';
+import s from './SelectedBook.module.css';
 
-export default function SelectedProduct({
+export default function SelectedBook({
   _id,
-  imageUrl,
+  image,
   title,
   category,
   price,
-  available,
   qwantity,
   cost,
   onSelectQwantity,
@@ -27,18 +26,10 @@ export default function SelectedProduct({
 
   return (
     <div className={s.container}>
-      <img
-        src={
-          imageUrl
-            ? `${process.env.REACT_APP_URL}/images/${imageUrl}`
-            : defaultImage
-        }
-        alt={title}
-      />
+      <img src={image && image !== '' ? image : defaultImage} alt={title} />
       <h2>{title}</h2>
       <p>Category: {category}</p>
       <p>Price: ${price}</p>
-      <p>In stock: {available} units</p>
       <form className={s.form} onChange={handleSelect}>
         <label className={s.formItem} htmlFor="qwantity">
           Qwantity:
@@ -49,7 +40,7 @@ export default function SelectedProduct({
           name="qwantity"
           id="qwantity"
           min={1}
-          max={available}
+          max={42}
           defaultValue={qwantity}
         ></input>
       </form>
@@ -61,8 +52,9 @@ export default function SelectedProduct({
   );
 }
 
-SelectedProduct.propTypes = {
-  imageUrl: PropTypes.string,
+SelectedBook.propTypes = {
+  _id: PropTypes.string.isRequired,
+  image: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   category: PropTypes.string,

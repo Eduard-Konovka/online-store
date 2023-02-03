@@ -42,6 +42,7 @@ export default function SpecificBookView({ bookId, addToCart }) {
     const obj = {
       _id: book._id,
       qwantity,
+      totalPrice,
     };
 
     addToCart(obj);

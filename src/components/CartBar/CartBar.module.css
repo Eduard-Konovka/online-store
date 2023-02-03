@@ -1,20 +1,22 @@
 .cartbar {
-  width: 1000px;
+  width: 100%;
   min-height: 500px;
-  border: 1px solid #757575;
+  padding: 20px;
   border-radius: 10px;
   margin-bottom: 10px;
   background-color: #fff6f1;
+  box-shadow: 0px 2px 4px 2px rgba(66, 38, 38, 0.25),
+    2px 1px 1px rgba(71, 29, 29, 0.3), -2px 1px 3px rgba(77, 25, 25, 0.15);
 }
 
 .priceBox {
-  padding: 10px 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin: 10px 18px 0 0;
 }
 
-.totalPrice {
-  margin: 0 40px;
+.totalCost {
+  margin: 0 20px;
   font-weight: 700;
 }
