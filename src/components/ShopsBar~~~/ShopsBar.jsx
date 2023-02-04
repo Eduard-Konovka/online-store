@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import fetchShops from 'api/shopsApi';
-import Spinner from 'components/Spinner';
-import ShopsList from 'components/ShopsList';
+import { fetchShops } from 'api';
+import { Spinner, ShopsList } from 'components';
 import s from './ShopsBar.module.css';
 
 export default function ShopsBar({ onClick }) {

@@ -2,7 +2,8 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
-import sendСart from 'api/ordersApi';
+import { BooksProvider } from 'context';
+import { sendСart } from 'api';
 import { Container, AppBar, Footer } from 'components';
 import 'api/baseUrl';
 import 'App.css';
@@ -127,42 +128,43 @@ export default function App() {
           </div>
         }
       >
-        <Routes>
-          <Route
-            path=""
-            element={
-              <BooksView
-                books={books}
-                setBooks={books => setBooks(books)}
-                onClick={id => setSelectedBook(id)}
-              />
-            }
-          />
-          <Route
-            path="/books/:id"
-            element={
-              <SpecificBookView bookId={selectedBook} addToCart={addToCart} />
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <CartView
-                sending={sending}
-                cart={cart}
-                totalCost={totalCost}
-                onSelectQwantity={changeQwantity}
-                onDeleteProduct={removeFromCart}
-                onSubmit={submitCart}
-              />
-            }
-          />
-          <Route path="/signin" element={<SignInView onClick={null} />} />
-          <Route
-            path="*"
-            element={<NotFoundView message="Page not found :(" />}
-          />
-        </Routes>
+        <BooksProvider value={books}>
+          <Routes>
+            <Route
+              path=""
+              element={
+                <BooksView
+                  setBooks={books => setBooks(books)}
+                  onClick={id => setSelectedBook(id)}
+                />
+              }
+            />
+            <Route
+              path="/books/:id"
+              element={
+                <SpecificBookView bookId={selectedBook} addToCart={addToCart} />
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <CartView
+                  sending={sending}
+                  cart={cart}
+                  totalCost={totalCost}
+                  onSelectQwantity={changeQwantity}
+                  onDeleteProduct={removeFromCart}
+                  onSubmit={submitCart}
+                />
+              }
+            />
+            <Route path="/signin" element={<SignInView onClick={null} />} />
+            <Route
+              path="*"
+              element={<NotFoundView message="Page not found :(" />}
+            />
+          </Routes>
+        </BooksProvider>
       </Suspense>
 
       <Footer />

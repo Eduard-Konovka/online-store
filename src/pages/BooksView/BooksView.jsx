@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
-import fetchBooks from 'api/booksApi';
-import Spinner from 'components/Spinner';
-import Blank from 'components/Blank';
-import IconButton from 'components/IconButton';
-import Button from 'components/Button';
-import OptionList from 'components/OptionList';
-import BookList from 'components/BookList';
+import { useBooks } from 'context';
+import { fetchBooks } from 'api';
+import {
+  Spinner,
+  Blank,
+  IconButton,
+  Button,
+  OptionList,
+  BookList,
+} from 'components';
 import { ReactComponent as SearchIcon } from './search.svg';
 import imageBlank from 'images/shop.jpg';
 import s from './BooksView.module.css';
 
-export default function BooksView({ books, setBooks, onClick }) {
+export default function BooksView({ setBooks, onClick }) {
+  const books = useBooks();
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [booksByName, setBooksByName] = useState([]);
@@ -32,6 +37,7 @@ export default function BooksView({ books, setBooks, onClick }) {
       })
       .catch(error => setError(error))
       .finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -156,5 +162,6 @@ export default function BooksView({ books, setBooks, onClick }) {
 }
 
 BooksView.propTypes = {
+  setBooks: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
 };

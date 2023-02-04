@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
-import fetchBook from 'api/bookApi';
-import Spinner from 'components/Spinner';
-import Button from 'components/Button';
-import Tags from 'components/Tags';
+import { fetchBook } from 'api';
+import { Spinner, Button, Tags } from 'components';
 import imageNotFound from 'images/imageNotFound.png';
 import s from './SpecificBookView.module.css';
 
