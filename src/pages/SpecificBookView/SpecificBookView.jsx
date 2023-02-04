@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { fetchBook } from 'api';
-import { Spinner, Button, Tags } from 'components';
+import { Spinner, Button, Tags, CountForm } from 'components';
 import imageNotFound from 'images/imageNotFound.png';
 import s from './SpecificBookView.module.css';
 
@@ -10,8 +9,7 @@ export default function SpecificBookView({ bookId, addToCart }) {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [qwantity, setQwantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(null);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
     setLoading(true);
@@ -19,28 +17,15 @@ export default function SpecificBookView({ bookId, addToCart }) {
     fetchBook(bookId)
       .then(book => {
         setBook(book);
-        setTotalPrice(book.price);
       })
       .catch(error => setError(error))
       .finally(() => setLoading(false));
   }, [bookId]);
 
-  function handleChange(event) {
-    if (event.target.value > 0 && event.target.value <= 42) {
-      setQwantity(event.target.value);
-      setTotalPrice(
-        (Number(book.price) * Number(event.target.value)).toFixed(2),
-      );
-    } else {
-      toast.error('Please enter a value between 0 and 43!');
-    }
-  }
-
   function handleClickAddToCart() {
     const obj = {
       _id: book._id,
-      qwantity,
-      totalPrice,
+      count,
     };
 
     addToCart(obj);
@@ -78,30 +63,22 @@ export default function SpecificBookView({ bookId, addToCart }) {
 
               <div className={s.control}>
                 <p className={s.count}>
-                  <span className={s.boldfont}>Price, $</span>
-                  {book.price}
+                  <span className={s.boldfont}>Price: </span>${book.price}
                 </p>
 
-                <form className={s.count}>
-                  <label htmlFor="count" className={s.boldfont}>
-                    Count, units
-                  </label>
-
-                  <input
-                    name="count"
-                    type="number"
-                    value={qwantity}
-                    min="1"
-                    max="42"
-                    onChange={handleChange}
-                    className={s.input}
-                  />
-                </form>
-
-                <p className={s.count}>
-                  <span className={s.boldfont}>Total price, $</span>
-                  {totalPrice}
-                </p>
+                <CountForm
+                  value={count}
+                  price={book.price}
+                  min={1}
+                  max={42}
+                  styles={{
+                    formStyle: s.count,
+                    labelStyle: s.boldfont,
+                    inputStyle: s.input,
+                    spanStyle: s.boldfont,
+                  }}
+                  setCount={setCount}
+                />
 
                 <Button
                   type="button"

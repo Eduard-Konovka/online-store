@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
-import CartBar from 'components/CartBar';
+import { CartBar } from 'components';
 import s from './CartView.module.css';
 
 export default function CartView({
   sending,
   cart,
-  totalCost,
-  onSelectQwantity,
-  onDeleteProduct,
+  changeSelectCount,
+  onDeleteBook,
   onSubmit,
 }) {
   return (
@@ -15,9 +14,8 @@ export default function CartView({
       <CartBar
         sending={sending}
         cart={cart}
-        totalCost={totalCost}
-        onSelectQwantity={onSelectQwantity}
-        onDeleteProduct={onDeleteProduct}
+        changeSelectCount={changeSelectCount}
+        onDeleteBook={onDeleteBook}
         onSubmit={onSubmit}
       />
     </div>
@@ -25,12 +23,13 @@ export default function CartView({
 }
 
 CartView.propTypes = {
+  sending: PropTypes.bool.isRequired,
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
     }),
   ),
-  totalCost: PropTypes.number.isRequired,
-  onSelectQwantity: PropTypes.func.isRequired,
-  onDeleteProduct: PropTypes.func.isRequired,
+  changeSelectCount: PropTypes.func.isRequired,
+  onDeleteBook: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };

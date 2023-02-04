@@ -8,16 +8,16 @@
   margin: 10px;
 }
 
-.form {
+.countForm {
   height: 20px;
   display: flex;
   align-items: center;
 }
 
-.formItem {
+.countFormItem {
   width: 65px;
 }
 
-.formItem:first-child {
+.countFormItem:first-child {
   margin-right: 10px;
 }

@@ -1,51 +1,37 @@
 import PropTypes from 'prop-types';
-import Button from 'components/Button';
+import { CountForm, Button } from 'components';
 import defaultImage from './default.jpg';
 import s from './SelectedBook.module.css';
 
 export default function SelectedBook({
-  _id,
-  image,
-  title,
-  category,
-  price,
-  qwantity,
-  cost,
-  onSelectQwantity,
-  onDeleteProduct,
+  selectedBook,
+  changeSelectCount,
+  onDeleteBook,
 }) {
-  const handleSelect = e => {
-    const obj = {
-      _id,
-      qwantity: e.target.value,
-      cost: price * e.target.value,
-    };
-
-    onSelectQwantity(obj);
-  };
+  const { _id, image, title, price, count } = selectedBook;
 
   return (
     <div className={s.container}>
       <img src={image && image !== '' ? image : defaultImage} alt={title} />
+
       <h2>{title}</h2>
-      <p>Category: {category}</p>
+
       <p>Price: ${price}</p>
-      <form className={s.form} onChange={handleSelect}>
-        <label className={s.formItem} htmlFor="qwantity">
-          Qwantity:
-        </label>
-        <input
-          className={s.formItem}
-          type="number"
-          name="qwantity"
-          id="qwantity"
-          min={1}
-          max={42}
-          defaultValue={qwantity}
-        ></input>
-      </form>
-      <p>Cost: ${cost}</p>
-      <Button type="button" onClick={onDeleteProduct}>
+
+      <CountForm
+        value={count}
+        price={price}
+        min={1}
+        max={42}
+        styles={{
+          formStyle: s.countForm,
+          labelStyle: s.countFormItem,
+          inputStyle: s.countFormItem,
+        }}
+        setCount={count => changeSelectCount({ count, _id })}
+      />
+
+      <Button type="button" onClick={onDeleteBook}>
         Delete
       </Button>
     </div>
@@ -53,15 +39,7 @@ export default function SelectedBook({
 }
 
 SelectedBook.propTypes = {
-  _id: PropTypes.string.isRequired,
-  image: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  category: PropTypes.string,
-  price: PropTypes.number,
-  available: PropTypes.number,
-  qwantity: PropTypes.number,
-  cost: PropTypes.number,
-  onSelectQwantity: PropTypes.func.isRequired,
-  onDeleteProduct: PropTypes.func.isRequired,
+  selectedBook: PropTypes.object.isRequired,
+  changeSelectCount: PropTypes.func.isRequired,
+  onDeleteBook: PropTypes.func.isRequired,
 };

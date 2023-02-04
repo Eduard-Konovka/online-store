@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Button from 'components/Button';
+import { Button } from 'components';
 import avatar from './avatar.png';
 import s from './SignInView.module.css';
 

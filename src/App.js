@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
@@ -29,26 +29,25 @@ export default function App() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [user, setUser] = useState({});
   const [cart, setCart] = useState([]);
-  const [totalCost, setTotalCost] = useState(0);
-  const [sending, setSending] = useState(false);
 
-  useEffect(() => {
-    setTotalCost(cart.reduce((acc, obj) => acc + Number(obj.totalPrice), 0));
-  }, [cart]);
+  const [sending, setSending] = useState(false);
 
   const hendleUser = obj => {
     setUser({ ...user, ...obj });
   };
 
   const addToCart = bookData => {
-    const productDuplication = cart.filter(obj => obj._id === bookData.id);
+    const productDuplication = cart.filter(obj => obj._id === bookData._id);
 
     if (productDuplication.length > 0) {
       toast.error('This item is already in the cart!');
       return;
     }
 
-    setCart([...cart, bookData]);
+    const addedBook = books.filter(book => book._id === bookData._id)[0];
+    addedBook.count = bookData.count;
+
+    setCart([...cart, addedBook]);
   };
 
   const removeFromCart = _id => {
@@ -56,18 +55,13 @@ export default function App() {
     setCart(newCart);
   };
 
-  const changeQwantity = obj => {
-    const setQwantity = item => {
-      item.qwantity = Number(obj.qwantity);
-      item.cost = obj.cost;
+  const changeCount = obj => {
+    const setCount = item => {
+      item.count = Number(obj.count);
       return item;
     };
 
-    setCart(
-      cart.map(product =>
-        product._id === obj._id ? setQwantity(product) : product,
-      ),
-    );
+    setCart(cart.map(book => (book._id === obj._id ? setCount(book) : book)));
   };
 
   const submitCart = () => {
@@ -94,7 +88,7 @@ export default function App() {
     setCart([]);
     setUser({});
     setSending(true);
-    sendСart({ user, cart, totalCost }).finally(
+    sendСart({ user, cart }).finally(
       setTimeout(() => {
         setSending(false);
       }, 5000),
@@ -139,26 +133,28 @@ export default function App() {
                 />
               }
             />
+
             <Route
               path="/books/:id"
               element={
                 <SpecificBookView bookId={selectedBook} addToCart={addToCart} />
               }
             />
+
             <Route
               path="/cart"
               element={
                 <CartView
                   sending={sending}
                   cart={cart}
-                  totalCost={totalCost}
-                  onSelectQwantity={changeQwantity}
-                  onDeleteProduct={removeFromCart}
+                  changeSelectCount={changeCount}
+                  onDeleteBook={removeFromCart}
                   onSubmit={submitCart}
                 />
               }
             />
             <Route path="/signin" element={<SignInView onClick={null} />} />
+
             <Route
               path="*"
               element={<NotFoundView message="Page not found :(" />}

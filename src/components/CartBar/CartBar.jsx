@@ -1,7 +1,6 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import CartList from 'components/CartList';
-import Button from 'components/Button';
-import Blank from 'components/Blank';
+import { CartList, Button, Blank } from 'components';
 import imageBlank from 'images/cartEmpty.png';
 import imageProcessing from 'images/imageProcessing.png';
 import s from './CartBar.module.css';
@@ -9,19 +8,26 @@ import s from './CartBar.module.css';
 export default function CartBar({
   sending,
   cart,
-  totalCost,
-  onSelectQwantity,
-  onDeleteProduct,
+  changeSelectCount,
+  onDeleteBook,
   onSubmit,
 }) {
+  const [totalCost, setTotalCost] = useState(0);
+
+  useEffect(() => {
+    setTotalCost(
+      cart.reduce((acc, obj) => acc + obj.count * obj.price, 0).toFixed(2),
+    );
+  }, [cart]);
+
   return (
     <div className={s.cartbar}>
       {cart.length > 0 ? (
         <>
           <CartList
             cart={cart}
-            onSelectQwantity={onSelectQwantity}
-            onDeleteProduct={onDeleteProduct}
+            changeSelectCount={changeSelectCount}
+            onDeleteBook={onDeleteBook}
           />
 
           <div className={s.priceBox}>
@@ -46,12 +52,13 @@ export default function CartBar({
 }
 
 CartBar.propTypes = {
+  sending: PropTypes.bool.isRequired,
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
     }),
   ),
-  totalCost: PropTypes.number.isRequired,
-  onSelectQwantity: PropTypes.func.isRequired,
-  onDeleteProduct: PropTypes.func.isRequired,
+  changeSelectCount: PropTypes.func.isRequired,
+  onDeleteBook: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
