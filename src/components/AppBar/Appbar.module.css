@@ -1,6 +1,6 @@
 .header {
   border-radius: 10px;
-  padding: 1vw;
+  padding: 0.2vw 1vw 0.45vw 1vw;
   margin: 0.8vw 0 1vw 0;
   color: #2a363b;
   background-image: linear-gradient(350deg, #e7e7e7, #61676b);

@@ -6,7 +6,7 @@ import s from './SignInView.module.css';
 
 export default function SignInView({ onClick }) {
   return (
-    <main className={s.card}>
+    <main className={s.page}>
       <section className={s.thumb}>
         <img src={avatar} alt="avatar" className={s.avatar} />
 

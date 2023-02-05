@@ -6,7 +6,7 @@ export default function CartList({ cart, changeSelectCount, onDeleteBook }) {
   return (
     <ul className={s.list}>
       {cart.map(item => (
-        <li key={item._id}>
+        <li key={item._id} className={s.item}>
           <SelectedBook
             selectedBook={item}
             changeSelectCount={changeSelectCount}

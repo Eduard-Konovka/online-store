@@ -1,23 +1,65 @@
-.container {
-  padding: 10px;
-  width: 420px;
-  background: #ffffff;
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 1px 3px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
-  margin: 10px;
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.thumb {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.cover {
+  width: 75px;
+  height: 98px;
+  margin-right: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.6vw;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  width: 53%;
+  font-size: 1.3vw;
+  font-weight: 500;
+}
+
+.price {
+  width: 135px;
+  margin-right: 25px;
 }
 
 .countForm {
   height: 20px;
   display: flex;
   align-items: center;
+  margin-right: 30px;
 }
 
-.countFormItem {
-  width: 65px;
-}
-
-.countFormItem:first-child {
+.countLabel {
   margin-right: 10px;
+}
+
+.countInput {
+  width: 5vw;
+  height: 2.2vw;
+  border: 1px solid #56ca21;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
+  font-family: inherit;
+  font-size: 1.2vw;
+  font-weight: 700;
+  color: #505050;
+}
+
+.totalPrice {
+  margin-right: auto;
 }

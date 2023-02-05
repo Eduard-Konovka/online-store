@@ -43,7 +43,7 @@ export default function CountForm({
         />
       </form>
 
-      <p className={styles.formStyle}>
+      <p className={styles.totalPriceStyle}>
         <span className={styles.spanStyle}>Total price: </span>${totalPrice}
       </p>
     </>

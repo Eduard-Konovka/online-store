@@ -11,7 +11,5 @@ export { default as Footer } from './Footer';
 export { default as IconButton } from './IconButton';
 export { default as OptionList } from './OptionList';
 export { default as SelectedBook } from './SelectedBook';
-export { default as Shop } from './Shop';
-export { default as ShopsList } from './ShopsList';
 export { default as Spinner } from './Spinner';
 export { default as Tags } from './Tags';

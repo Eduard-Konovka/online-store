@@ -9,7 +9,7 @@ export default function CartView({
   onSubmit,
 }) {
   return (
-    <div className={s.cartpage}>
+    <div className={s.page}>
       <CartBar
         sending={sending}
         changeSelectCount={changeSelectCount}

@@ -9,7 +9,7 @@ export default function NotFoundView({ message }) {
   }, []);
 
   return (
-    <main className={s.bookpage} role="alert">
+    <main className={s.page} role="alert">
       <p className={s.text}>{message}</p>
     </main>
   );

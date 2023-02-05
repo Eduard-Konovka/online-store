@@ -1,5 +1,5 @@
-.bookpage {
-  height: 78vh;
+.page {
+  min-height: 550px;
   display: flex;
   justify-content: center;
   align-items: flex-end;

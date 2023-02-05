@@ -21,7 +21,7 @@ export default function SpecificBookView({ bookId, addToCart }) {
   }
 
   return (
-    <main className={s.bookpage}>
+    <main className={s.page}>
       <img
         src={book.image !== '' ? book.image : imageNotFound}
         alt={book.title}
@@ -59,6 +59,7 @@ export default function SpecificBookView({ bookId, addToCart }) {
                 labelStyle: s.boldfont,
                 inputStyle: s.input,
                 spanStyle: s.boldfont,
+                totalPriceStyle: s.count,
               }}
               setCount={setCount}
             />

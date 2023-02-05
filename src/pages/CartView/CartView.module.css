@@ -1,4 +1,6 @@
-.cartpage {
+.page {
   display: flex;
   justify-content: space-between;
+
+  min-height: 550px;
 }

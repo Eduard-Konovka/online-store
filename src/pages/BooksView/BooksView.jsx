@@ -110,7 +110,7 @@ export default function BooksView({ setBooks, onClick }) {
   }
 
   return (
-    <main className={s.bookpage}>
+    <main className={s.page}>
       {loading && <Spinner size={70} color="blue" />}
 
       {error && (

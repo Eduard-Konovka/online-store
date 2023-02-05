@@ -1,4 +1,4 @@
-import Shop from 'components/Shop';
+import Shop from 'components/Shop~~~';
 import s from './ShopsList.module.css';
 
 export default function ShopsList({ shops, onClick }) {

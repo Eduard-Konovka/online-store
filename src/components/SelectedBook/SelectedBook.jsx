@@ -11,30 +11,39 @@ export default function SelectedBook({
   const { _id, image, title, price, count } = selectedBook;
 
   return (
-    <div className={s.container}>
-      <img src={image && image !== '' ? image : defaultImage} alt={title} />
+    <article className={s.card}>
+      <div className={s.thumb}>
+        <img
+          src={image && image !== '' ? image : defaultImage}
+          alt={title}
+          className={s.cover}
+        />
 
-      <h2>{title}</h2>
+        <h3 className={s.title}>{title}</h3>
+      </div>
 
-      <p>Price: ${price}</p>
+      <div className={s.controls}>
+        <p className={s.price}>Price: ${price}</p>
 
-      <CountForm
-        value={count}
-        price={price}
-        min={1}
-        max={42}
-        styles={{
-          formStyle: s.countForm,
-          labelStyle: s.countFormItem,
-          inputStyle: s.countFormItem,
-        }}
-        setCount={count => changeSelectCount({ count, _id })}
-      />
+        <CountForm
+          value={count}
+          price={price}
+          min={1}
+          max={42}
+          styles={{
+            formStyle: s.countForm,
+            labelStyle: s.countLabel,
+            inputStyle: s.countInput,
+            totalPriceStyle: s.totalPrice,
+          }}
+          setCount={count => changeSelectCount({ count, _id })}
+        />
 
-      <Button type="button" onClick={onDeleteBook}>
-        Delete
-      </Button>
-    </div>
+        <Button type="button" onClick={onDeleteBook}>
+          Delete
+        </Button>
+      </div>
+    </article>
   );
 }
 
