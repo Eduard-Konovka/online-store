@@ -2,7 +2,7 @@ import { lazy, Suspense, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
-import { BooksProvider } from 'context';
+import { BooksProvider, CartProvider } from 'context';
 import { sendСart } from 'api';
 import { Container, AppBar, Footer } from 'components';
 import 'api/baseUrl';
@@ -127,10 +127,7 @@ export default function App() {
             <Route
               path=""
               element={
-                <BooksView
-                  setBooks={books => setBooks(books)}
-                  onClick={id => setSelectedBook(id)}
-                />
+                <BooksView setBooks={setBooks} onClick={setSelectedBook} />
               }
             />
 
@@ -144,13 +141,14 @@ export default function App() {
             <Route
               path="/cart"
               element={
-                <CartView
-                  sending={sending}
-                  cart={cart}
-                  changeSelectCount={changeCount}
-                  onDeleteBook={removeFromCart}
-                  onSubmit={submitCart}
-                />
+                <CartProvider value={cart}>
+                  <CartView
+                    sending={sending}
+                    changeSelectCount={changeCount}
+                    onDeleteBook={removeFromCart}
+                    onSubmit={submitCart}
+                  />
+                </CartProvider>
               }
             />
             <Route path="/signin" element={<SignInView onClick={null} />} />

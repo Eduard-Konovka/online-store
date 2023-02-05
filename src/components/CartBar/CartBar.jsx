@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useCart } from 'context';
 import { CartList, Button, Blank } from 'components';
 import imageBlank from 'images/cartEmpty.png';
 import imageProcessing from 'images/imageProcessing.png';
@@ -7,11 +8,12 @@ import s from './CartBar.module.css';
 
 export default function CartBar({
   sending,
-  cart,
   changeSelectCount,
   onDeleteBook,
   onSubmit,
 }) {
+  const cart = useCart();
+
   const [totalCost, setTotalCost] = useState(0);
 
   useEffect(() => {
@@ -53,11 +55,6 @@ export default function CartBar({
 
 CartBar.propTypes = {
   sending: PropTypes.bool.isRequired,
-  cart: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-    }),
-  ),
   changeSelectCount: PropTypes.func.isRequired,
   onDeleteBook: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,

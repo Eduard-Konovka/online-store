@@ -1,3 +1,4 @@
 import { BooksProvider, useBooks } from './useBooks';
+import { CartProvider, useCart } from './useCart';
 
-export { BooksProvider, useBooks };
+export { BooksProvider, CartProvider, useBooks, useCart };

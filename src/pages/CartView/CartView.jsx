@@ -4,7 +4,6 @@ import s from './CartView.module.css';
 
 export default function CartView({
   sending,
-  cart,
   changeSelectCount,
   onDeleteBook,
   onSubmit,
@@ -13,7 +12,6 @@ export default function CartView({
     <div className={s.cartpage}>
       <CartBar
         sending={sending}
-        cart={cart}
         changeSelectCount={changeSelectCount}
         onDeleteBook={onDeleteBook}
         onSubmit={onSubmit}
@@ -24,11 +22,6 @@ export default function CartView({
 
 CartView.propTypes = {
   sending: PropTypes.bool.isRequired,
-  cart: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-    }),
-  ),
   changeSelectCount: PropTypes.func.isRequired,
   onDeleteBook: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,

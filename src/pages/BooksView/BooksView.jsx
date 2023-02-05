@@ -18,8 +18,8 @@ import s from './BooksView.module.css';
 export default function BooksView({ setBooks, onClick }) {
   const books = useBooks();
 
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [booksByName, setBooksByName] = useState([]);
   const [booksByPrice, setBooksByPrice] = useState([]);
   const [visibleBooks, setVisibleBooks] = useState([]);
@@ -27,16 +27,21 @@ export default function BooksView({ setBooks, onClick }) {
   const [optionList, setOptionList] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+    if (books.length === 0) {
+      setLoading(true);
 
-    fetchBooks()
-      .then(books => {
-        setBooks(books);
-        setBooksByName(books);
-        setBooksByPrice(books);
-      })
-      .catch(error => setError(error))
-      .finally(() => setLoading(false));
+      fetchBooks()
+        .then(books => {
+          setBooks(books);
+          setBooksByName(books);
+          setBooksByPrice(books);
+        })
+        .catch(error => setError(error))
+        .finally(() => setLoading(false));
+    } else {
+      setBooksByName(books);
+      setBooksByPrice(books);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -106,11 +111,13 @@ export default function BooksView({ setBooks, onClick }) {
 
   return (
     <main className={s.bookpage}>
-      {error && <p>Whoops, something went wrong: {error.message}</p>}
-
       {loading && <Spinner size={70} color="blue" />}
 
-      {!loading && books.length === 0 && (
+      {error && (
+        <p className={s.error}>Whoops, something went wrong: {error.message}</p>
+      )}
+
+      {!loading && !error && books.length === 0 && (
         <Blank
           title="There are currently no books for sale in the store"
           image={imageBlank}
