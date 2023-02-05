@@ -108,11 +108,10 @@ export default function App() {
             color="#00BFFF"
             ariaLabel="puff-loading"
             wrapperStyle={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              paddingTop: '25vh',
-              paddingBottom: '25hv',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
             }}
             wrapperClass=""
             visible={true}
@@ -156,9 +155,9 @@ export default function App() {
             />
           </Routes>
         </BooksProvider>
-      </Suspense>
 
-      <Footer />
+        <Footer />
+      </Suspense>
 
       <ToastContainer />
     </Container>
