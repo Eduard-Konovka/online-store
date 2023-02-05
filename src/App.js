@@ -101,25 +101,22 @@ export default function App() {
 
       <Suspense
         fallback={
-          <div
-            style={{
+          <Puff
+            height="200"
+            width="200"
+            radius={1}
+            color="#00BFFF"
+            ariaLabel="puff-loading"
+            wrapperStyle={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               paddingTop: '25vh',
+              paddingBottom: '25hv',
             }}
-          >
-            <Puff
-              height="200"
-              width="200"
-              radius={1}
-              color="#00BFFF"
-              ariaLabel="puff-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-          </div>
+            wrapperClass=""
+            visible={true}
+          />
         }
       >
         <BooksProvider value={books}>
