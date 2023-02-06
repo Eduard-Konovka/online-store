@@ -19,6 +19,7 @@ export default function Appbar({ user, onSignOut }) {
 
         <a
           href="https://eduard-konovka.github.io/resume-pdf/"
+          target="_blank"
           rel="noopener noreferrer"
           className={s.resume}
         >
