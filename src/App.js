@@ -27,7 +27,13 @@ const NotFoundView = lazy(() =>
 export default function App() {
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
-  const [user, setUser] = useState({});
+  // FIXME user
+  const [user, setUser] = useState({
+    name: 'aaa',
+    email: 'bbb@bbb.com',
+    phone: '1234567',
+    address: 'ccc',
+  });
   const [cart, setCart] = useState([]);
 
   const [sending, setSending] = useState(false);
@@ -64,35 +70,19 @@ export default function App() {
     setCart(cart.map(book => (book._id === obj._id ? setCount(book) : book)));
   };
 
-  const submitCart = () => {
-    if (!user.name) {
-      toast.error('Fill in the client data in the field "Name"!');
-      return;
-    }
-
-    if (!user.email) {
-      toast.error('Fill in the client data in the field "Email"!');
-      return;
-    }
-
-    if (!user.phone) {
-      toast.error('Fill in the client data in the field "Phone"!');
-      return;
-    }
-
-    if (!user.address) {
-      toast.error('Fill in the client data in the field "Address"!');
-      return;
-    }
-
-    setCart([]);
-    setUser({});
-    setSending(true);
-    sendСart({ user, cart }).finally(
+  const submitCart = totalCost => {
+    sendСart({
+      user,
+      cart,
+      totalCost,
+    }).finally(
       setTimeout(() => {
         setSending(false);
       }, 5000),
     );
+    setCart([]);
+    setUser({});
+    setSending(true);
   };
 
   return (

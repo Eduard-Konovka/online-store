@@ -35,7 +35,7 @@ export default function CartBar({
           <div className={s.priceBox}>
             <p className={s.totalCost}>Total cost: ${totalCost}</p>
 
-            <Button type="button" onClick={onSubmit}>
+            <Button type="button" onClick={() => onSubmit(Number(totalCost))}>
               Purchase
             </Button>
           </div>
