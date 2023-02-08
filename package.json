@@ -1,5 +1,5 @@
 {
-  "name": "feb101-course-task",
+  "name": "prometheus-feb101-course-task",
   "description": "Course project \"Book online store\"",
   "version": "0.1.0",
   "private": true,
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Eduard-Konovka/feb101-course-task.git"
+    "url": "git+https://github.com/Eduard-Konovka/prometheus-feb101-course-task.git"
   },
   "author": "Eduard Konovka <ed098ua@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Eduard-Konovka/feb101-course-task/issues"
+    "url": "https://github.com/Eduard-Konovka/prometheus-feb101-course-task/issues"
   },
   "eslintConfig": {
     "extends": [
