@@ -9,7 +9,7 @@ export default function Appbar({ user, onSignOut }) {
     <header className={s.header}>
       <nav className={s.nav}>
         <NavLink
-          to=""
+          to="/books"
           className={({ isActive }) =>
             isActive ? s.activeLink : s.inactiveLink
           }

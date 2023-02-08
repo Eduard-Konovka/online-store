@@ -25,21 +25,11 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
+  const [user, setUser] = useState({});
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
-  // FIXME user
-  const [user, setUser] = useState({
-    name: 'aaa',
-    email: 'bbb@bbb.com',
-    phone: '1234567',
-    address: 'ccc',
-  });
   const [cart, setCart] = useState([]);
   const [sending, setSending] = useState(false);
-
-  const hendleUser = obj => {
-    setUser({ ...user, ...obj });
-  };
 
   const addToCart = bookData => {
     const productDuplication = cart.filter(obj => obj._id === bookData._id);
@@ -110,7 +100,7 @@ export default function App() {
         <BooksProvider value={books}>
           <Routes>
             <Route
-              path=""
+              path="/books"
               element={
                 <BooksView setBooks={setBooks} onClick={setSelectedBook} />
               }
@@ -136,7 +126,11 @@ export default function App() {
                 </CartProvider>
               }
             />
-            <Route path="/signin" element={<SignInView onClick={null} />} />
+
+            <Route
+              path="/signin"
+              element={<SignInView user={user} setUser={setUser} />}
+            />
 
             <Route
               path="*"
