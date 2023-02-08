@@ -35,7 +35,6 @@ export default function App() {
     address: 'ccc',
   });
   const [cart, setCart] = useState([]);
-
   const [sending, setSending] = useState(false);
 
   const hendleUser = obj => {
@@ -71,18 +70,18 @@ export default function App() {
   };
 
   const submitCart = totalCost => {
-    sendСart({
-      user,
-      cart,
-      totalCost,
-    }).finally(
-      setTimeout(() => {
-        setSending(false);
-      }, 5000),
-    );
-    setCart([]);
-    setUser({});
     setSending(true);
+
+    setTimeout(() => {
+      sendСart({
+        user,
+        cart,
+        totalCost,
+      }).finally(() => {
+        setCart([]);
+        setSending(false);
+      });
+    }, 5000);
   };
 
   return (

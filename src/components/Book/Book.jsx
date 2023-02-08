@@ -33,7 +33,7 @@ export default function Book({ book, onClick }) {
           title="More about the book"
           onClick={() => onClick(book._id)}
         >
-          <Link to={`/books/:${book._id}`} className={s.btn}>
+          <Link to={`/books/:${book.id}`} className={s.btn}>
             View
           </Link>
         </Button>

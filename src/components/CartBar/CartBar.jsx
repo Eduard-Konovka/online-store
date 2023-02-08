@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useCart } from 'context';
-import { CartList, Button, Blank } from 'components';
+import { CartList, Button, Blank, Processing } from 'components';
 import imageBlank from 'images/cartEmpty.png';
-import imageProcessing from 'images/imageProcessing.png';
 import s from './CartBar.module.css';
 
 export default function CartBar({
@@ -24,7 +23,7 @@ export default function CartBar({
 
   return (
     <div className={s.cartbar}>
-      {cart.length > 0 ? (
+      {!sending && cart.length > 0 ? (
         <>
           <CartList
             cart={cart}
@@ -41,11 +40,7 @@ export default function CartBar({
           </div>
         </>
       ) : sending ? (
-        <Blank
-          title="Your order has been sent for processing"
-          image={imageProcessing}
-          alt="Order processing"
-        />
+        <Processing />
       ) : (
         <Blank title="Your cart is empty" image={imageBlank} alt="Empty cart" />
       )}
