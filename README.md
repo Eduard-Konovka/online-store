@@ -1,10 +1,9 @@
 # Web application of a book online store (course project)
 
-A single-page web application of a simple online store that allows you to select
-the necessary product from the proposed range in the right quantity with
-automatic calculation of the order amount.
+A single-page web application of an online bookstore that allows you to filter
+the selection of books with automatic calculation of the order amount.
 
-## Завдання проєкту: [Ciklum - Курсовий проєкт - Книжковий інтернет-магазин](https://github.com/Eduard-Konovka/FEB101-course-task/Ciklum_Курсовий_проєкт__Книжковий_інтернет-магазин_.pdf)
+## Tasks of the project: [Ciklum - Курсовий проєкт - Книжковий інтернет-магазин](https://github.com/Eduard-Konovka/FEB101-course-task/Ciklum_Курсовий_проєкт__Книжковий_інтернет-магазин_.pdf)
 
 The project was created using the "React" framework in combination with the
 "Node.js" back end on the basis of a server on the "Express" framework connected
@@ -22,8 +21,7 @@ Accordingly, the REACT_APP_URL environment variable equal to
 https://feb101-course-task-api-eduard-konovka.onrender.com is used as the base
 URL for accessing the API.
 
-- The `/api/shops` endpoint is used to get the list of stores
-- The `/api/products` endpoint is used to get the list of stores
+- The `/api/books` endpoint is used to get the list of books
 - The `/api/orders` endpoint is used to send orders
 
 ## Script commands in console:
