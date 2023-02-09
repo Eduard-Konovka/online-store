@@ -1,10 +1,16 @@
-import { lazy, Suspense, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
-import { BooksProvider, CartProvider } from 'context';
+import { UserProvider, BooksProvider, CartProvider } from 'context';
 import { sendСart } from 'api';
-import { Container, AppBar, Footer } from 'components';
+import {
+  Container,
+  AppBar,
+  Footer,
+  PublicRoute,
+  PrivateRoute,
+} from 'components';
 import 'api/baseUrl';
 import 'App.css';
 
@@ -25,11 +31,15 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [cart, setCart] = useState([]);
   const [sending, setSending] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
 
   const addToCart = bookData => {
     const productDuplication = cart.filter(obj => obj._id === bookData._id);
@@ -76,73 +86,94 @@ export default function App() {
 
   return (
     <Container>
-      <AppBar user={user} onSignOut={() => setUser({})} />
+      <UserProvider value={user}>
+        <AppBar onSignOut={() => setUser({})} />
 
-      <Suspense
-        fallback={
-          <Puff
-            height="200"
-            width="200"
-            radius={1}
-            color="#00BFFF"
-            ariaLabel="puff-loading"
-            wrapperStyle={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-            }}
-            wrapperClass=""
-            visible={true}
-          />
-        }
-      >
-        <BooksProvider value={books}>
-          <Routes>
-            <Route
-              path="/books"
-              element={
-                <BooksView setBooks={setBooks} onClick={setSelectedBook} />
-              }
+        <Suspense
+          fallback={
+            <Puff
+              height="200"
+              width="200"
+              radius={1}
+              color="#00BFFF"
+              ariaLabel="puff-loading"
+              wrapperStyle={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+              wrapperClass=""
+              visible={true}
             />
+          }
+        >
+          <BooksProvider value={books}>
+            <Routes>
+              <Route path="/" element={<Navigate to="/signin" />} />
 
-            <Route
-              path="/books/:id"
-              element={
-                <SpecificBookView bookId={selectedBook} addToCart={addToCart} />
-              }
-            />
+              <Route
+                path="/signin"
+                element={
+                  <PublicRoute redirectTo="/books" restricted>
+                    <SignInView setUser={setUser} />
+                  </PublicRoute>
+                }
+              />
 
-            <Route
-              path="/cart"
-              element={
-                <CartProvider value={cart}>
-                  <CartView
-                    sending={sending}
-                    changeSelectCount={changeCount}
-                    onDeleteBook={removeFromCart}
-                    onSubmit={submitCart}
-                  />
-                </CartProvider>
-              }
-            />
+              <Route
+                path="/books"
+                element={
+                  <PrivateRoute redirectTo="/signin">
+                    <BooksView setBooks={setBooks} onClick={setSelectedBook} />
+                  </PrivateRoute>
+                }
+              />
 
-            <Route
-              path="/signin"
-              element={<SignInView user={user} setUser={setUser} />}
-            />
+              <Route
+                path="/books/:id"
+                element={
+                  <PrivateRoute redirectTo="/signin">
+                    <SpecificBookView
+                      bookId={selectedBook}
+                      addToCart={addToCart}
+                    />
+                  </PrivateRoute>
+                }
+              />
 
-            <Route
-              path="*"
-              element={<NotFoundView message="Page not found :(" />}
-            />
-          </Routes>
-        </BooksProvider>
+              <Route
+                path="/cart"
+                element={
+                  <PrivateRoute redirectTo="/signin">
+                    <CartProvider value={cart}>
+                      <CartView
+                        sending={sending}
+                        changeSelectCount={changeCount}
+                        onDeleteBook={removeFromCart}
+                        onSubmit={submitCart}
+                      />
+                    </CartProvider>
+                  </PrivateRoute>
+                }
+              />
 
-        <Footer />
-      </Suspense>
+              <Route
+                path="*"
+                element={
+                  <PrivateRoute redirectTo="/signin">
+                    <NotFoundView message="Page not found :(" />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </BooksProvider>
 
-      <ToastContainer />
+          <Footer />
+        </Suspense>
+
+        <ToastContainer />
+      </UserProvider>
     </Container>
   );
 }

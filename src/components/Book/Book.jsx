@@ -4,6 +4,8 @@ import Button from 'components/Button';
 import defaultImage from './imageNotFound2.png';
 import s from './Book.module.css';
 
+const TITLE_LENGTH = 25;
+
 export default function Book({ book, onClick }) {
   return (
     <article>
@@ -14,7 +16,11 @@ export default function Book({ book, onClick }) {
       />
 
       <div className={s.thumb}>
-        <h3 className={s.title}>{book.title}</h3>
+        <h3 className={s.title}>
+          {book.title.length < TITLE_LENGTH
+            ? book.title
+            : book.title.slice(0, TITLE_LENGTH) + '...'}
+        </h3>
 
         <p className={s.shortDescription}>{book.shortDescription}</p>
       </div>

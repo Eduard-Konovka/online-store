@@ -14,3 +14,5 @@ export { default as Processing } from './Processing';
 export { default as SelectedBook } from './SelectedBook';
 export { default as Spinner } from './Spinner';
 export { default as Tags } from './Tags';
+export { default as PrivateRoute } from './PrivateRoute';
+export { default as PublicRoute } from './PublicRoute';

@@ -5,12 +5,12 @@
 }
 
 .thumb {
-  height: 15vw;
+  height: 12.5vw;
   margin-bottom: 1vw;
 }
 
 .title {
-  height: 4.5vw;
+  text-align: center;
 }
 
 .paragraph {

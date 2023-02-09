@@ -1,10 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useUser } from 'context';
 import Button from 'components/Button';
 import defaultAvatar from './defaultAvatar.png';
 import s from './Appbar.module.css';
 
-export default function Appbar({ user, onSignOut }) {
+export default function Appbar({ onSignOut }) {
+  const user = useUser();
+
   return (
     <header className={s.header}>
       <nav className={s.nav}>
@@ -44,9 +47,9 @@ export default function Appbar({ user, onSignOut }) {
               title="Signing out of your account"
               onClick={onSignOut}
             >
-              <NavLink to="/signin" className={s.btn}>
-                {'Sign out'}
-              </NavLink>
+              <Link to="/signin" className={s.btn}>
+                Sign out
+              </Link>
             </Button>
 
             <img
@@ -66,5 +69,5 @@ export default function Appbar({ user, onSignOut }) {
 }
 
 Appbar.propTypes = {
-  user: PropTypes.object.isRequired,
+  onSignOut: PropTypes.func.isRequired,
 };
