@@ -3,7 +3,7 @@
 A single-page web application of an online bookstore that allows you to filter
 the selection of books with automatic calculation of the order amount.
 
-## Tasks of the project: [Ciklum - Курсовий проєкт - Книжковий інтернет-магазин](https://github.com/Eduard-Konovka/FEB101-course-task/Ciklum_Курсовий_проєкт__Книжковий_інтернет-магазин_.pdf)
+## Tasks of the project: [Ciklum - Курсовий проєкт - Книжковий інтернет-магазин](https://github.com/Eduard-Konovka/feb101-course-task/blob/main/Ciklum_%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B8%D0%B9_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82__%D0%9A%D0%BD%D0%B8%D0%B6%D0%BA%D0%BE%D0%B2%D0%B8%D0%B9_%D1%96%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD_.pdf)
 
 The project was created using the "React" framework in combination with the
 "Node.js" back end on the basis of a server on the "Express" framework connected
