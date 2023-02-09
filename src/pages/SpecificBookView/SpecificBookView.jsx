@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useBooks } from 'context';
+import { useBooks, useCart } from 'context';
 import { Button, Tags, CountForm } from 'components';
 import imageNotFound from 'images/notFound.png';
 import s from './SpecificBookView.module.css';
 
 export default function SpecificBookView({ bookId, addToCart }) {
   const books = useBooks();
-  const book = books.filter(book => book._id === bookId)[0];
+  const cart = useCart();
 
-  const [count, setCount] = useState(1);
+  const book = books.filter(book => book._id === bookId)[0];
+  const selectedBook = cart.filter(book => book._id === bookId)[0];
+
+  const [count, setCount] = useState(selectedBook ? selectedBook.count : 0);
 
   function handleClickAddToCart() {
     const obj = {
@@ -67,6 +70,7 @@ export default function SpecificBookView({ bookId, addToCart }) {
             <Button
               type="button"
               title="Signing out of your account"
+              disabled={count === 0}
               onClick={handleClickAddToCart}
             >
               Add to cart

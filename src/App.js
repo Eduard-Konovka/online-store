@@ -113,64 +113,67 @@ export default function App() {
           }
         >
           <BooksProvider value={books}>
-            <Routes>
-              <Route path="/" element={<Navigate to="/signin" />} />
+            <CartProvider value={cart}>
+              <Routes>
+                <Route path="/" element={<Navigate to="/signin" />} />
 
-              <Route
-                path="/signin"
-                element={
-                  <PublicRoute redirectTo="/books" restricted>
-                    <SignInView setUser={setUser} />
-                  </PublicRoute>
-                }
-              />
+                <Route
+                  path="/signin"
+                  element={
+                    <PublicRoute redirectTo="/books" restricted>
+                      <SignInView setUser={setUser} />
+                    </PublicRoute>
+                  }
+                />
 
-              <Route
-                path="/books"
-                element={
-                  <PrivateRoute redirectTo="/signin">
-                    <BooksView setBooks={setBooks} onClick={setSelectedBook} />
-                  </PrivateRoute>
-                }
-              />
+                <Route
+                  path="/books"
+                  element={
+                    <PrivateRoute redirectTo="/signin">
+                      <BooksView
+                        setBooks={setBooks}
+                        onClick={setSelectedBook}
+                      />
+                    </PrivateRoute>
+                  }
+                />
 
-              <Route
-                path="/books/:id"
-                element={
-                  <PrivateRoute redirectTo="/signin">
-                    <SpecificBookView
-                      bookId={selectedBook}
-                      addToCart={addToCart}
-                    />
-                  </PrivateRoute>
-                }
-              />
+                <Route
+                  path="/books/:id"
+                  element={
+                    <PrivateRoute redirectTo="/signin">
+                      <SpecificBookView
+                        bookId={selectedBook}
+                        addToCart={addToCart}
+                      />
+                    </PrivateRoute>
+                  }
+                />
 
-              <Route
-                path="/cart"
-                element={
-                  <PrivateRoute redirectTo="/signin">
-                    <CartProvider value={cart}>
+                <Route
+                  path="/cart"
+                  element={
+                    <PrivateRoute redirectTo="/signin">
                       <CartView
                         sending={sending}
                         changeSelectCount={changeCount}
                         onDeleteBook={removeFromCart}
                         onSubmit={submitCart}
                       />
-                    </CartProvider>
-                  </PrivateRoute>
-                }
-              />
+                    </PrivateRoute>
+                  }
+                />
 
-              <Route
-                path="*"
-                element={
-                  <PrivateRoute redirectTo="/signin">
-                    <NotFoundView message="Page not found :(" />
-                  </PrivateRoute>
-                }
-              />
-            </Routes>
+                <Route
+                  path="*"
+                  element={
+                    <PrivateRoute redirectTo="/signin">
+                      <NotFoundView message="Page not found :(" />
+                    </PrivateRoute>
+                  }
+                />
+              </Routes>
+            </CartProvider>
           </BooksProvider>
 
           <Footer />
