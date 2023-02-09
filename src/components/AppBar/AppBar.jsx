@@ -8,14 +8,18 @@ export default function Appbar({ user, onSignOut }) {
   return (
     <header className={s.header}>
       <nav className={s.nav}>
-        <NavLink
-          to="/books"
-          className={({ isActive }) =>
-            isActive ? s.activeLink : s.inactiveLink
-          }
-        >
-          <h1 className={s.logo}>JS Band Store</h1>
-        </NavLink>
+        {user.name ? (
+          <NavLink
+            to="/books"
+            className={({ isActive }) =>
+              isActive ? s.activeLink : s.inactiveLink
+            }
+          >
+            <h1 className={s.logo}>JS Band Store</h1>
+          </NavLink>
+        ) : (
+          <h1 className={s.brand}>JS Band Store</h1>
+        )}
 
         <a
           href="https://eduard-konovka.github.io/resume-pdf/"
@@ -26,32 +30,36 @@ export default function Appbar({ user, onSignOut }) {
           <h2 className={s.title}>...by Eduard Konovka</h2>
         </a>
 
-        <div className={s.userbar}>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              isActive ? s.activeCart : s.inactiveCart
-            }
-          />
+        {user.name ? (
+          <div className={s.userbar}>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                isActive ? s.activeCart : s.inactiveCart
+              }
+            />
 
-          <Button
-            type="button"
-            title="Signing out of your account"
-            onClick={user.name ? onSignOut : null}
-          >
-            <NavLink to={user.name ? '' : '/signin'} className={s.btn}>
-              {user.name ? 'Sign out' : 'Sign in'}
-            </NavLink>
-          </Button>
+            <Button
+              type="button"
+              title="Signing out of your account"
+              onClick={onSignOut}
+            >
+              <NavLink to="/signin" className={s.btn}>
+                {'Sign out'}
+              </NavLink>
+            </Button>
 
-          <img
-            className={s.avatar}
-            src={user.avatar ?? defaultAvatar}
-            alt="User avatar"
-          />
+            <img
+              className={s.avatar}
+              src={user.avatar ?? defaultAvatar}
+              alt="User avatar"
+            />
 
-          <p className={s.user}>{user.name ?? 'Hello guest!'}</p>
-        </div>
+            <p className={s.user}>Hello {user.name}!</p>
+          </div>
+        ) : (
+          <p className={s.user}>Hello guest!</p>
+        )}
       </nav>
     </header>
   );
