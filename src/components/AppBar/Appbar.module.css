@@ -29,7 +29,8 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.inactiveLink:hover {
+.inactiveLink:hover,
+.inactiveLink:focus {
   transform: scale(1.02, 1.1);
 }
 
@@ -57,7 +58,8 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.resume:hover {
+.resume:hover,
+.resume:focus {
   transform: scale(1.02, 1.1);
 }
 
@@ -84,7 +86,8 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.inactiveCart:hover {
+.inactiveCart:hover,
+.inactiveCart:focus {
   transform: scale(1.1);
 }
 

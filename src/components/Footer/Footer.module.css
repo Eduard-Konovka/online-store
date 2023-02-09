@@ -15,4 +15,11 @@
   font-size: 1.2vw;
   font-weight: 400;
   color: inherit;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover,
+.link:focus {
+  transform: scale(1.05, 1.05);
+  color: #000000;
 }
