@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
-import defaultImage from './imageNotFound2.png';
+import defaultImage from 'images/notFound.png';
 import s from './Book.module.css';
 
 const TITLE_LENGTH = 25;

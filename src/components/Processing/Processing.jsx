@@ -1,5 +1,5 @@
 import gears from 'images/gears.gif';
-import imageProcessing from 'images/imageProcessing.png';
+import imageProcessing from 'images/processing.png';
 import s from './Processing.module.css';
 
 export default function Processing() {

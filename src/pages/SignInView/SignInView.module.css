@@ -55,11 +55,6 @@
   text-align: center;
 }
 
-.lastInput {
-  composes: input;
-  margin-bottom: 25px;
-}
-
 .btn {
   width: 168px;
   margin: 0;

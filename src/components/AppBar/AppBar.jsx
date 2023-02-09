@@ -17,6 +17,7 @@ export default function Appbar({ onSignOut }) {
             className={({ isActive }) =>
               isActive ? s.activeLink : s.inactiveLink
             }
+            end
           >
             <h1 className={s.logo}>JS Band Store</h1>
           </NavLink>
@@ -58,10 +59,10 @@ export default function Appbar({ onSignOut }) {
               alt="User avatar"
             />
 
-            <p className={s.user}>Hello {user.name}!</p>
+            <p className={s.user}>Hello, {user.name}!</p>
           </div>
         ) : (
-          <p className={s.user}>Hello guest!</p>
+          <p className={s.user}>Hello, guest!</p>
         )}
       </nav>
     </header>

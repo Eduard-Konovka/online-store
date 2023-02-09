@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useBooks } from 'context';
 import { Button, Tags, CountForm } from 'components';
-import imageNotFound from 'images/imageNotFound.png';
+import imageNotFound from 'images/notFound.png';
 import s from './SpecificBookView.module.css';
 
 export default function SpecificBookView({ bookId, addToCart }) {

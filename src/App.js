@@ -34,12 +34,16 @@ export default function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user));
   }, [user]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = bookData => {
     const productDuplication = cart.filter(obj => obj._id === bookData._id);

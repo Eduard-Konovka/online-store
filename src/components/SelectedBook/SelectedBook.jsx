@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { CountForm, Button } from 'components';
-import defaultImage from './default.jpg';
+import defaultImage from 'images/notFound.png';
 import s from './SelectedBook.module.css';
 
 export default function SelectedBook({
