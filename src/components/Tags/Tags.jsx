@@ -32,6 +32,8 @@ export default function Tags({ title }) {
   return tags.map(tag => (
     <a
       href={`https://www.google.com/search?q=${tag}`}
+      target="_blank"
+      rel="noopener noreferrer"
       className={s.link}
       key={tag}
     >
