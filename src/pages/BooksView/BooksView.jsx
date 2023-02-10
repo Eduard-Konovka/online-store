@@ -15,7 +15,7 @@ import { ReactComponent as SearchIcon } from './search.svg';
 import imageBlank from 'images/shop.jpg';
 import s from './BooksView.module.css';
 
-export default function BooksView({ setBooks, onClick }) {
+export default function BooksView({ setBooks }) {
   const books = useBooks();
 
   const [loading, setLoading] = useState(false);
@@ -161,7 +161,7 @@ export default function BooksView({ setBooks, onClick }) {
             </div>
           </section>
 
-          <BookList books={visibleBooks} onClick={onClick} />
+          <BookList books={visibleBooks} />
         </>
       )}
     </main>
@@ -170,5 +170,4 @@ export default function BooksView({ setBooks, onClick }) {
 
 BooksView.propTypes = {
   setBooks: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
 };

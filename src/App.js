@@ -35,7 +35,6 @@ export default function App() {
     JSON.parse(localStorage.getItem('user')) || {},
   );
   const [books, setBooks] = useState([]);
-  const [selectedBook, setSelectedBook] = useState(null);
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem('cart')) || [],
   );
@@ -49,35 +48,32 @@ export default function App() {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = bookData => {
-    const productDuplication = cart.filter(obj => obj._id === bookData._id);
+  function addToCart(bookToBeAdded) {
+    const bookDuplication = cart.filter(obj => obj._id === bookToBeAdded._id);
 
-    if (productDuplication.length > 0) {
+    if (bookDuplication.length > 0) {
       toast.error('This item is already in the cart!');
       return;
     }
 
-    const addedBook = books.filter(book => book._id === bookData._id)[0];
-    addedBook.count = bookData.count;
+    setCart([...cart, bookToBeAdded]);
+  }
 
-    setCart([...cart, addedBook]);
-  };
-
-  const removeFromCart = _id => {
+  function removeFromCart(_id) {
     const newCart = cart.filter(obj => obj._id !== _id);
     setCart(newCart);
-  };
+  }
 
-  const changeCount = obj => {
+  function changeCount(obj) {
     const setCount = item => {
       item.count = Number(obj.count);
       return item;
     };
 
     setCart(cart.map(book => (book._id === obj._id ? setCount(book) : book)));
-  };
+  }
 
-  const submitCart = totalCost => {
+  function submitCart(totalCost) {
     setSending(true);
 
     setTimeout(() => {
@@ -90,7 +86,7 @@ export default function App() {
         setSending(false);
       });
     }, 5000);
-  };
+  }
 
   return (
     <Container>
@@ -134,10 +130,7 @@ export default function App() {
                   path="/books"
                   element={
                     <PrivateRoute redirectTo="/signin">
-                      <BooksView
-                        setBooks={setBooks}
-                        onClick={setSelectedBook}
-                      />
+                      <BooksView setBooks={setBooks} />
                     </PrivateRoute>
                   }
                 />
@@ -146,10 +139,7 @@ export default function App() {
                   path="/books/:id"
                   element={
                     <PrivateRoute redirectTo="/signin">
-                      <SpecificBookView
-                        bookId={selectedBook}
-                        addToCart={addToCart}
-                      />
+                      <SpecificBookView addToCart={addToCart} />
                     </PrivateRoute>
                   }
                 />

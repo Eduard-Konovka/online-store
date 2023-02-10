@@ -6,7 +6,7 @@ import s from './Book.module.css';
 
 const TITLE_LENGTH = 25;
 
-export default function Book({ book, onClick }) {
+export default function Book({ book }) {
   return (
     <article>
       <img
@@ -34,12 +34,8 @@ export default function Book({ book, onClick }) {
           Price: <span className={s.value}>${book.price}</span>
         </p>
 
-        <Button
-          type="button"
-          title="More about the book"
-          onClick={() => onClick(book._id)}
-        >
-          <Link to={`/books/:${book.id}`} className={s.btn}>
+        <Button title="More about the book">
+          <Link to={`/books/:${book._id}`} className={s.btn}>
             View
           </Link>
         </Button>
@@ -57,5 +53,4 @@ Book.propTypes = {
     title: PropTypes.string.isRequired,
     shortDescription: PropTypes.string.isRequired,
   }),
-  onClick: PropTypes.func.isRequired,
 };

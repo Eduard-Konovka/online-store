@@ -17,6 +17,7 @@ export default function Button({ type, title, onClick, disabled, children }) {
 }
 
 Button.defaultProps = {
+  type: 'button',
   title: null,
   onClick: () => null,
   disabled: false,
@@ -24,7 +25,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  type: PropTypes.oneOf(['button', 'submit', 'reset']).isRequired,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   title: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
