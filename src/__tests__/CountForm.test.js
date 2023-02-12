@@ -11,20 +11,27 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CountForm } from 'components';
 
+const INPUT_VALUE = 3;
+const PRICE = 7.77;
+const MIN = 1;
+const MAX = 42;
+const STYLES = {
+  formStyle: 'count form style',
+  labelStyle: 'label style',
+  inputStyle: 'input style',
+  spanStyle: 'span style',
+  totalPriceStyle: 'total price style',
+};
+const SET_COUNT = num => console.log(num);
+
 const mockComponent = (
   <CountForm
-    value={1}
-    price={99}
-    min={1}
-    max={42}
-    styles={{
-      formStyle: 'count form style',
-      labelStyle: 'label style',
-      inputStyle: 'input style',
-      spanStyle: 'span style',
-      totalPriceStyle: 'total price style',
-    }}
-    setCount={num => console.log(num)}
+    value={INPUT_VALUE}
+    price={PRICE}
+    min={MIN}
+    max={MAX}
+    styles={STYLES}
+    setCount={SET_COUNT}
   />
 );
 
@@ -54,15 +61,16 @@ describe('Testing CountForm component', () => {
     expect(screen.getByRole('spinbutton')).toBeInTheDocument();
   });
 
-  test('5. Counter with a given initial value of "1"', () => {
+  test(`5. Counter with a given initial value of ${INPUT_VALUE}`, () => {
     render(mockComponent);
 
-    expect(screen.getByDisplayValue(1)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(INPUT_VALUE)).toBeInTheDocument();
   });
 
   test('6. Value of Total price', () => {
     render(mockComponent);
+    const regexp = new RegExp(`${INPUT_VALUE * PRICE}`);
 
-    expect(screen.getByText('$99.00')).toBeInTheDocument();
+    expect(screen.getByText(regexp)).toBeInTheDocument();
   });
 });
