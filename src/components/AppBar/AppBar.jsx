@@ -13,6 +13,7 @@ export default function Appbar({ onSignOut }) {
       <nav className={s.nav}>
         {user.name ? (
           <NavLink
+            title="Go to book list"
             to="/books"
             className={({ isActive }) =>
               isActive ? s.activeLink : s.inactiveLink
@@ -26,6 +27,7 @@ export default function Appbar({ onSignOut }) {
         )}
 
         <a
+          title="Go to Eduard Konovka's CV"
           href="https://eduard-konovka.github.io/resume-pdf/"
           target="_blank"
           rel="noopener noreferrer"
@@ -37,6 +39,7 @@ export default function Appbar({ onSignOut }) {
         {user.name ? (
           <div className={s.userbar}>
             <NavLink
+              title="Go to book basket"
               to="/cart"
               className={({ isActive }) =>
                 isActive ? s.activeCart : s.inactiveCart
@@ -44,8 +47,8 @@ export default function Appbar({ onSignOut }) {
             />
 
             <Button
-              type="button"
               title="Signing out of your account"
+              type="button"
               onClick={onSignOut}
             >
               <Link to="/signin" className={s.btn}>
