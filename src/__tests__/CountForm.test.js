@@ -59,4 +59,10 @@ describe('Testing CountForm component', () => {
 
     expect(screen.getByDisplayValue(1)).toBeInTheDocument();
   });
+
+  test('6. Value of Total price', () => {
+    render(component);
+
+    expect(screen.getByText('$99.00')).toBeInTheDocument();
+  });
 });
