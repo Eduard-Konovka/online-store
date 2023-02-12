@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const booksApi = async () => {
+export default async function booksApi() {
   const response = await axios.get('/api/books');
 
   return response.data;
-};
-
-export default booksApi;
+}

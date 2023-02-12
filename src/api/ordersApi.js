@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const ordersApi = async data => {
+export default async function ordersApi(data) {
   try {
     const response = await axios.post('/api/orders', data);
 
@@ -11,6 +11,4 @@ const ordersApi = async data => {
   } catch (error) {
     return toast.error(`Failed to process order! Error: ${error.message}`);
   }
-};
-
-export default ordersApi;
+}
