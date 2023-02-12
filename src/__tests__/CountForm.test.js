@@ -13,8 +13,8 @@ const STYLES = {
   spanStyle: 'span-style',
   totalPriceStyle: 'total-price-style',
 };
-let newCountValue;
-const SET_COUNT = count => (newCountValue = count);
+let returnedCountValue;
+const SET_COUNT = count => (returnedCountValue = count);
 
 const mockComponent = (
   <CountForm
@@ -70,7 +70,7 @@ describe('Testing CountForm component', () => {
       target: { value: COUNT + 1 },
     });
 
-    expect(newCountValue).toBe(COUNT + 1);
+    expect(returnedCountValue).toBe(COUNT + 1);
   });
 
   test(`8. Count input with value reduced by 1`, async () => {
@@ -80,6 +80,6 @@ describe('Testing CountForm component', () => {
       target: { value: COUNT - 1 },
     });
 
-    expect(newCountValue).toBe(COUNT - 1);
+    expect(returnedCountValue).toBe(COUNT - 1);
   });
 });
