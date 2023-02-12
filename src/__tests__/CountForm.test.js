@@ -11,7 +11,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CountForm } from 'components';
 
-const component = (
+const mockComponent = (
   <CountForm
     value={1}
     price={99}
@@ -30,38 +30,38 @@ const component = (
 
 describe('Testing CountForm component', () => {
   test('1. Render CountForm component', () => {
-    render(component);
+    render(mockComponent);
 
     // eslint-disable-next-line testing-library/no-debugging-utils
     screen.debug();
   });
 
   test('2. Title of lable', () => {
-    render(component);
+    render(mockComponent);
 
     expect(screen.getByLabelText('Count, units:')).toBeInTheDocument();
   });
 
   test('3. Title of Total price', () => {
-    render(component);
+    render(mockComponent);
 
     expect(screen.getByText('Total price:')).toBeInTheDocument();
   });
 
   test('4. Input with type "number"', () => {
-    render(component);
+    render(mockComponent);
 
     expect(screen.getByRole('spinbutton')).toBeInTheDocument();
   });
 
   test('5. Counter with a given initial value of "1"', () => {
-    render(component);
+    render(mockComponent);
 
     expect(screen.getByDisplayValue(1)).toBeInTheDocument();
   });
 
   test('6. Value of Total price', () => {
-    render(component);
+    render(mockComponent);
 
     expect(screen.getByText('$99.00')).toBeInTheDocument();
   });
