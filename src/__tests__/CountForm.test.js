@@ -70,14 +70,7 @@ describe('Testing CountForm component', () => {
       target: { value: COUNT + 1 },
     });
 
-    console.log(
-      '\n',
-      'Initial value of the count input:',
-      COUNT,
-      '\n',
-      'Changed value of the count input:',
-      newCountValue,
-    );
+    expect(newCountValue).toBe(COUNT + 1);
   });
 
   test(`8. Count input with value reduced by 1`, async () => {
@@ -87,13 +80,6 @@ describe('Testing CountForm component', () => {
       target: { value: COUNT - 1 },
     });
 
-    console.log(
-      '\n',
-      'Initial value of the count input:',
-      COUNT,
-      '\n',
-      'Changed value of the count input:',
-      newCountValue,
-    );
+    expect(newCountValue).toBe(COUNT - 1);
   });
 });
