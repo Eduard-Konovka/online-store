@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 export default function CountForm({
   value,
   price,
-  min,
-  max,
+  min = 0,
+  max = Infinity,
   styles,
   setCount,
 }) {
@@ -17,10 +17,10 @@ export default function CountForm({
   }, [value, price]);
 
   function handleChange(event) {
-    if (event.target.value > 0 && event.target.value <= 42) {
+    if (event.target.value >= min && event.target.value <= max) {
       setCount(Number(event.target.value));
     } else {
-      toast.error('Please enter a value between 0 and 43!');
+      toast.error(`Please enter a value from ${min} to ${max} inclusive!`);
     }
   }
 
@@ -52,7 +52,7 @@ export default function CountForm({
 
 CountForm.propTypes = {
   value: PropTypes.number.isRequired,
-  price: PropTypes.number,
+  price: PropTypes.number.isRequired,
   min: PropTypes.number,
   max: PropTypes.number,
   styles: PropTypes.shape({
