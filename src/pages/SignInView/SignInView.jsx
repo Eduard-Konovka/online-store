@@ -31,8 +31,8 @@ export default function SignInView({ setUser }) {
           />
 
           <Button
+            title="Sign in to your account"
             type="button"
-            title="More about the book"
             disabled={name.length < 6 || name.length > 16}
             onClick={() => setUser({ name })}
           >
@@ -55,5 +55,5 @@ Button.defaultProps = {
 };
 
 SignInView.propTypes = {
-  setUser: PropTypes.func,
+  setUser: PropTypes.func.isRequired,
 };
