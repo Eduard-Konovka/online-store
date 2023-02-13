@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import s from './IconButton.module.css';
 
-const IconButton = ({ children, type, title, onClick, ...allyProps }) => (
+const IconButton = ({ title, type, onClick, children, ...allyProps }) => (
   <button
-    type={type}
     title={title}
+    type={type}
     className={s.btn}
     onClick={onClick}
     {...allyProps}
@@ -14,15 +14,17 @@ const IconButton = ({ children, type, title, onClick, ...allyProps }) => (
 );
 
 IconButton.defaultProps = {
-  children: null,
   title: null,
+  type: 'button',
+  children: null,
   onClick: () => null,
 };
 
 IconButton.propTypes = {
-  children: PropTypes.node,
   title: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   onClick: PropTypes.func,
+  children: PropTypes.node,
   'aria-label': PropTypes.string.isRequired,
 };
 

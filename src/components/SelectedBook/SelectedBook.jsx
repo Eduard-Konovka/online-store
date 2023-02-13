@@ -39,7 +39,11 @@ export default function SelectedBook({
           setCount={count => changeSelectCount({ count, _id })}
         />
 
-        <Button type="button" onClick={onDeleteBook}>
+        <Button
+          title="Remove book from cart"
+          type="button"
+          onClick={onDeleteBook}
+        >
           Delete
         </Button>
       </div>

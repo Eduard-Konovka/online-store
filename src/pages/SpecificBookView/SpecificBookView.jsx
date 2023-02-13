@@ -90,8 +90,8 @@ export default function SpecificBookView({ addToCart }) {
                 />
 
                 <Button
+                  title="Add book to cart"
                   type="button"
-                  title="Signing out of your account"
                   disabled={count === 0}
                   onClick={() => addToCart({ ...book, count: Number(count) })}
                 >

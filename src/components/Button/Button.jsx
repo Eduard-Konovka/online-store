@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import s from './Button.module.css';
 
-export default function Button({ type, title, onClick, disabled, children }) {
+export default function Button({ title, type, disabled, onClick, children }) {
   return (
     <button
-      type={type}
       title={title}
+      type={type}
       disabled={disabled}
       onClick={onClick}
       className={classNames(s.btn, disabled && s.disabled)}
@@ -25,9 +25,9 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   title: PropTypes.string,
-  onClick: PropTypes.func,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
   children: PropTypes.node,
 };
