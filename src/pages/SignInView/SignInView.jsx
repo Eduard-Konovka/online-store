@@ -9,7 +9,7 @@ export default function SignInView({ setUser }) {
   const [name, setName] = useState('');
 
   return (
-    <main className={s.page}>
+    <main className={s.page} style={{ minHeight: window.innerHeight - 188 }}>
       <section className={s.thumb}>
         <img src={avatar} alt="avatar" className={s.avatar} />
 

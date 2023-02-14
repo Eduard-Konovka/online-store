@@ -9,14 +9,14 @@ export default function CartView({
   onSubmit,
 }) {
   return (
-    <div className={s.page}>
+    <main className={s.page} style={{ minHeight: window.innerHeight - 188 }}>
       <CartBar
         sending={sending}
         changeSelectCount={changeSelectCount}
         onDeleteBook={onDeleteBook}
         onSubmit={onSubmit}
       />
-    </div>
+    </main>
   );
 }
 

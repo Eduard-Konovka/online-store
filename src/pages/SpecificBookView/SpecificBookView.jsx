@@ -38,7 +38,7 @@ export default function SpecificBookView({ addToCart }) {
   }, [bookId, books.length, savedBook]);
 
   return (
-    <main className={s.page}>
+    <main className={s.page} style={{ minHeight: window.innerHeight - 188 }}>
       {loading && <Spinner size={70} color="blue" />}
 
       {error && (

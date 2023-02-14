@@ -9,7 +9,11 @@ export default function NotFoundView({ message }) {
   }, []);
 
   return (
-    <main className={s.page} role="alert">
+    <main
+      className={s.page}
+      style={{ minHeight: window.innerHeight - 188 }}
+      role="alert"
+    >
       <p className={s.text}>{message}</p>
     </main>
   );
