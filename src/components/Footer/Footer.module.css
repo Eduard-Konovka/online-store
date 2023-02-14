@@ -3,7 +3,7 @@
   justify-content: center;
   border-radius: 10px;
   padding: 10px 16px;
-  margin-top: 0.8vw;
+  margin-top: 5px;
   color: #2a363b;
   background-image: linear-gradient(10deg, #e7e7e7, #61676b);
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25), 2px 1px 1px rgba(0, 0, 0, 0.3),
@@ -14,12 +14,14 @@
 
 @media screen and (min-width: 320px) {
   .footer {
+    margin-top: 6px;
     font-size: 14px;
   }
 }
 
 @media screen and (min-width: 420px) {
   .footer {
+    margin-top: 7px;
     font-size: 15px;
   }
 }
@@ -27,13 +29,14 @@
 @media screen and (min-width: 800px) {
   .footer {
     border-radius: 8px;
-
+    margin-top: 8px;
     font-size: 16px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .footer {
+    margin-top: 10px;
     font-size: 18px;
   }
 }
@@ -42,6 +45,7 @@
   .footer {
     border-radius: 0.625vw;
     padding: 0.625vw 1vw;
+    margin-top: 0.625vw;
     font-size: 1.2vw;
     box-shadow: 0px 0.32vw 0.16vw rgba(0, 0, 0, 0.25),
       0.32vw 0.16vw 0.16vw rgba(0, 0, 0, 0.3),
