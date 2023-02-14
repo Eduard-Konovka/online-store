@@ -6,15 +6,16 @@ the selection of books with automatic calculation of the order amount.
 The web application is implemented according to the "Mobile First" strategy with
 an adaptive-responsive layout with the following breakpoints:
 
-- 320 px - for smartphones with a screen width of 200...320 px;
-- 420 px - for smartphones with a screen width of 320...420 px;
-- 800 px - for tablets with a screen width of 420...800 px;
-- 1024 px - for desktop computers or laptops with a screen width of 800...1024
+- default value - for smartphones with a screen width of less than 320 px (in
+  reality - 200...319 px);
+- 320 px - for smartphones with a screen width of 320...419 px;
+- 420 px - for tablets with a screen width of 420...799 px;
+- 800 px - for desktop computers or laptops with a screen width of 800...1023
   px;
-- 1600 px - for desktop computers or laptops with a screen width of 1024...1600
+- 1024 px - for desktop computers or laptops with a screen width of 1024...1599
   px;
-- default value - for desktop computers, laptops, TVs, projectors with a screen
-  width of more than 1600 px.
+- 1600 px - for desktop computers, laptops, TVs, projectors with a screen width
+  of more than 1600 px.
 
 ## Tasks of the project: [Ciklum - Курсовий проєкт - Книжковий інтернет-магазин](https://github.com/Eduard-Konovka/feb101-course-task/blob/main/Ciklum_%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B8%D0%B9_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82__%D0%9A%D0%BD%D0%B8%D0%B6%D0%BA%D0%BE%D0%B2%D0%B8%D0%B9_%D1%96%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD_.pdf)
 
