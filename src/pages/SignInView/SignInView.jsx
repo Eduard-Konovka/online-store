@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button } from 'components';
+import { SignInButton } from 'components';
 import avatar from './avatar.png';
 import s from './SignInView.module.css';
 
@@ -30,27 +30,27 @@ export default function SignInView({ setUser }) {
             onChange={e => setName(e.target.value)}
           />
 
-          <Button
+          <SignInButton
             title="Sign in to your account"
             type="button"
             disabled={name.length < 6 || name.length > 16}
             onClick={() => setUser({ name })}
           >
             {name.length > 5 && name.length < 17 ? (
-              <Link to="/books" className={s.btn}>
+              <Link to="/books" className={s.btnLink}>
                 Sign in
               </Link>
             ) : (
-              <p className={s.btn}>Sign in</p>
+              <p className={s.btnLink}>Sign in</p>
             )}
-          </Button>
+          </SignInButton>
         </form>
       </section>
     </main>
   );
 }
 
-Button.defaultProps = {
+SignInView.defaultProps = {
   setUser: () => null,
 };
 

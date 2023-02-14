@@ -52,7 +52,7 @@ export default function CountForm({
 
 CountForm.propTypes = {
   value: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
   styles: PropTypes.shape({

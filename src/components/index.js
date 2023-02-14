@@ -12,6 +12,7 @@ export { default as IconButton } from './IconButton';
 export { default as OptionList } from './OptionList';
 export { default as Processing } from './Processing';
 export { default as SelectedBook } from './SelectedBook';
+export { default as SignInButton } from './SignInButton';
 export { default as Spinner } from './Spinner';
 export { default as Tags } from './Tags';
 export { default as PrivateRoute } from './PrivateRoute';

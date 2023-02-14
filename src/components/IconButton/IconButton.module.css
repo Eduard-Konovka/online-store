@@ -17,25 +17,6 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media screen and (max-width: 1024px) {
-  /* .btn {
-    width: 40px;
-    height: 40px;
-  } */
-}
-
-@media screen and (max-width: 800px) {
-  /*  */
-}
-
-@media screen and (max-width: 420px) {
-  /*  */
-}
-
-@media screen and (max-width: 320px) {
-  /*  */
-}
-
 .btn:hover,
 .btn:focus {
   fill: #2196f3;
