@@ -1,5 +1,27 @@
 .container {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0.8vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 1vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    padding: 1.2vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    padding: 1.4vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    padding: 1.6vw;
+  }
 }

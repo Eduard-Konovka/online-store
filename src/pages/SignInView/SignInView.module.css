@@ -61,3 +61,19 @@
   text-decoration: none;
   color: inherit;
 }
+
+@media screen and (max-width: 1024px) {
+  /*  */
+}
+
+@media screen and (max-width: 800px) {
+  /*  */
+}
+
+@media screen and (max-width: 420px) {
+  /*  */
+}
+
+@media screen and (max-width: 320px) {
+  /*  */
+}

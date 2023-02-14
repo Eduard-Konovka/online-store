@@ -11,30 +11,32 @@ export default function Appbar({ onSignOut }) {
   return (
     <header className={s.header}>
       <nav className={s.nav}>
-        {user.name ? (
-          <NavLink
-            title="Go to book list"
-            to="/books"
-            className={({ isActive }) =>
-              isActive ? s.activeLink : s.inactiveLink
-            }
-            end
-          >
-            <h1 className={s.logo}>JS Band Store</h1>
-          </NavLink>
-        ) : (
-          <h1 className={s.brand}>JS Band Store</h1>
-        )}
+        <div className={s.headbar}>
+          {user.name ? (
+            <NavLink
+              title="Go to book list"
+              to="/books"
+              className={({ isActive }) =>
+                isActive ? s.activeLink : s.inactiveLink
+              }
+              end
+            >
+              <h1 className={s.logo}>JS Band Store</h1>
+            </NavLink>
+          ) : (
+            <h1 className={s.brand}>JS Band Store</h1>
+          )}
 
-        <a
-          title="Go to Eduard Konovka's CV"
-          href="https://eduard-konovka.github.io/resume-pdf/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={s.resume}
-        >
-          <h2 className={s.title}>...by Eduard Konovka</h2>
-        </a>
+          <a
+            title="Go to Eduard Konovka's CV"
+            href="https://eduard-konovka.github.io/resume-pdf/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={s.resume}
+          >
+            <h2 className={s.title}>...by Eduard Konovka</h2>
+          </a>
+        </div>
 
         {user.name ? (
           <div className={s.userbar}>
@@ -51,7 +53,7 @@ export default function Appbar({ onSignOut }) {
               type="button"
               onClick={onSignOut}
             >
-              <Link to="/signin" className={s.btn}>
+              <Link to="/signin" className={s.btnLink}>
                 Sign out
               </Link>
             </Button>

@@ -1,27 +1,106 @@
 .header {
   border-radius: 10px;
-  padding: 0.2vw 1vw 0.45vw 1vw;
-  margin: 0.8vw 0 1vw 0;
+  padding: 10px 16px;
+  margin-bottom: 0.8vw;
   color: #2a363b;
   background-image: linear-gradient(350deg, #e7e7e7, #61676b);
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25), 2px 1px 1px rgba(0, 0, 0, 0.3),
     -1px 1px 3px rgba(0, 0, 0, 0.15);
 }
 
+@media screen and (max-width: 800px) {
+  .header {
+    padding: 5px 16px;
+    margin-bottom: 1vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    margin-bottom: 1.2vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header {
+    margin-bottom: 1.4vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    margin-bottom: 1.6vw;
+  }
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+}
+
+@media screen and (max-width: 420px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .headbar {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .headbar {
+    width: 100%;
+    margin-bottom: 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .headbar {
+    margin-bottom: 1vw;
+    display: block;
+  }
 }
 
 .link {
   display: inline-block;
   text-decoration: none;
-  padding: 12px;
+  padding: 0;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 1.8vw;
   color: #2a363b;
   text-shadow: 2px 2px 4px #000000;
+}
+
+@media screen and (max-width: 1024px) {
+  .link {
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .link {
+    font-size: 2.3vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .link {
+    font-size: 3.6vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .link {
+    font-size: 5vw;
+  }
 }
 
 .inactiveLink {
@@ -40,22 +119,64 @@
 }
 
 .logo {
-  margin: 0;
+  margin: -0.4vw 1vw 0 0;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 420px) {
+  .logo {
+    margin: 0 1vw 0 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .logo {
+    margin: 0;
+  }
 }
 
 .brand {
   composes: link;
   composes: logo;
-  font-size: 42px;
+  font-size: 2.7vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .brand {
+    font-size: 3vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .brand {
+    font-size: 3.45vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .brand {
+    font-size: 5.4vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .brand {
+    font-size: 7.5vw;
+  }
 }
 
 .resume {
   composes: link;
-  margin: 0 auto 1px 0;
+  margin-right: auto;
   color: #3f5761;
   text-shadow: 1px 1px 1px #000000;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media screen and (max-width: 420px) {
+  .resume {
+    margin: 0;
+  }
 }
 
 .resume:hover,
@@ -64,9 +185,35 @@
 }
 
 .title {
-  margin: 0;
-  font-size: 2.1vw;
+  margin: -0.15vw 0 0 0;
+  font-size: 2.5vw;
   font-style: italic;
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 2.7vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .title {
+    margin-top: -0.8vw;
+    font-size: 2.6vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .title {
+    margin: 0;
+    font-size: 4.5vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .title {
+    margin-bottom: 1vw;
+  }
 }
 
 .userbar {
@@ -74,10 +221,54 @@
   align-items: center;
 }
 
+@media screen and (max-width: 320px) {
+  .userbar {
+    flex-direction: row-reverse;
+  }
+}
+
 .cart {
-  width: 48px;
-  height: 48px;
-  margin-right: 12px;
+  width: 3vw;
+  height: 3vw;
+  margin-right: 0.75vw;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .cart {
+    width: 3.5vw;
+    height: 3.5vw;
+    margin-right: 1vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cart {
+    width: 5vw;
+    height: 5vw;
+    margin-right: 1.25vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .cart {
+    width: 6.5vw;
+    height: 6.5vw;
+    margin-right: 1.5vw;
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .cart {
+    width: 10vw;
+    height: 10vw;
+    margin-right: 1.75vw;
+    position: absolute;
+    top: 11vw;
+    right: 4.5vw;
+  }
 }
 
 .inactiveCart {
@@ -96,20 +287,80 @@
   background-image: url('./activeCart.svg');
 }
 
-.btn {
+.btnLink {
   text-decoration: none;
   color: inherit;
 }
 
 .avatar {
-  width: 48px;
-  height: 48px;
+  width: 3vw;
+  height: 3vw;
   border-radius: 50%;
   margin-left: 1vw;
 }
 
+@media screen and (max-width: 1024px) {
+  .avatar {
+    width: 3.5vw;
+    height: 3.5vw;
+    margin-left: 1.25vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .avatar {
+    width: 5vw;
+    height: 5vw;
+    margin-left: 1.5vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .avatar {
+    width: 6.5vw;
+    height: 6.5vw;
+    margin-left: 1.75vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .avatar {
+    width: 8vw;
+    height: 8vw;
+    margin-right: 2vw;
+  }
+}
+
 .user {
-  font-size: 1.4vw;
+  font-size: 1.5vw;
   font-weight: 600;
-  margin-left: 1vw;
+  margin: 0 0 0 1vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .user {
+    font-size: 1.75vw;
+    margin-left: 1.25vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .user {
+    font-size: 2.3vw;
+    margin-left: 1.5vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .user {
+    font-size: 3.6vw;
+    margin-left: 1.75vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .user {
+    font-size: 4.5vw;
+    margin-left: 2vw;
+  }
 }
