@@ -2,8 +2,13 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
-import { UserProvider, BooksProvider, CartProvider } from 'context';
 import { sendСart } from 'api';
+import {
+  UserProvider,
+  BooksProvider,
+  CartProvider,
+  MainHeightProvider,
+} from 'context';
 import {
   Container,
   AppBar,
@@ -39,6 +44,7 @@ export default function App() {
     JSON.parse(localStorage.getItem('cart')) || [],
   );
   const [sending, setSending] = useState(false);
+  const [mainHeight, setMainHeight] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user));
@@ -47,6 +53,26 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    const appWidth = window.innerWidth;
+    const appHeight = window.innerHeight;
+
+    const computedHeight =
+      appWidth < 320
+        ? appHeight - (appWidth / 2.79 + 43)
+        : appWidth < 420
+        ? appHeight - (appWidth / 4.47 + 47)
+        : appWidth < 800
+        ? appHeight - (appWidth / 8.58 + 50)
+        : appWidth < 1024
+        ? appHeight - (appWidth / 10.68 + 52)
+        : appWidth < 1600
+        ? appHeight - (appWidth / 13.4 + 57)
+        : appHeight - (appWidth / 14.67 + appWidth / 27.22);
+
+    setMainHeight(computedHeight);
+  }, []);
 
   function addToCart(bookToBeAdded) {
     const bookDuplication = cart.filter(obj => obj._id === bookToBeAdded._id);
@@ -112,63 +138,65 @@ export default function App() {
             />
           }
         >
-          <BooksProvider value={books}>
-            <CartProvider value={cart}>
-              <Routes>
-                <Route path="/" element={<Navigate to="/signin" />} />
+          <MainHeightProvider value={mainHeight}>
+            <BooksProvider value={books}>
+              <CartProvider value={cart}>
+                <Routes>
+                  <Route path="/" element={<Navigate to="/signin" />} />
 
-                <Route
-                  path="/signin"
-                  element={
-                    <PublicRoute redirectTo="/books" restricted>
-                      <SignInView setUser={setUser} />
-                    </PublicRoute>
-                  }
-                />
+                  <Route
+                    path="/signin"
+                    element={
+                      <PublicRoute redirectTo="/books" restricted>
+                        <SignInView setUser={setUser} />
+                      </PublicRoute>
+                    }
+                  />
 
-                <Route
-                  path="/books"
-                  element={
-                    <PrivateRoute redirectTo="/signin">
-                      <BooksView setBooks={setBooks} />
-                    </PrivateRoute>
-                  }
-                />
+                  <Route
+                    path="/books"
+                    element={
+                      <PrivateRoute redirectTo="/signin">
+                        <BooksView setBooks={setBooks} />
+                      </PrivateRoute>
+                    }
+                  />
 
-                <Route
-                  path="/books/:id"
-                  element={
-                    <PrivateRoute redirectTo="/signin">
-                      <SpecificBookView addToCart={addToCart} />
-                    </PrivateRoute>
-                  }
-                />
+                  <Route
+                    path="/books/:id"
+                    element={
+                      <PrivateRoute redirectTo="/signin">
+                        <SpecificBookView addToCart={addToCart} />
+                      </PrivateRoute>
+                    }
+                  />
 
-                <Route
-                  path="/cart"
-                  element={
-                    <PrivateRoute redirectTo="/signin">
-                      <CartView
-                        sending={sending}
-                        changeSelectCount={changeCount}
-                        onDeleteBook={removeFromCart}
-                        onSubmit={submitCart}
-                      />
-                    </PrivateRoute>
-                  }
-                />
+                  <Route
+                    path="/cart"
+                    element={
+                      <PrivateRoute redirectTo="/signin">
+                        <CartView
+                          sending={sending}
+                          changeSelectCount={changeCount}
+                          onDeleteBook={removeFromCart}
+                          onSubmit={submitCart}
+                        />
+                      </PrivateRoute>
+                    }
+                  />
 
-                <Route
-                  path="*"
-                  element={
-                    <PrivateRoute redirectTo="/signin">
-                      <NotFoundView message="Page not found :(" />
-                    </PrivateRoute>
-                  }
-                />
-              </Routes>
-            </CartProvider>
-          </BooksProvider>
+                  <Route
+                    path="*"
+                    element={
+                      <PrivateRoute redirectTo="/signin">
+                        <NotFoundView message="Page not found :(" />
+                      </PrivateRoute>
+                    }
+                  />
+                </Routes>
+              </CartProvider>
+            </BooksProvider>
+          </MainHeightProvider>
 
           <Footer />
         </Suspense>

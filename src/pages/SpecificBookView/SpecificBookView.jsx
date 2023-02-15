@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useBooks, useCart } from 'context';
+import { useBooks, useCart, useMainHeight } from 'context';
 import { fetchBook } from 'api';
 import { Spinner, Button, Tags, CountForm } from 'components';
 import imageNotFound from 'images/notFound.png';
@@ -9,8 +9,10 @@ import s from './SpecificBookView.module.css';
 
 export default function SpecificBookView({ addToCart }) {
   const location = useLocation();
+
   const books = useBooks();
   const cart = useCart();
+  const mainHeight = useMainHeight();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -38,7 +40,7 @@ export default function SpecificBookView({ addToCart }) {
   }, [bookId, books.length, savedBook]);
 
   return (
-    <main className={s.page} style={{ minHeight: window.innerHeight - 188 }}>
+    <main className={s.page} style={{ minHeight: mainHeight }}>
       {loading && <Spinner size={70} color="blue" />}
 
       {error && (

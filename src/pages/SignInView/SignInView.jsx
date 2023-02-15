@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useMainHeight } from 'context';
 import { SignInButton } from 'components';
 import avatar from './avatar.png';
 import s from './SignInView.module.css';
 
 export default function SignInView({ setUser }) {
+  const mainHeight = useMainHeight();
+
   const [name, setName] = useState('');
 
   return (
-    <main className={s.page} style={{ minHeight: window.innerHeight - 188 }}>
+    <main className={s.page} style={{ minHeight: mainHeight }}>
       <section className={s.thumb}>
         <img src={avatar} alt="avatar" className={s.avatar} />
 

@@ -38,11 +38,14 @@
 
 @media screen and (min-width: 1600px) {
   .header {
+    border-radius: 0.625vw;
+    padding: 1.25vw 1vw;
     margin-bottom: 0.625vw;
   }
 }
 /*#endregion HEADER */
 
+/*#region NAV */
 .nav {
   display: flex;
   flex-direction: column;
@@ -57,7 +60,9 @@
     align-items: center;
   }
 }
+/*#endregion NAV */
 
+/*#region HEADBAR */
 @media screen and (min-width: 320px) {
   .headbar {
     width: 100%;
@@ -80,6 +85,7 @@
     flex-direction: row;
   }
 }
+/*#endregion HEADBAR */
 
 /*#region LINK */
 .link {
@@ -242,6 +248,7 @@
 }
 /*#endregion RESUME */
 
+/*#region USERBAR */
 .userbar {
   display: flex;
   align-items: center;
@@ -252,6 +259,7 @@
     flex-direction: row-reverse;
   }
 }
+/*#endregion USERBAR */
 
 /*#region CART */
 .cart {

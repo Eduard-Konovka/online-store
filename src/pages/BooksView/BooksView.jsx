@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
-import { useBooks } from 'context';
+import { useBooks, useMainHeight } from 'context';
 import { fetchBooks } from 'api';
 import {
   Spinner,
@@ -17,6 +17,7 @@ import s from './BooksView.module.css';
 
 export default function BooksView({ setBooks }) {
   const books = useBooks();
+  const mainHeight = useMainHeight();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -110,7 +111,7 @@ export default function BooksView({ setBooks }) {
   }
 
   return (
-    <main className={s.page} style={{ minHeight: window.innerHeight - 188 }}>
+    <main className={s.page} style={{ minHeight: mainHeight }}>
       {loading && <Spinner size={70} color="blue" />}
 
       {error && (

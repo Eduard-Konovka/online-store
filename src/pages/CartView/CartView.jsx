@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useMainHeight } from 'context';
 import { CartBar } from 'components';
 import s from './CartView.module.css';
 
@@ -8,8 +9,10 @@ export default function CartView({
   onDeleteBook,
   onSubmit,
 }) {
+  const mainHeight = useMainHeight();
+
   return (
-    <main className={s.page} style={{ minHeight: window.innerHeight - 188 }}>
+    <main className={s.page} style={{ minHeight: mainHeight }}>
       <CartBar
         sending={sending}
         changeSelectCount={changeSelectCount}
