@@ -58,18 +58,19 @@ export default function App() {
     const appWidth = window.innerWidth;
     const appHeight = window.innerHeight;
 
+    // Container, header and footer subtracted from viewport height
     const computedHeight =
       appWidth < 320
-        ? appHeight - (appWidth / 2.79 + 43)
+        ? appHeight - (10 + appWidth / 3 + 43)
         : appWidth < 420
-        ? appHeight - (appWidth / 4.47 + 47)
+        ? appHeight - (12 + appWidth / 4.8 + 47)
         : appWidth < 800
-        ? appHeight - (appWidth / 8.58 + 50)
+        ? appHeight - (14 + appWidth / 9 + 50)
         : appWidth < 1024
-        ? appHeight - (appWidth / 10.68 + 52)
+        ? appHeight - (16 + appWidth / 11.1 + 52)
         : appWidth < 1600
-        ? appHeight - (appWidth / 13.4 + 57)
-        : appHeight - (appWidth / 14.67 + appWidth / 27.22);
+        ? appHeight - (20 + appWidth / 14.5 + 57)
+        : appHeight - (appWidth / 80 + appWidth / 14.67 + appWidth / 27.22);
 
     setMainHeight(computedHeight);
   }, []);
