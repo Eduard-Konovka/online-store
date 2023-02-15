@@ -64,7 +64,7 @@ export default function Appbar({ onSignOut }) {
               alt="User avatar"
             />
 
-            <p className={s.user}>{user.name}!</p>
+            <p className={s.user}>{user.name}</p>
           </div>
         ) : (
           <p className={s.user}>Hello, guest!</p>
