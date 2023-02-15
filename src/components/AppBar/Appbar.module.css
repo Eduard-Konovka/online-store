@@ -1,5 +1,8 @@
 /*#region HEADER */
 .header {
+  display: flex;
+  align-items: center;
+  height: 33.33vw;
   border-radius: 8px;
   padding: 10px 16px;
   margin-bottom: 5px;
@@ -11,12 +14,14 @@
 
 @media screen and (min-width: 320px) {
   .header {
+    height: 88px;
     margin-bottom: 6px;
   }
 }
 
 @media screen and (min-width: 420px) {
   .header {
+    height: 89px;
     padding: 5px 16px;
     margin-bottom: 7px;
   }
@@ -24,6 +29,7 @@
 
 @media screen and (min-width: 800px) {
   .header {
+    height: 92px;
     border-radius: 10px;
     padding: 20px 16px;
     margin-bottom: 8px;
@@ -32,12 +38,14 @@
 
 @media screen and (min-width: 1024px) {
   .header {
+    height: 110px;
     margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width: 1600px) {
   .header {
+    height: auto;
     border-radius: 0.625vw;
     padding: 1.25vw 1vw;
     margin-bottom: 0.625vw;
@@ -51,6 +59,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+
+  width: 100%;
 }
 
 @media screen and (min-width: 420px) {
