@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useMainHeight } from 'context';
-import { CartBar } from 'components';
+import { useCart, useMainHeight } from 'context';
+import { CartBar, Blank, Processing } from 'components';
+import imageBlank from 'images/cartEmpty.png';
 import s from './CartView.module.css';
 
 export default function CartView({
@@ -9,16 +10,25 @@ export default function CartView({
   onDeleteBook,
   onSubmit,
 }) {
+  const cart = useCart();
   const mainHeight = useMainHeight();
 
   return (
-    <main className={s.page} style={{ minHeight: mainHeight }}>
-      <CartBar
-        sending={sending}
-        changeSelectCount={changeSelectCount}
-        onDeleteBook={onDeleteBook}
-        onSubmit={onSubmit}
-      />
+    <main
+      className={!sending && cart.length > 0 ? s.page : s.blank}
+      style={{ minHeight: mainHeight }}
+    >
+      {!sending && cart.length > 0 ? (
+        <CartBar
+          changeSelectCount={changeSelectCount}
+          onDeleteBook={onDeleteBook}
+          onSubmit={onSubmit}
+        />
+      ) : sending ? (
+        <Processing />
+      ) : (
+        <Blank title="Your cart is empty" image={imageBlank} alt="Empty cart" />
+      )}
     </main>
   );
 }

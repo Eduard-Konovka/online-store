@@ -4,10 +4,12 @@ import s from './Processing.module.css';
 
 export default function Processing() {
   return (
-    <div className={s.blank}>
+    <div className={s.processing}>
       <p className={s.title}>Your order has been sent for processing</p>
-      <img src={gears} alt="gears" className={s.gears} />
-      <img src={imageProcessing} alt="Order processing" />
+      <div className={s.imageBox}>
+        <img src={gears} alt="gears" className={s.gears} />
+        <img src={imageProcessing} alt="Order processing" />
+      </div>
     </div>
   );
 }

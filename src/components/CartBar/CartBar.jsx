@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useCart } from 'context';
-import { CartList, Button, Blank, Processing } from 'components';
-import imageBlank from 'images/cartEmpty.png';
+import { CartList, Button } from 'components';
 import s from './CartBar.module.css';
 
-export default function CartBar({
-  sending,
-  changeSelectCount,
-  onDeleteBook,
-  onSubmit,
-}) {
+export default function CartBar({ changeSelectCount, onDeleteBook, onSubmit }) {
   const cart = useCart();
 
   const [totalCost, setTotalCost] = useState(0);
@@ -23,37 +17,28 @@ export default function CartBar({
 
   return (
     <div className={s.cartbar}>
-      {!sending && cart.length > 0 ? (
-        <>
-          <CartList
-            cart={cart}
-            changeSelectCount={changeSelectCount}
-            onDeleteBook={onDeleteBook}
-          />
+      <CartList
+        cart={cart}
+        changeSelectCount={changeSelectCount}
+        onDeleteBook={onDeleteBook}
+      />
 
-          <div className={s.priceBox}>
-            <p className={s.totalCost}>Total cost: ${totalCost}</p>
+      <div className={s.priceBox}>
+        <p className={s.totalCost}>Total cost: ${totalCost}</p>
 
-            <Button
-              title="Send order for clearance"
-              type="button"
-              onClick={() => onSubmit(Number(totalCost))}
-            >
-              Purchase
-            </Button>
-          </div>
-        </>
-      ) : sending ? (
-        <Processing />
-      ) : (
-        <Blank title="Your cart is empty" image={imageBlank} alt="Empty cart" />
-      )}
+        <Button
+          title="Send order for clearance"
+          type="button"
+          onClick={() => onSubmit(Number(totalCost))}
+        >
+          Purchase
+        </Button>
+      </div>
     </div>
   );
 }
 
 CartBar.propTypes = {
-  sending: PropTypes.bool.isRequired,
   changeSelectCount: PropTypes.func.isRequired,
   onDeleteBook: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
