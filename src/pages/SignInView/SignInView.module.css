@@ -103,6 +103,7 @@
   .input {
     width: 12.5vw;
     height: 2vw;
+    border-radius: 0.625vw;
     font-size: 1vw;
   }
 }

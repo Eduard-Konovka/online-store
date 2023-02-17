@@ -44,7 +44,8 @@ export default function CountForm({
       </form>
 
       <p className={styles.totalPriceStyle}>
-        <span className={styles.spanStyle}>Total price: </span>${totalPrice}
+        <span className={styles.totalPriceTitleStyle}>Total price: </span>
+        <span className={styles.totalPriceValueStyle}>${totalPrice}</span>
       </p>
     </>
   );
@@ -59,7 +60,8 @@ CountForm.propTypes = {
     formStyle: PropTypes.string,
     labelStyle: PropTypes.string,
     inputStyle: PropTypes.string,
-    spanStyle: PropTypes.string,
+    totalPriceTitleStyle: PropTypes.string,
+    totalPriceValueStyle: PropTypes.string,
   }),
   setCount: PropTypes.func.isRequired,
 };

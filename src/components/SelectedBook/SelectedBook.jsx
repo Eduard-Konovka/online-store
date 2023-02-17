@@ -3,6 +3,8 @@ import { CountForm, Button } from 'components';
 import defaultImage from 'images/notFound.png';
 import s from './SelectedBook.module.css';
 
+const TITLE_LENGTH = 25;
+
 export default function SelectedBook({
   selectedBook,
   changeSelectCount,
@@ -19,11 +21,18 @@ export default function SelectedBook({
           className={s.cover}
         />
 
-        <h3 className={s.title}>{title}</h3>
+        <h3 className={s.title}>
+          {title.length < TITLE_LENGTH
+            ? title
+            : title.slice(0, TITLE_LENGTH) + '...'}
+        </h3>
       </div>
 
       <div className={s.controls}>
-        <p className={s.price}>Price: ${price}</p>
+        <p className={s.price}>
+          <span className={s.priceTitle}>Price: </span>
+          <span className={s.priceValue}>${price}</span>
+        </p>
 
         <CountForm
           value={count}
@@ -35,6 +44,8 @@ export default function SelectedBook({
             labelStyle: s.countLabel,
             inputStyle: s.countInput,
             totalPriceStyle: s.totalPrice,
+            totalPriceTitleStyle: s.priceTitle,
+            totalPriceValueStyle: s.priceValue,
           }}
           setCount={count => changeSelectCount({ count, _id })}
         />
@@ -42,6 +53,7 @@ export default function SelectedBook({
         <Button
           title="Remove book from cart"
           type="button"
+          style={s.btn}
           onClick={onDeleteBook}
         >
           Delete

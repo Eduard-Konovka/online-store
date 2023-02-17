@@ -1,71 +1,455 @@
 .card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border-radius: 10px;
+  position: relative;
+  border-radius: 2.5vw;
 }
 
-.thumb {
-  display: flex;
-  align-items: center;
-  width: 40%;
+@media screen and (min-width: 320px) {
+  .card {
+    padding-left: 73px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .card {
+    padding-left: 73px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left: 0;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .card {
+    border-radius: 0.625vw;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .thumb {
+    display: flex;
+    align-items: center;
+    width: 35%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .thumb {
+    width: 40%;
+  }
 }
 
 .cover {
-  width: 75px;
-  height: 98px;
-  margin-right: 20px;
+  width: 20.625vw;
+}
+
+@media screen and (min-width: 320px) {
+  .cover {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    width: 66px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .cover {
+    width: 61px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .cover {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+
+    width: 75px;
+    margin-right: 1.25vw;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .cover {
+    width: 4.6875vw;
+  }
 }
 
 .title {
-  margin: 0;
-  font-size: 1.6vw;
+  width: 48.4375vw;
+  height: 9.375vw;
+  margin: 0 0 1.5vw 0;
+  font-size: 4.6875vw;
+  line-height: 100%;
+}
+
+@media screen and (min-width: 320px) {
+  .title {
+    width: 155px;
+    height: 30px;
+    font-size: 15px;
+    line-height: 95%;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .title {
+    width: auto;
+    height: auto;
+    font-size: 17px;
+    line-height: inherit;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .title {
+    margin: 0 1vw 0 0;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .title {
+    font-size: 1.6vw;
+  }
 }
 
 .controls {
-  display: flex;
-  align-items: center;
-  width: 54%;
-  height: 58px;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 0.25vw 0.375vw;
+  border-radius: 2.5vw;
   background-color: #e7e7e7;
   box-shadow: inset 0px 1px 3px rgba(68, 42, 42, 0.75),
     0px 1px 3px rgba(68, 38, 38, 0.14), 0px 1px 2px rgba(139, 77, 77, 0.12);
-  font-size: 1.3vw;
   font-weight: 500;
+  font-size: 4.375vw;
+  line-height: 95%;
+}
+
+@media screen and (min-width: 320px) {
+  .controls {
+    padding: 4px 6px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: inherit;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .controls {
+    justify-content: space-between;
+
+    width: 65%;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .controls {
+    width: 60%;
+    padding: 16px 12px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .controls {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .controls {
+    padding: 1vw 0.75vw;
+    border-radius: 0.625vw;
+    font-size: 1.25vw;
+  }
 }
 
 .price {
-  width: 135px;
-  margin-right: 25px;
+  margin: 0;
+}
+
+@media screen and (min-width: 320px) {
+  /*  */
+}
+
+@media screen and (min-width: 420px) {
+  .price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    width: 20%;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px 2px rgba(66, 38, 38, 0.25),
+      2px 1px 1px rgba(71, 29, 29, 0.3), -2px 1px 3px rgba(77, 25, 25, 0.15);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .price {
+    border-radius: 7px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .price {
+    display: block;
+
+    width: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  /*  */
+}
+
+@media screen and (min-width: 420px) {
+  .priceTitle {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #e9c3c3;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .priceTitle {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .priceTitle {
+    border-radius: 0;
+    background-color: inherit;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .priceValue {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #c2ffae;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .priceValue {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .priceValue {
+    border-radius: 0;
+    background-color: inherit;
+  }
 }
 
 .countForm {
   height: 20px;
   display: flex;
   align-items: center;
-  margin-right: 30px;
+}
+
+@media screen and (min-width: 320px) {
+  /*  */
+}
+
+@media screen and (min-width: 420px) {
+  /*  */
+}
+
+@media screen and (min-width: 800px) {
+  .countForm {
+    width: 125px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .countForm {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  /*  */
 }
 
 .countLabel {
-  margin-right: 10px;
+  margin-right: 2px;
+}
+
+@media screen and (min-width: 320px) {
+  /*  */
+}
+
+@media screen and (min-width: 420px) {
+  .countLabel {
+    margin-right: 6px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .countLabel {
+    font-size: inherit;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .countLabel {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  /*  */
 }
 
 .countInput {
   width: 5vw;
   height: 2.2vw;
   border: 1px solid #56ca21;
-  border-radius: 10px;
-  padding-left: 10px;
-  padding-right: 5px;
+  border-radius: 1vw;
+  padding: 0 5px 0 8px;
   font-family: inherit;
   font-size: 1.2vw;
   font-weight: 700;
   color: #505050;
 }
 
+@media screen and (min-width: 320px) {
+  .countInput {
+    border-radius: 4px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .countInput {
+    width: 10vw;
+    height: 32px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .countInput {
+    width: 8vw;
+    height: 32px;
+    border-radius: 7px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .countInput {
+    width: 6vw;
+    height: 32px;
+    border-radius: 9px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .countInput {
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .countInput {
+    border-radius: 0.625vw;
+    font-size: 1.25vw;
+  }
+}
+
 .totalPrice {
-  margin-right: auto;
+  margin: 0;
+}
+
+@media screen and (min-width: 320px) {
+  /*  */
+}
+
+@media screen and (min-width: 420px) {
+  .totalPrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    width: 25%;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px 2px rgba(66, 38, 38, 0.25),
+      2px 1px 1px rgba(71, 29, 29, 0.3), -2px 1px 3px rgba(77, 25, 25, 0.15);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .totalPrice {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .totalPrice {
+    display: block;
+
+    width: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  /*  */
+}
+
+.btn {
+  position: absolute;
+  top: 1%;
+  right: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .btn {
+    position: static;
+  }
 }
