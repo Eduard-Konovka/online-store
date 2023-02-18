@@ -1,5 +1,7 @@
 .card {
   position: relative;
+
+  padding-left: 22.8vw;
   border-radius: 2.5vw;
 }
 
@@ -29,10 +31,12 @@
 
 @media screen and (min-width: 1600px) {
   .card {
+    padding-left: 4.5625vw;
     border-radius: 0.625vw;
   }
 }
 
+/*#region THUMB */
 @media screen and (min-width: 800px) {
   .thumb {
     display: flex;
@@ -47,17 +51,18 @@
   }
 }
 
+/*#region COVER */
 .cover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
   width: 20.625vw;
 }
 
 @media screen and (min-width: 320px) {
   .cover {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-
     width: 66px;
   }
 }
@@ -85,21 +90,22 @@
     width: 4.6875vw;
   }
 }
+/*#endregion COVER */
 
+/*#region TITLE */
 .title {
-  width: 48.4375vw;
-  height: 9.375vw;
-  margin: 0 0 1.5vw 0;
+  width: 48vw;
+  height: 11vw;
+  margin: 0;
   font-size: 4.6875vw;
-  line-height: 100%;
+  line-height: 95%;
 }
 
 @media screen and (min-width: 320px) {
   .title {
     width: 155px;
-    height: 30px;
+    height: 35px;
     font-size: 15px;
-    line-height: 95%;
   }
 }
 
@@ -107,6 +113,7 @@
   .title {
     width: auto;
     height: auto;
+    margin: 0 0 1vw 0;
     font-size: 17px;
     line-height: inherit;
   }
@@ -130,9 +137,12 @@
     font-size: 1.6vw;
   }
 }
+/*#endregion TITLE */
+/*#endregion THUMB */
 
+/*#region CONTROLS */
 .controls {
-  padding: 0.25vw 0.375vw;
+  padding: 1.25vw 1.875vw;
   border-radius: 2.5vw;
   background-color: #e7e7e7;
   box-shadow: inset 0px 1px 3px rgba(68, 42, 42, 0.75),
@@ -194,12 +204,9 @@
   }
 }
 
+/*#region PRICE */
 .price {
   margin: 0;
-}
-
-@media screen and (min-width: 320px) {
-  /*  */
 }
 
 @media screen and (min-width: 420px) {
@@ -232,10 +239,7 @@
   }
 }
 
-@media screen and (min-width: 1600px) {
-  /*  */
-}
-
+/*#region TITLE_PRICE */
 @media screen and (min-width: 420px) {
   .priceTitle {
     border-top-left-radius: 5px;
@@ -257,7 +261,9 @@
     background-color: inherit;
   }
 }
+/*#endregion TITLE_PRICE */
 
+/*#region TITLE_VALUE */
 @media screen and (min-width: 420px) {
   .priceValue {
     border-bottom-left-radius: 5px;
@@ -279,19 +285,14 @@
     background-color: inherit;
   }
 }
+/*#endregion TITLE_VALUE */
+/*#endregion PRICE */
 
+/*#region COUNT_FORM */
 .countForm {
   height: 20px;
   display: flex;
   align-items: center;
-}
-
-@media screen and (min-width: 320px) {
-  /*  */
-}
-
-@media screen and (min-width: 420px) {
-  /*  */
 }
 
 @media screen and (min-width: 800px) {
@@ -306,16 +307,15 @@
   }
 }
 
-@media screen and (min-width: 1600px) {
-  /*  */
-}
-
+/*#region COUNT_LABLE */
 .countLabel {
-  margin-right: 2px;
+  margin-right: 1.5vw;
 }
 
 @media screen and (min-width: 320px) {
-  /*  */
+  .countLabel {
+    margin-right: 5px;
+  }
 }
 
 @media screen and (min-width: 420px) {
@@ -338,24 +338,34 @@
 }
 
 @media screen and (min-width: 1600px) {
-  /*  */
+  .countLabel {
+    margin-right: 0.625vw;
+  }
 }
+/*#endregion COUNT_LABLE */
 
+/*#region COUNT_INPUT */
 .countInput {
-  width: 5vw;
-  height: 2.2vw;
+  width: 14vw;
+  height: 5vw;
+  padding: 0 0.9vw 0 1vw;
   border: 1px solid #56ca21;
-  border-radius: 1vw;
-  padding: 0 5px 0 8px;
+  border-radius: 1.5vw;
+  margin: 0.5vw 0 0 0;
   font-family: inherit;
-  font-size: 1.2vw;
   font-weight: 700;
+  font-size: 3.5vw;
   color: #505050;
 }
 
 @media screen and (min-width: 320px) {
   .countInput {
-    border-radius: 4px;
+    width: 45px;
+    height: 16px;
+    padding: 0 3px 0 3px;
+    border-radius: 5px;
+    margin: 2px 0 0 0;
+    font-size: 11px;
   }
 }
 
@@ -363,7 +373,9 @@
   .countInput {
     width: 10vw;
     height: 32px;
+    padding: 0 5px 0 8px;
     border-radius: 6px;
+    margin: 0;
     font-size: 16px;
   }
 }
@@ -382,7 +394,6 @@
     width: 6vw;
     height: 32px;
     border-radius: 9px;
-    font-size: 18px;
   }
 }
 
@@ -395,17 +406,19 @@
 
 @media screen and (min-width: 1600px) {
   .countInput {
-    border-radius: 0.625vw;
+    width: 4vw;
+    height: 2vw;
+    padding: 0 0.3125vw 0 0.5vw;
+    border-radius: 0.5625vw;
     font-size: 1.25vw;
   }
 }
+/*#endregion COUNT_INPUT */
+/*#endregion COUNT_FORM */
 
+/*#region TOTAL_PRICE */
 .totalPrice {
   margin: 0;
-}
-
-@media screen and (min-width: 320px) {
-  /*  */
 }
 
 @media screen and (min-width: 420px) {
@@ -437,10 +450,7 @@
     box-shadow: none;
   }
 }
-
-@media screen and (min-width: 1600px) {
-  /*  */
-}
+/*#endregion TOTAL_PRICE */
 
 .btn {
   position: absolute;
@@ -453,3 +463,4 @@
     position: static;
   }
 }
+/*#endregion CONTROLS */
