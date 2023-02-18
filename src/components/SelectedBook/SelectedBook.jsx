@@ -44,8 +44,8 @@ export default function SelectedBook({
             labelStyle: s.countLabel,
             inputStyle: s.countInput,
             totalPriceStyle: s.totalPrice,
-            totalPriceTitleStyle: s.priceTitle,
-            totalPriceValueStyle: s.priceValue,
+            totalPriceTitleStyle: s.totalPriceTitle,
+            totalPriceValueStyle: s.totalPriceValue,
           }}
           setCount={count => changeSelectCount({ count, _id })}
         />
