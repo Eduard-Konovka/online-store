@@ -473,7 +473,7 @@
 
 @media screen and (min-width: 1024px) {
   .totalPriceTitle {
-    width: 58%;
+    width: 56%;
   }
 }
 
@@ -483,7 +483,7 @@
 
 @media screen and (min-width: 1024px) {
   .totalPriceValue {
-    width: 42%;
+    width: 44%;
   }
 }
 /*#endregion TOTAL_PRICE */
