@@ -206,7 +206,7 @@ export default function App() {
                     path="*"
                     element={
                       <PrivateRoute redirectTo="/signin">
-                        <NotFoundView message="Page not found :(" />
+                        <NotFoundView message="Check the correctness of the entered in the address bar" />
                       </PrivateRoute>
                     }
                   />
