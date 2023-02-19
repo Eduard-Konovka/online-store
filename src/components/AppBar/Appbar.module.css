@@ -256,12 +256,13 @@
 /*#region USERBAR */
 .userbar {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) {
   .userbar {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 }
 /*#endregion USERBAR */
