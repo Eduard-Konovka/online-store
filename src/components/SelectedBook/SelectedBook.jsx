@@ -53,7 +53,7 @@ export default function SelectedBook({
         <Button
           title="Remove book from cart"
           type="button"
-          style={s.btn}
+          styles={s.btn}
           onClick={onDeleteBook}
         >
           Delete

@@ -10,10 +10,11 @@ an adaptive-responsive layout with the following breakpoints:
   reality - 200...319 px);
 - 320 px - for smartphones with a screen width of 320...419 px;
 - 420 px - for tablets with a screen width of 420...799 px;
-- 800 px - for desktop computers or laptops with a screen width of 800...1023
-  px;
+- 800 px - for desktops or laptops with a screen width of 800...1023 px;
 - 1024 px - for desktop computers or laptops with a screen width of 1024...1599
-  px;
+  px, or when using an auxiliary breakpoint - 1024...1199 px;
+- 1200 px - auxiliary breakpoint for desktop computers or laptops with a screen
+  width of 1200...1599 px;
 - 1600 px - for desktop computers, laptops, TVs, projectors with a screen width
   of more than 1600 px.
 

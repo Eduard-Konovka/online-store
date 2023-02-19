@@ -6,7 +6,7 @@ export default function Button({
   title,
   type,
   disabled,
-  style,
+  styles,
   onClick,
   children,
 }) {
@@ -15,7 +15,7 @@ export default function Button({
       title={title}
       type={type}
       disabled={disabled}
-      className={classNames(s.btn, disabled && s.disabled, style)}
+      className={classNames(s.btn, disabled && s.disabled, styles)}
       onClick={onClick}
     >
       {children}
@@ -27,7 +27,7 @@ Button.defaultProps = {
   title: null,
   type: 'button',
   disabled: false,
-  style: null,
+  styles: null,
   onClick: () => null,
   children: null,
 };
@@ -36,7 +36,7 @@ Button.propTypes = {
   title: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   disabled: PropTypes.bool,
-  style: PropTypes.string,
+  styles: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node,
 };

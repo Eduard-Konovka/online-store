@@ -49,71 +49,80 @@ export default function SpecificBookView({ setBooksByTag, addToCart }) {
 
       {book && (
         <>
-          <img
-            src={book.image !== '' ? book.image : imageNotFound}
-            alt={book.title}
-            className={s.image}
-          />
+          <div className={s.row}>
+            <img
+              src={book.image !== '' ? book.image : imageNotFound}
+              alt={book.title}
+              className={s.image}
+            />
 
-          <div className={s.thumb}>
-            <div className={s.monitor}>
-              <div className={s.titleBox}>
-                <h3 className={s.title}>{book.title}</h3>
-                <p className={s.mb}>
-                  <span className={s.boldfont}>Book author: </span>
-                  {book.author}
-                </p>
+            <div className={s.thumb}>
+              <div className={s.monitor}>
+                <div className={s.stats}>
+                  <h3 className={s.title}>{book.title}</h3>
+                  <p className={s.stat}>
+                    <span className={s.statName}>Book author: </span>
+                    {book.author}
+                  </p>
 
-                <p className={s.mb}>
-                  <span className={s.boldfont}>Book tags: </span>
-                  {book.title && (
-                    <Tags
-                      title={book.title}
-                      styles={s.tag}
-                      setBooksByTag={setBooksByTag}
-                    />
-                  )}
-                </p>
+                  <p className={s.stat}>
+                    <span className={s.statName}>Book tags: </span>
+                    {book.title && (
+                      <Tags
+                        title={book.title}
+                        styles={s.tag}
+                        setBooksByTag={setBooksByTag}
+                      />
+                    )}
+                  </p>
 
-                <p className={s.mb}>
-                  <span className={s.boldfont}>Google links: </span>
-                  {book.title && <Links title={book.title} styles={s.link} />}
-                </p>
+                  <p className={s.stat}>
+                    <span className={s.statName}>Google links: </span>
+                    {book.title && <Links title={book.title} styles={s.link} />}
+                  </p>
+                </div>
+
+                <div className={s.controls}>
+                  <p className={s.count}>
+                    <span className={s.boldfont}>Price: </span>${book.price}
+                  </p>
+
+                  <CountForm
+                    value={count}
+                    price={book.price}
+                    min={1}
+                    max={42}
+                    styles={{
+                      formStyle: s.count,
+                      labelStyle: s.boldfont,
+                      inputStyle: s.input,
+                      spanStyle: s.boldfont,
+                      totalPriceStyle: s.count,
+                    }}
+                    setCount={setCount}
+                  />
+
+                  <div>
+                    <Button
+                      title="Add book to cart"
+                      type="button"
+                      disabled={count === 0}
+                      styles={s.btn}
+                      onClick={() =>
+                        addToCart({ ...book, count: Number(count) })
+                      }
+                    >
+                      Add to cart
+                    </Button>
+                  </div>
+                </div>
               </div>
 
-              <div className={s.control}>
-                <p className={s.count}>
-                  <span className={s.boldfont}>Price: </span>${book.price}
-                </p>
-
-                <CountForm
-                  value={count}
-                  price={book.price}
-                  min={1}
-                  max={42}
-                  styles={{
-                    formStyle: s.count,
-                    labelStyle: s.boldfont,
-                    inputStyle: s.input,
-                    spanStyle: s.boldfont,
-                    totalPriceStyle: s.count,
-                  }}
-                  setCount={setCount}
-                />
-
-                <Button
-                  title="Add book to cart"
-                  type="button"
-                  disabled={count === 0}
-                  onClick={() => addToCart({ ...book, count: Number(count) })}
-                >
-                  Add to cart
-                </Button>
-              </div>
+              <p className={s.finishDescription}>{book.description}</p>
             </div>
-
-            <p className={s.description}>{book.description}</p>
           </div>
+
+          <p className={s.startDescription}>{book.description}</p>
         </>
       )}
     </main>
