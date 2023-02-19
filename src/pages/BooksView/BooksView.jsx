@@ -15,7 +15,7 @@ import { ReactComponent as SearchIcon } from './search.svg';
 import imageBlank from 'images/shop.jpg';
 import s from './BooksView.module.css';
 
-export default function BooksView({ setBooks }) {
+export default function BooksView({ booksByTag, setBooks }) {
   const books = useBooks();
   const mainHeight = useMainHeight();
 
@@ -39,6 +39,9 @@ export default function BooksView({ setBooks }) {
         })
         .catch(error => setError(error))
         .finally(() => setLoading(false));
+    } else if (booksByTag.length !== 0) {
+      setBooksByName(booksByTag);
+      setBooksByPrice(books);
     } else {
       setBooksByName(books);
       setBooksByPrice(books);
@@ -170,5 +173,6 @@ export default function BooksView({ setBooks }) {
 }
 
 BooksView.propTypes = {
+  booksByTag: PropTypes.array.isRequired,
   setBooks: PropTypes.func.isRequired,
 };

@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useBooks, useCart, useMainHeight } from 'context';
 import { fetchBook } from 'api';
-import { Spinner, Button, Tags, CountForm } from 'components';
+import { Spinner, Button, Tags, Links, CountForm } from 'components';
 import imageNotFound from 'images/notFound.png';
 import s from './SpecificBookView.module.css';
 
-export default function SpecificBookView({ addToCart }) {
+export default function SpecificBookView({ setBooksByTag, addToCart }) {
   const location = useLocation();
 
   const books = useBooks();
@@ -52,14 +52,13 @@ export default function SpecificBookView({ addToCart }) {
           <img
             src={book.image !== '' ? book.image : imageNotFound}
             alt={book.title}
-            className={s.img}
+            className={s.image}
           />
 
           <div className={s.thumb}>
-            <div className={s.display}>
-              <div className={s.title}>
-                <h3 className={s.bookname}>{book.title}</h3>
-
+            <div className={s.monitor}>
+              <div className={s.titleBox}>
+                <h3 className={s.title}>{book.title}</h3>
                 <p className={s.mb}>
                   <span className={s.boldfont}>Book author: </span>
                   {book.author}
@@ -67,7 +66,18 @@ export default function SpecificBookView({ addToCart }) {
 
                 <p className={s.mb}>
                   <span className={s.boldfont}>Book tags: </span>
-                  {book.title && <Tags title={book.title} />}
+                  {book.title && (
+                    <Tags
+                      title={book.title}
+                      styles={s.tag}
+                      setBooksByTag={setBooksByTag}
+                    />
+                  )}
+                </p>
+
+                <p className={s.mb}>
+                  <span className={s.boldfont}>Google links: </span>
+                  {book.title && <Links title={book.title} styles={s.link} />}
                 </p>
               </div>
 
@@ -111,5 +121,6 @@ export default function SpecificBookView({ addToCart }) {
 }
 
 SpecificBookView.propTypes = {
+  setBooksByTag: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
 };

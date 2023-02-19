@@ -1,11 +1,11 @@
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useUser } from 'context';
-import Button from 'components/Button';
+import { Button } from 'components';
 import defaultAvatar from './defaultAvatar.png';
 import s from './Appbar.module.css';
 
-export default function Appbar({ onSignOut }) {
+export default function Appbar({ setBooksByTag, onSignOut }) {
   const user = useUser();
 
   return (
@@ -19,6 +19,7 @@ export default function Appbar({ onSignOut }) {
               className={({ isActive }) =>
                 isActive ? s.activeLink : s.inactiveLink
               }
+              onClick={setBooksByTag}
               end
             >
               <h1 className={s.logo}>JS Band Store</h1>
@@ -75,5 +76,6 @@ export default function Appbar({ onSignOut }) {
 }
 
 Appbar.propTypes = {
+  setBooksByTag: PropTypes.func.isRequired,
   onSignOut: PropTypes.func.isRequired,
 };

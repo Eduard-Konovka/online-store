@@ -40,6 +40,7 @@ export default function App() {
     JSON.parse(localStorage.getItem('user')) || {},
   );
   const [books, setBooks] = useState([]);
+  const [booksByTag, setBooksByTag] = useState([]);
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem('cart')) || [],
   );
@@ -121,7 +122,10 @@ export default function App() {
   return (
     <Container>
       <UserProvider value={user}>
-        <AppBar onSignOut={() => setUser({})} />
+        <AppBar
+          setBooksByTag={() => setBooksByTag([])}
+          onSignOut={() => setUser({})}
+        />
 
         <Suspense
           fallback={
@@ -152,7 +156,10 @@ export default function App() {
                     path="/signin"
                     element={
                       <PublicRoute redirectTo="/books" restricted>
-                        <SignInView setUser={setUser} />
+                        <SignInView
+                          setBooksByName={setBooksByTag}
+                          setUser={setUser}
+                        />
                       </PublicRoute>
                     }
                   />
@@ -161,7 +168,10 @@ export default function App() {
                     path="/books"
                     element={
                       <PrivateRoute redirectTo="/signin">
-                        <BooksView setBooks={setBooks} />
+                        <BooksView
+                          booksByTag={booksByTag}
+                          setBooks={setBooks}
+                        />
                       </PrivateRoute>
                     }
                   />
@@ -170,7 +180,10 @@ export default function App() {
                     path="/books/:id"
                     element={
                       <PrivateRoute redirectTo="/signin">
-                        <SpecificBookView addToCart={addToCart} />
+                        <SpecificBookView
+                          setBooksByTag={setBooksByTag}
+                          addToCart={addToCart}
+                        />
                       </PrivateRoute>
                     }
                   />

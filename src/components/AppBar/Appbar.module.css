@@ -138,6 +138,7 @@
 
 .activeLink {
   composes: link;
+  pointer-events: none;
   color: #2196f3;
 }
 /*#endregion LINK */
@@ -324,6 +325,7 @@
 
 .activeCart {
   composes: cart;
+  pointer-events: none;
   background-image: url('./activeCart.svg');
 }
 /*#endregion CART */

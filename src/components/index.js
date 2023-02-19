@@ -9,6 +9,7 @@ export { default as Container } from './Container';
 export { default as CountForm } from './CountForm';
 export { default as Footer } from './Footer';
 export { default as IconButton } from './IconButton';
+export { default as Links } from './Links';
 export { default as OptionList } from './OptionList';
 export { default as Processing } from './Processing';
 export { default as SelectedBook } from './SelectedBook';
