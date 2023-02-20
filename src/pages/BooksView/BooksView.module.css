@@ -4,11 +4,31 @@
   align-items: center;
   position: relative;
 
-  border-radius: 10px;
+  padding: 6.25vw;
+  border-radius: 2.5vw;
   box-shadow: 0px 2px 5px rgba(68, 42, 42, 0.75),
     0px 1px 3px rgba(68, 38, 38, 0.14), 0px 1px 2px rgba(139, 77, 77, 0.12);
-  margin-bottom: 10px;
   background-color: #f9fcf0;
+}
+
+@media screen and (min-width: 320px) {
+  .page {
+    padding: 20px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .page {
+    border-radius: 10px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .page {
+    padding: 1.25vw;
+    border-radius: 0.625vw;
+  }
 }
 
 .error {
@@ -20,52 +40,360 @@
   margin: 0;
 
   color: #ff0000;
-  font-size: 2vw;
   font-weight: 400;
+  font-size: 2vw;
 }
 
-.formBar {
+.bars {
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .bars {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .bars {
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+  }
+}
+
+.bar {
   display: flex;
-  align-items: flex-end;
+  justify-content: center;
+
   background-color: #e7e7e7;
-  padding: 0 17px 15px 0;
-  margin-top: 15px;
-  border-radius: 10px;
+  width: 100%;
+  padding: 3.125vw 0 3.125vw 3.125vw;
+  border-radius: 2.5vw;
   box-shadow: 0px 2px 5px rgba(68, 42, 42, 0.75),
     0px 1px 3px rgba(68, 38, 38, 0.14), 0px 1px 2px rgba(139, 77, 77, 0.12);
 }
 
-.formByName {
-  display: flex;
-  align-items: flex-end;
+@media screen and (min-width: 320px) {
+  .bar {
+    padding: 10px 0 10px 10px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .bar {
+    border-radius: 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .bar {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .bar {
+    padding: 0.625vw 0 0.625vw 0.625vw;
+    border-radius: 0.625vw;
+  }
+}
+
+.searchBar {
+  composes: bar;
+  flex-wrap: wrap;
+
+  padding-top: 0;
+  margin-top: -3.125vw;
+}
+
+@media screen and (min-width: 320px) {
+  .searchBar {
+    margin-top: -10px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .searchBar {
+    padding: 10px 0 10px 10px;
+    margin-top: 0;
+  }
+}
+
+.searchByName {
+  position: relative;
+}
+
+.barElement {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 4.8vw;
+
+  height: 8vw;
+  border-radius: 1vw;
+  margin-right: 3.125vw;
+}
+
+@media screen and (min-width: 320px) {
+  .barElement {
+    font-size: 14px;
+    height: 24px;
+
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .barElement {
+    font-size: 16px;
+    height: 28px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .barElement {
+    height: 30px;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .barElement {
+    height: 32px;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .barElement {
+    height: 36px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .barElement {
+    font-size: 1vw;
+    border-radius: 0.625vw;
+    margin-right: 0.625vw;
+  }
 }
 
 .input {
-  height: 2.2vw;
-  border: 1px solid #56ca21;
-  border-radius: 10px;
-  padding: 0 10px 0 10px;
-  margin: 1vw 1vw 0 1vw;
+  composes: barElement;
   background-color: #ffffff;
-  font-family: inherit;
-  font-size: 1.2vw;
-  font-weight: 400;
   color: #505050;
+  font-weight: 400;
+
+  padding-left: 0.3vw;
+  border: 1px solid #56ca21;
 }
 
 .inputByName {
   composes: input;
-  width: 20vw;
-  margin-right: -40px;
-  align-items: flex-end;
+  width: 60.5vw;
+  margin-top: 3.125vw;
+}
+
+@media screen and (min-width: 320px) {
+  .inputByName {
+    width: 56vw;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .inputByName {
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .inputByName {
+    width: 28vw;
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .inputByName {
+    width: 22vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .inputByName {
+    width: 20vw;
+  }
+}
+
+.iconButton {
+  position: absolute;
+  top: 0;
+  right: 5%;
+
+  background-color: transparent;
+  width: 8.75vw;
+  height: 8.75vw;
+  margin-top: 2.5vw;
+}
+
+@media screen and (min-width: 320px) {
+  .iconButton {
+    width: 28px;
+    height: 28px;
+    margin-top: 8px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .iconButton {
+    width: 30px;
+    height: 30px;
+    margin-top: 9px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .iconButton {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .iconButton {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .iconButton {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .iconButton {
+    width: 2.2vw;
+    height: 2.2vw;
+  }
 }
 
 .inputByPrice {
   composes: input;
-  width: 11vw;
-  margin-left: 60px;
+  width: 30vw;
+  margin-top: 3.125vw;
 }
 
-.reset {
-  margin-left: 2.5vw;
+@media screen and (min-width: 320px) {
+  .inputByPrice {
+    width: 28vw;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .inputByPrice {
+    width: 23vw;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .inputByPrice {
+    width: 14vw;
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .inputByPrice {
+    width: 12vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .inputByPrice {
+    width: 10vw;
+  }
+}
+
+.btn {
+  composes: barElement;
+  margin-top: 3.125vw;
+}
+
+@media screen and (min-width: 320px) {
+  .btn {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .btn {
+    margin-top: 0;
+  }
+}
+
+.sortBar {
+  composes: bar;
+  margin-top: 6.25vw;
+}
+
+@media screen and (min-width: 320px) {
+  .sortBar {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sortBar {
+    margin: 0;
+  }
+}
+
+.sortLabel {
+  composes: barElement;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #303030;
+}
+
+.inputBySort {
+  composes: input;
+  width: 57vw;
+}
+
+@media screen and (min-width: 320px) {
+  .inputBySort {
+    width: 56vw;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .inputBySort {
+    width: 45vw;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .inputBySort {
+    width: 28vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .inputBySort {
+    width: 22vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .inputBySort {
+    width: 16vw;
+  }
 }

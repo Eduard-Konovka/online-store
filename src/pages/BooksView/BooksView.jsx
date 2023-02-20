@@ -106,6 +106,45 @@ export default function BooksView({ booksByTag, setBooks }) {
     }
   }
 
+  function handleSort(event) {
+    const value = event.target.value;
+
+    const ascendingCode = [...visibleBooks].sort(
+      (firstBook, secondBook) => firstBook.id - secondBook.id,
+    );
+    const descendingCode = [...visibleBooks].sort(
+      (firstBook, secondBook) => secondBook.id - firstBook.id,
+    );
+    const ascendingPrice = [...visibleBooks].sort(
+      (firstBook, secondBook) => firstBook.price - secondBook.price,
+    );
+    const descendingPrice = [...visibleBooks].sort(
+      (firstBook, secondBook) => secondBook.price - firstBook.price,
+    );
+
+    switch (value) {
+      case 'ascendingCode':
+        setVisibleBooks(ascendingCode);
+        break;
+
+      case 'descendingCode':
+        setVisibleBooks(descendingCode);
+        break;
+
+      case 'ascendingPrice':
+        setVisibleBooks(ascendingPrice);
+        break;
+
+      case 'descendingPrice':
+        setVisibleBooks(descendingPrice);
+        break;
+
+      default:
+        setVisibleBooks(ascendingCode);
+        break;
+    }
+  }
+
   function reset() {
     setSearchByName('');
     setOptionList(false);
@@ -131,41 +170,68 @@ export default function BooksView({ booksByTag, setBooks }) {
 
       {books.length > 0 && (
         <>
-          <section className={s.formBar}>
-            <form className={s.formByName}>
-              <input
-                className={s.inputByName}
-                name="searchByName"
-                type="text"
-                placeholder="Search by book name"
-                value={searchByName}
-                onChange={e => setSearchByName(e.target.value)}
-              />
+          <section className={s.bars}>
+            <form className={s.searchBar}>
+              <div className={s.searchByName}>
+                <input
+                  name="searchByName"
+                  type="text"
+                  placeholder="Search by book name"
+                  value={searchByName}
+                  className={s.inputByName}
+                  onChange={e => setSearchByName(e.target.value)}
+                />
 
-              <IconButton
-                type="button"
-                title="Search by book name"
-                aria-label="Search by book name"
-                onClick={handleNameClick}
-              >
-                <SearchIcon width="24" height="24" />
-              </IconButton>
-            </form>
+                <IconButton
+                  type="button"
+                  title="Search by book name"
+                  aria-label="Search by book name"
+                  styles={s.iconButton}
+                  onClick={handleNameClick}
+                >
+                  <SearchIcon />
+                </IconButton>
+              </div>
 
-            <form>
               <select className={s.inputByPrice} onChange={handlePriceChange}>
                 {optionList && <OptionList books={books} />}
               </select>
-            </form>
 
-            <div className={s.reset}>
-              <Button type="button" title="Reset all filters" onClick={reset}>
+              <Button
+                title="Reset all filters"
+                type="button"
+                styles={s.btn}
+                onClick={reset}
+              >
                 Reset filters
               </Button>
-            </div>
+            </form>
+
+            <form className={s.sortBar}>
+              <label htmlFor="sort" className={s.sortLabel}>
+                Sort by
+              </label>
+
+              <select
+                name="sort"
+                className={s.inputBySort}
+                onChange={handleSort}
+              >
+                <option value={'ascendingCode'}>Ascending SKU</option>
+                <option value={'descendingCode'}>Descending SKU</option>
+                <option value={'ascendingPrice'}>
+                  From cheap to expensive
+                </option>
+                <option value={'descendingPrice'}>
+                  From expensive to cheap
+                </option>
+              </select>
+            </form>
           </section>
 
-          <BookList books={visibleBooks} />
+          <section>
+            <BookList books={visibleBooks} />
+          </section>
         </>
       )}
     </main>

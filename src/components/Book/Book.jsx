@@ -29,6 +29,10 @@ export default function Book({ book }) {
         Author: <span className={s.value}>{book.author}</span>
       </p>
 
+      <p className={s.scu}>
+        SCU: <span className={s.value}>{book.id}</span>
+      </p>
+
       <div className={s.control}>
         <p className={s.price}>
           Price: <span className={s.value}>${book.price}</span>

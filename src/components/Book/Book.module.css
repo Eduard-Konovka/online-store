@@ -1,4 +1,5 @@
 .image {
+  width: 250px;
   height: 328px;
   margin-left: auto;
   margin-right: auto;
@@ -15,6 +16,7 @@
 
 .paragraph {
   margin: 0;
+  font-weight: 500;
 }
 
 .value {
@@ -30,7 +32,10 @@
 .author {
   composes: paragraph;
   height: 4vw;
-  font-weight: 500;
+}
+
+.scu {
+  composes: paragraph;
 }
 
 .control {
