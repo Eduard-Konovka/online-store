@@ -409,3 +409,7 @@
   }
 }
 /*#endregion INPUT_BY_SORT */
+
+.bookList {
+  width: 100%;
+}

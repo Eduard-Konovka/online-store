@@ -229,7 +229,7 @@ export default function BooksView({ booksByTag, setBooks }) {
             </form>
           </section>
 
-          <section>
+          <section className={s.bookList}>
             <BookList books={visibleBooks} />
           </section>
         </>
