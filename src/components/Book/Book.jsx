@@ -39,7 +39,7 @@ export default function Book({ book }) {
         </p>
 
         <Button title="More about the book">
-          <Link to={`/books/:${book._id}`} className={s.btn}>
+          <Link to={`/books/:${book._id}`} className={s.btnLink}>
             View
           </Link>
         </Button>
