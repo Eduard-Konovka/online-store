@@ -6,9 +6,14 @@ export default function OptionList({ books }) {
 
   return (
     <>
-      <option key={'All prices'}>All prices</option>
+      <option value={'allPrices'}>{'All prices'}</option>
+      <option value={'0>'}>{'Prices < 15'}</option>
+      <option value={'15>'}>{'15 <...< 30'}</option>
+      <option value={'30>'}>{'Prices > 30'}</option>
       {uniqArr.map(price => (
-        <option key={price}>{price}</option>
+        <option value={price} key={price}>
+          {price}
+        </option>
       ))}
     </>
   );
