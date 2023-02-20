@@ -96,26 +96,32 @@ export default function BooksView({ booksByTag, setBooks }) {
   }
 
   function handlePriceChange(event) {
-    const value = event.target.value;
+    switch (event.target.value) {
+      case 'allPrices':
+        setBooksByPrice(books);
+        break;
 
-    if (value === 'allPrices') {
-      setBooksByPrice(books);
-    } else if (value === '0>') {
-      const targetBooks = books.filter(
-        book => book.price > 0 && book.price <= 15,
-      );
-      setBooksByPrice(targetBooks);
-    } else if (value === '15>') {
-      const targetBooks = books.filter(
-        book => book.price > 15 && book.price <= 30,
-      );
-      setBooksByPrice(targetBooks);
-    } else if (value === '30>') {
-      const targetBooks = books.filter(book => book.price > 30);
-      setBooksByPrice(targetBooks);
-    } else {
-      const targetBooks = books.filter(book => book.price === Number(value));
-      setBooksByPrice(targetBooks);
+      case '0>':
+        setBooksByPrice(
+          books.filter(book => book.price > 0 && book.price <= 15),
+        );
+        break;
+
+      case '15>':
+        setBooksByPrice(
+          books.filter(book => book.price > 15 && book.price <= 30),
+        );
+        break;
+
+      case '30>':
+        setBooksByPrice(books.filter(book => book.price > 30));
+        break;
+
+      default:
+        setBooksByPrice(
+          books.filter(book => book.price === Number(event.target.value)),
+        );
+        break;
     }
   }
 
