@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CountForm, Button } from 'components';
 import defaultImage from 'images/notFound.png';
@@ -15,11 +16,13 @@ export default function SelectedBook({
   return (
     <article className={s.card}>
       <div className={s.thumb}>
-        <img
-          src={image && image !== '' ? image : defaultImage}
-          alt={title}
-          className={s.cover}
-        />
+        <Link to={`/books/:${_id}`} title={`Go to the book "${title}"`}>
+          <img
+            src={image && image !== '' ? image : defaultImage}
+            alt={title}
+            className={s.cover}
+          />
+        </Link>
 
         <h3 className={s.title}>
           {title.length < TITLE_LENGTH
