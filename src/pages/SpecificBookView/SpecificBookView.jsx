@@ -7,7 +7,11 @@ import { Spinner, Button, Tags, Links, CountForm } from 'components';
 import imageNotFound from 'images/notFound.png';
 import s from './SpecificBookView.module.css';
 
-export default function SpecificBookView({ setBooksByTag, addToCart }) {
+export default function SpecificBookView({
+  setBooksByTag,
+  addToCart,
+  changeSelectCount,
+}) {
   const location = useLocation();
 
   const books = useBooks();
@@ -99,7 +103,9 @@ export default function SpecificBookView({ setBooksByTag, addToCart }) {
                       spanStyle: s.boldfont,
                       totalPriceStyle: s.count,
                     }}
-                    setCount={setCount}
+                    setCount={count =>
+                      changeSelectCount({ count, _id: book._id })
+                    }
                   />
 
                   <div>
