@@ -79,6 +79,15 @@ export default function App() {
     setMainHeight(computedHeight);
   }, []);
 
+  function changeCount(obj) {
+    const setCount = item => {
+      item.count = Number(obj.count);
+      return item;
+    };
+
+    setCart(cart.map(book => (book._id === obj._id ? setCount(book) : book)));
+  }
+
   function addToCart(bookToBeAdded) {
     const bookDuplication = cart.filter(obj => obj._id === bookToBeAdded._id);
 
@@ -93,15 +102,6 @@ export default function App() {
   function removeFromCart(_id) {
     const newCart = cart.filter(obj => obj._id !== _id);
     setCart(newCart);
-  }
-
-  function changeCount(obj) {
-    const setCount = item => {
-      item.count = Number(obj.count);
-      return item;
-    };
-
-    setCart(cart.map(book => (book._id === obj._id ? setCount(book) : book)));
   }
 
   function submitCart(totalCost) {
@@ -182,6 +182,7 @@ export default function App() {
                       <PrivateRoute redirectTo="/signin">
                         <SpecificBookView
                           setBooksByTag={setBooksByTag}
+                          changeSelectCount={changeCount}
                           addToCart={addToCart}
                         />
                       </PrivateRoute>

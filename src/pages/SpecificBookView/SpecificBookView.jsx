@@ -9,8 +9,8 @@ import s from './SpecificBookView.module.css';
 
 export default function SpecificBookView({
   setBooksByTag,
-  addToCart,
   changeSelectCount,
+  addToCart,
 }) {
   const location = useLocation();
 
@@ -103,9 +103,14 @@ export default function SpecificBookView({
                       spanStyle: s.boldfont,
                       totalPriceStyle: s.count,
                     }}
-                    setCount={count =>
-                      changeSelectCount({ count, _id: book._id })
-                    }
+                    setCount={count => {
+                      setCount(count);
+                      selectedBook &&
+                        changeSelectCount({
+                          count,
+                          _id: selectedBook._id,
+                        });
+                    }}
                   />
 
                   <div>
@@ -137,5 +142,6 @@ export default function SpecificBookView({
 
 SpecificBookView.propTypes = {
   setBooksByTag: PropTypes.func.isRequired,
+  changeSelectCount: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
 };
