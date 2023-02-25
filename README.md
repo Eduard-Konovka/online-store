@@ -37,18 +37,20 @@ The project was created using the "React" framework in combination with the
 to the "MongoDB" database.
 
 The web server project is located
-[here](https://github.com/Eduard-Konovka/feb101-course-task-api).
+[github.com/Eduard-Konovka/feb101-course-task-api](https://github.com/Eduard-Konovka/feb101-course-task-api).
 
 ## Application launch instructions
 
 This app uses a back end server at
-[https://feb101-course-task-api-eduard-konovka.onrender.com](https://feb101-course-task-api-eduard-konovka.onrender.com),
+[feb101-course-task-api-eduard-konovka.onrender.com](https://feb101-course-task-api-eduard-konovka.onrender.com),
 accordingly, the REACT_APP_URL environment variable corresponding to this
 address is used as the base URL to access the API.
 
-Unfortunately, due to the use of the free Render ([render.com](render.com))
-backend host for educational purposes, there is a delay in the FIRST loading of
-the book list, please WAIT FOR THE FIRST LOAD OF THE BOOK LIST!
+Unfortunately, due to the use of the free ([Render](render.com)) backend host
+for educational purposes, there is a delay in the **_first_** loading of the
+book list, please,
+
+**WAIT** **FOR** **THE** **FIRST** **LOAD** **OF** **THE** **BOOK** **LIST!**
 
 For interaction with the backend, REST API with the following endpoints is used:
 
@@ -66,7 +68,7 @@ course project, so I omitted it for now.
 #### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
