@@ -38,10 +38,10 @@
 на базі сервера на фреймворку Express, підключеного до бази даних MongoDB.
 
 Проект веб-сервера знаходиться за адресою
-[https://github.com/Eduard-Konovka/feb101-course-task-api]
+https://github.com/Eduard-Konovka/feb101-course-task-api
 
 Веб-додаток використовує бекенд-сервер за адресою
-[https://feb101-course-task-api-eduard-konovka.onrender.com], відповідно, як
+https://feb101-course-task-api-eduard-konovka.onrender.com, відповідно, як
 базовий URL для доступу до API використовується змінна оточення REACT_APP_URL,
 яка відповідає цій адресі.
 
