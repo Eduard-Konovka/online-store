@@ -46,9 +46,9 @@ This app uses a back end server at
 accordingly, the REACT_APP_URL environment variable corresponding to this
 address is used as the base URL to access the API.
 
-Unfortunately, due to the use of the free ([Render](render.com)) backend host
-for educational purposes, there is a delay in the **_first_** loading of the
-book list, please,
+Unfortunately, due to the use of the free [Render](render.com) backend host for
+educational purposes, there is a delay in the **_first_** loading of the book
+list, so please,
 
 **WAIT** **FOR** **THE** **FIRST** **LOAD** **OF** **THE** **BOOK** **LIST!**
 
