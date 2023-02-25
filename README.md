@@ -4,7 +4,7 @@ A single-page web application of an online bookstore.
 
 The application allows you to search for books by part of the title; filter a
 selection of books by four price ranges or a certain price; sort books in
-descending and ascending order by SCU (Stock Keeping Unit, article number) or by
+descending and ascending order by SKU (Stock Keeping Unit, article number) or by
 price. On the page of a separate book, you can use a thematic tag to go to the
 list of books with a topic corresponding to the tag, so the application also
 implements sorting by thematic tags. On the page of a separate book, there is
