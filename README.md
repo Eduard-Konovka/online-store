@@ -1,7 +1,19 @@
 # Web application of a book online store (course project)
 
-A single-page web application of an online bookstore that allows you to filter
-the selection of books with automatic calculation of the order amount.
+A single-page web application of an online bookstore.
+
+The application allows you to search for books by part of the title; filter a
+selection of books by four price ranges or a certain price; sort books in
+descending and ascending order by SCU (Stock Keeping Unit, article number) or by
+price. On the page of a separate book, you can use a thematic tag to go to the
+list of books with a topic corresponding to the tag, so the application also
+implements sorting by thematic tags. On the page of a separate book, there is
+additionally a link to the Google search engine for the keywords of the book
+title. Both on the page of a separate book and in the cart, the amount of the
+order of a particular book is automatically calculated depending on the
+quantity, in addition, the total amount of the order of all books and their
+quantity is calculated in the cart. For convenience, in the cart, the transition
+from the cart to the page of a separate book is additionally implemented.
 
 The web application is implemented according to the "Mobile First" strategy with
 an adaptive-responsive layout with the following breakpoints:
@@ -9,11 +21,11 @@ an adaptive-responsive layout with the following breakpoints:
 - default value - for smartphones with a screen width of less than 320 px (in
   reality - 200...319 px);
 - 320 px - for smartphones with a screen width of 320...419 px;
-- 420 px - for tablets with a screen width of 420...799 px;
-- 800 px - for desktops or laptops with a screen width of 800...1023 px;
-- 1024 px - for desktop computers or laptops with a screen width of 1024...1599
+- 420 px - for smartphones and tablets with a screen width of 420...799 px;
+- 800 px - for desktops and laptops with a screen width of 800...1023 px;
+- 1024 px - for desktop computers and laptops with a screen width of 1024...1599
   px, or when using an auxiliary breakpoint - 1024...1199 px;
-- 1200 px - auxiliary breakpoint for desktop computers or laptops with a screen
+- 1200 px - auxiliary breakpoint for desktop computers and laptops with a screen
   width of 1200...1599 px;
 - 1600 px - for desktop computers, laptops, TVs, projectors with a screen width
   of more than 1600 px.
@@ -30,14 +42,24 @@ The web server project is located
 ## Application launch instructions
 
 This app uses a back end server at
-[https://feb101-course-task-api-eduard-konovka.onrender.com](https://feb101-course-task-api-eduard-konovka.onrender.com).
+[https://feb101-course-task-api-eduard-konovka.onrender.com](https://feb101-course-task-api-eduard-konovka.onrender.com),
+accordingly, the REACT_APP_URL environment variable corresponding to this
+address is used as the base URL to access the API.
 
-Accordingly, the REACT_APP_URL environment variable equal to
-https://feb101-course-task-api-eduard-konovka.onrender.com is used as the base
-URL for accessing the API.
+Unfortunately, due to the use of the free Render ([render.com](render.com))
+backend host for educational purposes, there is a delay in the FIRST loading of
+the book list, please WAIT FOR THE FIRST LOAD OF THE BOOK LIST!
 
-- The `/api/books` endpoint is used to get the list of books
-- The `/api/orders` endpoint is used to send orders
+For interaction with the backend, REST API with the following endpoints is used:
+
+- The `/api/books` endpoint is used to get the list of books;
+- The `/api/orders` endpoint is used to send orders.
+
+The order is sent to the MongoDB database. I track orders using the MongoDB
+Compass database application. Usually, in standard online stores, a mail client
+is also configured, which automatically sends orders to the store owner by
+e-mail. I also once had to implement this, but it goes beyond the scope of the
+course project, so I omitted it for now.
 
 ## Script commands in console:
 
