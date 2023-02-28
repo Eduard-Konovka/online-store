@@ -51,7 +51,9 @@ export default function BooksView({ booksByTag, setBooks }) {
 
   useEffect(() => {
     const difference = booksByName.filter(book => booksByPrice.includes(book));
-    setVisibleBooks(difference);
+    setVisibleBooks(
+      difference.sort((firstBook, secondBook) => firstBook.id - secondBook.id),
+    );
   }, [booksByName, booksByPrice]);
 
   useEffect(() => {
