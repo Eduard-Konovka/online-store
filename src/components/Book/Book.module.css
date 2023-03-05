@@ -233,7 +233,7 @@
 }
 /*#endregion AUTHOR */
 
-.scu {
+.sku {
   composes: paragraph;
   font-weight: 500;
 }
