@@ -2,7 +2,11 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": [
-    "src"
+  "include": ["src"],
+  "exclude": [
+    "СoverLetter.docx",
+    "СoverLetter.md",
+    "Assessment.docx",
+    "Ciklum_Курсовий_проєкт__Книжковий_інтернет-магазин_.pdf"
   ]
 }
