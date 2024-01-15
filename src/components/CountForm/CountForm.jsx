@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 export default function CountForm({
   value,
   price,
-  min = 0,
+  min = 1,
   max = Infinity,
   styles,
   setCount,
