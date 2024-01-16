@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
+const CHARACTER_CODES = [
+  44, // ,
+  46, // .
+];
+
 export default function CountForm({
   value,
   price,
@@ -16,11 +21,21 @@ export default function CountForm({
     setTotalPrice((Number(price) * Number(value)).toFixed(2));
   }, [value, price]);
 
+  function handleKeyPress(event) {
+    if (CHARACTER_CODES.includes(event.charCode)) {
+      event.preventDefault();
+    }
+  }
+
   function handleChange(event) {
-    if (event.target.value >= min && event.target.value <= max) {
-      setCount(Number(event.target.value));
+    const inputValue = Number(event.target.value);
+
+    if (inputValue >= min && inputValue <= max) {
+      setCount(inputValue);
     } else {
-      toast.error(`Please enter a value from ${min} to ${max} inclusive!`);
+      toast.error(
+        `Please enter an integer value from ${min} to ${max} inclusive!`,
+      );
     }
   }
 
@@ -39,6 +54,7 @@ export default function CountForm({
           min={min}
           max={max}
           className={styles.inputStyle}
+          onKeyPress={handleKeyPress}
           onChange={handleChange}
         />
       </form>
