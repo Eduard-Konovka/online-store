@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useBooks } from 'context';
-import TAG_TAMPLATES from './tagTemplates';
+import { GLOBAL } from 'constants';
 import s from './Tags.module.css';
 
 export default function Tags({ title, styles, setBooksByTag }) {
@@ -25,9 +25,12 @@ export default function Tags({ title, styles, setBooksByTag }) {
     const tags = [];
 
     for (let i = 0; i < pureArr.length; i++) {
-      for (let j = 0; j < TAG_TAMPLATES.length; j++) {
-        if (pureArr[i] === TAG_TAMPLATES[j] && !tags.includes(pureArr[i])) {
-          tags.push(TAG_TAMPLATES[j]);
+      for (let j = 0; j < GLOBAL.tagTamplates.length; j++) {
+        if (
+          pureArr[i] === GLOBAL.tagTamplates[j] &&
+          !tags.includes(pureArr[i])
+        ) {
+          tags.push(GLOBAL.tagTamplates[j]);
         }
       }
     }

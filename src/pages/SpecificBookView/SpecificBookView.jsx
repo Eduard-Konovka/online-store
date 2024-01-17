@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useBooks, useCart, useMainHeight } from 'context';
 import { fetchBook } from 'api';
 import { Spinner, Button, Tags, Links, CountForm } from 'components';
+import { GLOBAL } from 'constants';
 import imageNotFound from 'images/notFound.png';
 import s from './SpecificBookView.module.css';
 
@@ -26,7 +27,7 @@ export default function SpecificBookView({
   const selectedBook = cart.filter(book => book._id === bookId)[0];
   const savedBook = books.filter(book => book._id === bookId)[0];
 
-  const [count, setCount] = useState(selectedBook ? selectedBook.count : 1);
+  const [count, setCount] = useState(selectedBook ? selectedBook.count : null);
 
   useEffect(() => {
     if (books.length > 0) {
@@ -94,8 +95,8 @@ export default function SpecificBookView({
                   <CountForm
                     value={count}
                     price={book.price}
-                    min={1}
-                    max={42}
+                    min={GLOBAL.bookCount.min}
+                    max={GLOBAL.bookCount.max}
                     styles={{
                       formStyle: s.count,
                       labelStyle: s.boldfont,
@@ -117,7 +118,7 @@ export default function SpecificBookView({
                     <Button
                       title="Add book to cart"
                       type="button"
-                      disabled={count === 0}
+                      disabled={count === null}
                       styles={s.btn}
                       onClick={() =>
                         addToCart({ ...book, count: Number(count) })

@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CountForm, Button } from 'components';
+import { GLOBAL } from 'constants';
 import defaultImage from 'images/notFound.png';
 import s from './SelectedBook.module.css';
-
-const TITLE_LENGTH = 25;
 
 export default function SelectedBook({
   selectedBook,
@@ -25,9 +24,9 @@ export default function SelectedBook({
         </Link>
 
         <h3 className={s.title}>
-          {title.length < TITLE_LENGTH
+          {title.length < GLOBAL.titleLength
             ? title
-            : title.slice(0, TITLE_LENGTH) + '...'}
+            : title.slice(0, GLOBAL.titleLength) + '...'}
         </h3>
       </div>
 
@@ -40,8 +39,8 @@ export default function SelectedBook({
         <CountForm
           value={count}
           price={price}
-          min={1}
-          max={42}
+          min={GLOBAL.bookCount.min}
+          max={GLOBAL.bookCount.max}
           styles={{
             formStyle: s.countForm,
             labelStyle: s.countLabel,

@@ -16,6 +16,7 @@ import {
   PublicRoute,
   PrivateRoute,
 } from 'components';
+import { GLOBAL } from 'constants';
 import 'api/baseUrl';
 import 'App.css';
 
@@ -116,7 +117,7 @@ export default function App() {
         setCart([]);
         setSending(false);
       });
-    }, 3000);
+    }, GLOBAL.sending);
   }
 
   return (

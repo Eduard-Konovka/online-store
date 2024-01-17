@@ -11,6 +11,7 @@ import {
   OptionList,
   BookList,
 } from 'components';
+import { GLOBAL } from 'constants';
 import { ReactComponent as SearchIcon } from './search.svg';
 import imageBlank from 'images/shop.jpg';
 import s from './BooksView.module.css';
@@ -102,20 +103,30 @@ export default function BooksView({ booksByTag, setBooks }) {
         setBooksByPrice(books);
         break;
 
-      case '0>':
+      case `${GLOBAL.pricesBreakPoint.min}>`:
         setBooksByPrice(
-          books.filter(book => book.price > 0 && book.price <= 15),
+          books.filter(
+            book =>
+              book.price > GLOBAL.pricesBreakPoint.min &&
+              book.price <= GLOBAL.pricesBreakPoint.first,
+          ),
         );
         break;
 
-      case '15>':
+      case `${GLOBAL.pricesBreakPoint.first}>`:
         setBooksByPrice(
-          books.filter(book => book.price > 15 && book.price <= 30),
+          books.filter(
+            book =>
+              book.price > GLOBAL.pricesBreakPoint.first &&
+              book.price <= GLOBAL.pricesBreakPoint.second,
+          ),
         );
         break;
 
-      case '30>':
-        setBooksByPrice(books.filter(book => book.price > 30));
+      case `${GLOBAL.pricesBreakPoint.second}>`:
+        setBooksByPrice(
+          books.filter(book => book.price > GLOBAL.pricesBreakPoint.second),
+        );
         break;
 
       default:

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { GLOBAL } from 'constants';
 
 export default function OptionList({ books }) {
   const arr = books.map(book => book.price).sort((a, b) => a - b);
@@ -7,9 +8,15 @@ export default function OptionList({ books }) {
   return (
     <>
       <option value={'allPrices'}>{'All'}</option>
-      <option value={'0>'}>{'Cost < 15'}</option>
-      <option value={'15>'}>{'15 < cost < 30'}</option>
-      <option value={'30>'}>{'Cost > 30'}</option>
+      <option
+        value={`${GLOBAL.pricesBreakPoint.min}>`}
+      >{`Cost < ${GLOBAL.pricesBreakPoint.first}`}</option>
+      <option
+        value={`${GLOBAL.pricesBreakPoint.first}>`}
+      >{`${GLOBAL.pricesBreakPoint.first} < cost < ${GLOBAL.pricesBreakPoint.second}`}</option>
+      <option
+        value={`${GLOBAL.pricesBreakPoint.second}>`}
+      >{`Cost > ${GLOBAL.pricesBreakPoint.second}`}</option>
       {uniqArr.map(price => (
         <option value={price} key={price}>
           {price}

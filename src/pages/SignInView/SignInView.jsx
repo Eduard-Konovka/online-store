@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useMainHeight } from 'context';
 import { SignInButton } from 'components';
+import { GLOBAL } from 'constants';
 import avatar from './avatar.png';
 import s from './SignInView.module.css';
-
-const MIN_LENGTH = 4;
-const MAX_LENGTH = 16;
 
 export default function SignInView({ setUser }) {
   const mainHeight = useMainHeight();
@@ -30,8 +28,8 @@ export default function SignInView({ setUser }) {
             title="The length of the name must not be less than 4 and more than 16 characters. The name can only consist of letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan, etc."
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             placeholder="Enter your name..."
-            minLength={MIN_LENGTH}
-            maxLength={MAX_LENGTH}
+            minLength={GLOBAL.SignInViewInput.minLength}
+            maxLength={GLOBAL.SignInViewInput.maxLength}
             className={s.input}
             onChange={e => setName(e.target.value)}
           />
@@ -39,10 +37,14 @@ export default function SignInView({ setUser }) {
           <SignInButton
             title="Sign in to your account"
             type="button"
-            disabled={name.length < MIN_LENGTH || name.length > MAX_LENGTH}
+            disabled={
+              name.length < GLOBAL.SignInViewInput.minLength ||
+              name.length > GLOBAL.SignInViewInput.maxLength
+            }
             onClick={() => setUser({ name })}
           >
-            {name.length >= MIN_LENGTH && name.length <= MAX_LENGTH ? (
+            {name.length >= GLOBAL.SignInViewInput.minLength &&
+            name.length <= GLOBAL.SignInViewInput.maxLength ? (
               <Link to="/books" className={s.btnLink}>
                 Sign in
               </Link>

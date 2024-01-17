@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
+import { GLOBAL } from 'constants';
 import defaultImage from 'images/notFound.png';
 import s from './Book.module.css';
-
-const TITLE_LENGTH = 25;
 
 export default function Book({ book }) {
   return (
@@ -17,9 +16,9 @@ export default function Book({ book }) {
 
       <div className={s.thumb}>
         <h3 className={s.title}>
-          {book.title.length < TITLE_LENGTH
+          {book.title.length < GLOBAL.titleLength
             ? book.title
-            : book.title.slice(0, TITLE_LENGTH) + '...'}
+            : book.title.slice(0, GLOBAL.titleLength) + '...'}
         </h3>
 
         <p className={s.shortDescription}>{book.shortDescription}</p>

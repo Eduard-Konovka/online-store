@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-
-const CHARACTER_CODES = [
-  44, // ,
-  46, // .
-  101, // e (scientific notaion, 1e2 === 100)
-];
+import { GLOBAL } from 'constants';
+import { getSelectedNumber } from 'index';
 
 export default function CountForm({
   value,
@@ -23,7 +19,18 @@ export default function CountForm({
   }, [value, price]);
 
   function handleKeyPress(event) {
-    if (CHARACTER_CODES.includes(event.charCode)) {
+    console.log(
+      Number(event.target.value - getSelectedNumber()) + Number(event.key),
+    );
+
+    if (
+      Number(event.target.value - getSelectedNumber()) + Number(event.key) >
+        42 ||
+      GLOBAL.prohibitedKeyСodes.includes(event.charCode) ||
+      (event.charCode === 48 &&
+        (value === null ||
+          Number(event.target.value) === Number(getSelectedNumber())))
+    ) {
       event.preventDefault();
     }
   }
@@ -55,11 +62,10 @@ export default function CountForm({
           name="count"
           id="count"
           type="number"
-          value={value}
           min={min}
           max={max}
           className={styles.inputStyle}
-          onKeyPress={handleKeyPress}
+          // onKeyPress={handleKeyPress}
           onChange={handleChange}
         />
       </form>
@@ -73,7 +79,7 @@ export default function CountForm({
 }
 
 CountForm.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   price: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
