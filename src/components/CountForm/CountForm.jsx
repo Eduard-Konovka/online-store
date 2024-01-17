@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 const CHARACTER_CODES = [
   44, // ,
   46, // .
+  101, // e (scientific notaion, 1e2 === 100)
 ];
 
 export default function CountForm({
@@ -30,7 +31,11 @@ export default function CountForm({
   function handleChange(event) {
     const inputValue = Number(event.target.value);
 
-    if (inputValue >= min && inputValue <= max) {
+    if (
+      inputValue >= min &&
+      inputValue <= max &&
+      Number.isInteger(inputValue)
+    ) {
       setCount(inputValue);
     } else {
       toast.error(
