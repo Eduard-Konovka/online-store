@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { GLOBAL } from 'constants';
-import { getSelectedNumber } from 'index';
 
 export default function CountForm({
   value,
@@ -13,23 +12,49 @@ export default function CountForm({
   setCount,
 }) {
   const [totalPrice, setTotalPrice] = useState(price);
+  const [offsetX, setOffsetX] = useState(15);
 
   useEffect(() => {
     setTotalPrice((Number(price) * Number(value)).toFixed(2));
   }, [value, price]);
 
+  function handlePointerDown(event) {
+    setOffsetX(event.nativeEvent.offsetX);
+  }
+
   function handleKeyPress(event) {
-    console.log(
-      Number(event.target.value - getSelectedNumber()) + Number(event.key),
-    );
+    const inputValue = event.target.value;
+    const selectedNumber = window.getSelection().toString();
+    const key = event.key;
+
+    // console.log(
+    //   'inputValue: ',
+    //   inputValue,
+    //   'selectedNumber: ',
+    //   selectedNumber,
+    //   'selectedNumber.length: ',
+    //   selectedNumber.length,
+    //   'key: ',
+    //   key,
+    //   'sum: ',
+    //   Number(inputValue + key),
+    // );
 
     if (
-      Number(event.target.value - getSelectedNumber()) + Number(event.key) >
-        42 ||
-      GLOBAL.prohibitedKeyСodes.includes(event.charCode) ||
+      (selectedNumber.length === 1 &&
+        offsetX >= 15 &&
+        ((selectedNumber === inputValue[0] &&
+          Number(key + inputValue[1]) > max) ||
+          (selectedNumber === inputValue[1] &&
+            Number(inputValue[0] + key) > max))) ||
+      (selectedNumber.length !== 1 &&
+        inputValue.length === 1 &&
+        Number(inputValue + key) > max) ||
       (event.charCode === 48 &&
-        (value === null ||
-          Number(event.target.value) === Number(getSelectedNumber())))
+        (Number(inputValue) === Number(selectedNumber) ||
+          inputValue[0] === selectedNumber ||
+          inputValue === null)) ||
+      GLOBAL.prohibitedKeyСodes.includes(event.charCode)
     ) {
       event.preventDefault();
     }
@@ -65,8 +90,9 @@ export default function CountForm({
           min={min}
           max={max}
           className={styles.inputStyle}
-          // onKeyPress={handleKeyPress}
+          onKeyPress={handleKeyPress}
           onChange={handleChange}
+          onPointerDown={handlePointerDown}
         />
       </form>
 

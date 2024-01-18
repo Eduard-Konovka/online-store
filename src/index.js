@@ -7,10 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-export function getSelectedNumber() {
-  return window.getSelection().toString();
-}
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

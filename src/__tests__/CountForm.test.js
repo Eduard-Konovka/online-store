@@ -1,11 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CountForm } from 'components';
+import { GLOBAL } from 'constants';
 
 const COUNT = 3;
 const PRICE = 7.77;
-const MIN = 1;
-const MAX = 42;
 const STYLES = {
   formStyle: 'count-form-style',
   labelStyle: 'label-style',
@@ -20,8 +19,8 @@ const mockComponent = (
   <CountForm
     value={COUNT}
     price={PRICE}
-    min={MIN}
-    max={MAX}
+    min={GLOBAL.bookCount.min}
+    max={GLOBAL.bookCount.max}
     styles={STYLES}
     setCount={SET_COUNT}
   />
