@@ -12,49 +12,15 @@ export default function CountForm({
   setCount,
 }) {
   const [totalPrice, setTotalPrice] = useState(price);
-  const [offsetX, setOffsetX] = useState(15);
 
   useEffect(() => {
     setTotalPrice((Number(price) * Number(value)).toFixed(2));
   }, [value, price]);
 
-  function handlePointerDown(event) {
-    setOffsetX(event.nativeEvent.offsetX);
-  }
-
   function handleKeyPress(event) {
-    const inputValue = event.target.value;
-    const selectedNumber = window.getSelection().toString();
-    const key = event.key;
-
-    // console.log(
-    //   'inputValue: ',
-    //   inputValue,
-    //   'selectedNumber: ',
-    //   selectedNumber,
-    //   'selectedNumber.length: ',
-    //   selectedNumber.length,
-    //   'key: ',
-    //   key,
-    //   'sum: ',
-    //   Number(inputValue + key),
-    // );
-
     if (
-      (selectedNumber.length === 1 &&
-        offsetX >= 15 &&
-        ((selectedNumber === inputValue[0] &&
-          Number(key + inputValue[1]) > max) ||
-          (selectedNumber === inputValue[1] &&
-            Number(inputValue[0] + key) > max))) ||
-      (selectedNumber.length !== 1 &&
-        inputValue.length === 1 &&
-        Number(inputValue + key) > max) ||
-      (event.charCode === 48 &&
-        (Number(inputValue) === Number(selectedNumber) ||
-          inputValue[0] === selectedNumber ||
-          inputValue === null)) ||
-      GLOBAL.prohibitedKeyСodes.includes(event.charCode)
+      GLOBAL.prohibitedKeyСodes.includes(event.charCode) ||
+      (event.charCode === 48 && !event.target.value)
     ) {
       event.preventDefault();
     }
@@ -89,10 +55,10 @@ export default function CountForm({
           type="number"
           min={min}
           max={max}
+          value={value}
           className={styles.inputStyle}
           onKeyPress={handleKeyPress}
           onChange={handleChange}
-          onPointerDown={handlePointerDown}
         />
       </form>
 
