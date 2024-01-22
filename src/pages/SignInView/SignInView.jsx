@@ -12,6 +12,11 @@ export default function SignInView({ setUser }) {
 
   const [name, setName] = useState('');
 
+  const handleChange = event => {
+    const value = event.target.value.trim();
+    setName(value);
+  };
+
   return (
     <main className={s.page} style={{ minHeight: mainHeight }}>
       <section className={s.thumb}>
@@ -31,7 +36,7 @@ export default function SignInView({ setUser }) {
             minLength={GLOBAL.SignInViewInput.minLength}
             maxLength={GLOBAL.SignInViewInput.maxLength}
             className={s.input}
-            onChange={e => setName(e.target.value)}
+            onChange={handleChange}
           />
 
           <SignInButton
