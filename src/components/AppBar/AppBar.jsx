@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useUser } from 'context';
 import { Button } from 'components';
-import defaultAvatar from './defaultAvatar.png';
+import defaultAvatar from 'assets/defaultAvatar.png';
 import s from './Appbar.module.css';
 
 export default function Appbar({ setBooksByTag, onSignOut }) {

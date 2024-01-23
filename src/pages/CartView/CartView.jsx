@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useCart, useMainHeight } from 'context';
 import { CartBar, Blank, Processing } from 'components';
-import imageBlank from 'images/cartEmpty.png';
+import imageBlank from 'assets/cartEmpty.png';
 import s from './CartView.module.css';
 
 export default function CartView({

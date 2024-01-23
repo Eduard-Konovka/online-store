@@ -15,27 +15,6 @@ export const GLOBAL = {
     max: 42,
   },
 
-  tagTamplates: [
-    'development',
-    'applications',
-    'design',
-    'web',
-    'websocket',
-    'workers',
-    'ajax',
-    'securing',
-    'html',
-    'css',
-    'javascript',
-    'react',
-    'angular',
-    'git',
-    'mongodb',
-    'svg',
-    'animations',
-    'node',
-  ],
-
   pricesBreakPoint: {
     min: 0,
     first: 15,

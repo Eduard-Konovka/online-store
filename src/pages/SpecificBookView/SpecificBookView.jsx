@@ -5,7 +5,7 @@ import { useBooks, useCart, useMainHeight } from 'context';
 import { fetchBook } from 'api';
 import { Spinner, Button, Tags, Links, CountForm } from 'components';
 import { GLOBAL } from 'constants';
-import imageNotFound from 'images/notFound.png';
+import imageNotFound from 'assets/notFound.png';
 import s from './SpecificBookView.module.css';
 
 export default function SpecificBookView({

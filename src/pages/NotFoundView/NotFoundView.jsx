@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useMainHeight } from 'context';
-import sound from './glassBreak.mp3';
+import sound from 'assets/glassBreak.mp3';
 import s from './NotFoundView.module.css';
 
 export default function NotFoundView({ message }) {

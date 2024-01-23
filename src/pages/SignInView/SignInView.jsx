@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useMainHeight } from 'context';
 import { SignInButton } from 'components';
 import { GLOBAL } from 'constants';
-import avatar from './avatar.png';
+import avatar from 'assets/avatar.png';
 import s from './SignInView.module.css';
 
 export default function SignInView({ setUser }) {

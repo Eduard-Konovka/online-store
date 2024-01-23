@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import LINK_TAMPLATES from './linkTemplates';
+import { TAMPLATES } from 'constants';
 import s from './Links.module.css';
 
 export default function Links({ title, styles }) {
@@ -20,9 +20,9 @@ export default function Links({ title, styles }) {
     const links = [];
 
     for (let i = 0; i < pureArr.length; i++) {
-      for (let j = 0; j < LINK_TAMPLATES.length; j++) {
-        if (pureArr[i] === LINK_TAMPLATES[j] && !links.includes(pureArr[i])) {
-          links.push(LINK_TAMPLATES[j]);
+      for (let j = 0; j < TAMPLATES.links.length; j++) {
+        if (pureArr[i] === TAMPLATES.links[j] && !links.includes(pureArr[i])) {
+          links.push(TAMPLATES.links[j]);
         }
       }
     }

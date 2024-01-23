@@ -12,8 +12,8 @@ import {
   BookList,
 } from 'components';
 import { GLOBAL } from 'constants';
-import { ReactComponent as SearchIcon } from './search.svg';
-import imageBlank from 'images/shop.jpg';
+import { ReactComponent as SearchIcon } from 'assets/search.svg';
+import imageBlank from 'assets/shop.jpg';
 import s from './BooksView.module.css';
 
 export default function BooksView({ booksByTag, setBooks }) {
