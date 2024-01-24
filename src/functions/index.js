@@ -1,1 +1,1 @@
-export { helpers } from './helpers';
+export { getTags } from './helpers';

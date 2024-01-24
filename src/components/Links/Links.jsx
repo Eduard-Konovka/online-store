@@ -1,34 +1,11 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { getTags } from 'functions';
 import { TAMPLATES } from 'constants';
 import s from './Links.module.css';
 
 export default function Links({ title, styles }) {
-  const links = getLinks();
-
-  function getLinks() {
-    const arr = title.split(' ');
-
-    const pureArr = arr.map(word =>
-      word
-        .split('')
-        .filter(el => el !== ':')
-        .filter(el => el !== ',')
-        .join(''),
-    );
-
-    const links = [];
-
-    for (let i = 0; i < pureArr.length; i++) {
-      for (let j = 0; j < TAMPLATES.links.length; j++) {
-        if (pureArr[i] === TAMPLATES.links[j] && !links.includes(pureArr[i])) {
-          links.push(TAMPLATES.links[j]);
-        }
-      }
-    }
-
-    return links;
-  }
+  const links = getTags(title, TAMPLATES.links);
 
   return links.map(link => (
     <a

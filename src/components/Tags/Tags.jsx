@@ -2,38 +2,13 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useBooks } from 'context';
+import { getTags } from 'functions';
 import { TAMPLATES } from 'constants';
 import s from './Tags.module.css';
 
 export default function Tags({ title, styles, setBooksByTag }) {
   const books = useBooks();
-
-  const tags = getTags();
-
-  function getTags() {
-    const arr = title.split(' ');
-
-    const pureArr = arr.map(word =>
-      word
-        .split('')
-        .filter(el => el !== ':')
-        .filter(el => el !== ',')
-        .join('')
-        .toLowerCase(),
-    );
-
-    const tags = [];
-
-    for (let i = 0; i < pureArr.length; i++) {
-      for (let j = 0; j < TAMPLATES.tags.length; j++) {
-        if (pureArr[i] === TAMPLATES.tags[j] && !tags.includes(pureArr[i])) {
-          tags.push(TAMPLATES.tags[j]);
-        }
-      }
-    }
-
-    return tags;
-  }
+  const tags = getTags(title.toLowerCase(), TAMPLATES.tags);
 
   function handleTagClick(tag) {
     const booksTitlesToLowerCase = books.map(book => ({
