@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useMainHeight } from 'context';
-import { SignInButton } from 'components';
+import { Button } from 'components';
 import { GLOBAL } from 'constants';
 import avatar from 'assets/avatar.png';
 import s from './SignInView.module.css';
@@ -39,9 +39,10 @@ export default function SignInView({ setUser }) {
             onChange={handleChange}
           />
 
-          <SignInButton
+          <Button
             title="Sign in to your account"
             type="button"
+            typeForm="signin"
             disabled={
               name.length < GLOBAL.SignInViewInput.minLength ||
               name.length > GLOBAL.SignInViewInput.maxLength
@@ -56,7 +57,7 @@ export default function SignInView({ setUser }) {
             ) : (
               <p className={s.btnLink}>Sign in</p>
             )}
-          </SignInButton>
+          </Button>
         </form>
       </section>
     </main>

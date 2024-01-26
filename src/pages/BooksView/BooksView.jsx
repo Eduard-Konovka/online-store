@@ -3,14 +3,7 @@ import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { useBooks, useMainHeight } from 'context';
 import { fetchBooks } from 'api';
-import {
-  Spinner,
-  Blank,
-  IconButton,
-  Button,
-  OptionList,
-  BookList,
-} from 'components';
+import { Spinner, Blank, Button, OptionList, BookList } from 'components';
 import { GLOBAL } from 'constants';
 import { ReactComponent as SearchIcon } from 'assets/search.svg';
 import imageBlank from 'assets/shop.jpg';
@@ -213,15 +206,16 @@ export default function BooksView({ booksByTag, setBooks }) {
                   onChange={e => setSearchByName(e.target.value)}
                 />
 
-                <IconButton
-                  type="button"
+                <Button
                   title="Search by book name"
+                  type="button"
+                  typeForm="icon"
                   aria-label="Search by book name"
                   styles={s.iconButton}
                   onClick={handleNameClick}
                 >
                   <SearchIcon />
-                </IconButton>
+                </Button>
               </div>
 
               <select className={s.inputByPrice} onChange={handlePriceChange}>
