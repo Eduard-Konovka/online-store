@@ -73,7 +73,7 @@
       Вам потрібно змінити значення при потребі (one source of true).
 - [ ] В атрибуті “to” зі значенням “id” передається із зайвим символом “:”,
       двокрапки.  
-       <Link to={`/books/:${book._id}`} className={s.btnLink}>
+       `` <Link to={`/books/:${book._id}`} className={s.btnLink}>  ``
 - [ ] Тест “1. Render CountForm component” лише рендерить компонент, але нічого
       не перевіряє.
 - [ ] В тестах краще використовувати userEvent замість fireEvent.
