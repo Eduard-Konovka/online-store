@@ -11,6 +11,6 @@ export default function Spinner({ size = 50, color = 'black' }) {
 }
 
 Spinner.propTypes = {
-  size: PropTypes.number.isRequired,
+  size: PropTypes.number,
   color: PropTypes.oneOf(['black', 'white', 'blue', 'green']),
 };

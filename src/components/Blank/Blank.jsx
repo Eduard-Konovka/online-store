@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Blank.module.css';
 
 export default function Blank({ title, image, alt }) {
@@ -8,3 +9,9 @@ export default function Blank({ title, image, alt }) {
     </div>
   );
 }
+
+Blank.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
+  alt: PropTypes.string.isRequired,
+};

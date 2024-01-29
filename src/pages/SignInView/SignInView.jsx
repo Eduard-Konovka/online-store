@@ -64,10 +64,6 @@ export default function SignInView({ setUser }) {
   );
 }
 
-SignInView.defaultProps = {
-  setUser: () => null,
-};
-
 SignInView.propTypes = {
   setUser: PropTypes.func.isRequired,
 };
