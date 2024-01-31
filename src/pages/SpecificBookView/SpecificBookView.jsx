@@ -27,7 +27,7 @@ export default function SpecificBookView({
   const selectedBook = cart.filter(book => book._id === bookId)[0];
   const savedBook = books.filter(book => book._id === bookId)[0];
 
-  const [count, setCount] = useState(selectedBook ? selectedBook.count : null);
+  const [count, setCount] = useState(selectedBook ? selectedBook.count : 0);
 
   useEffect(() => {
     if (books.length > 0) {

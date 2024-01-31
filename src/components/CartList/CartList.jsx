@@ -22,8 +22,8 @@ CartList.propTypes = {
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
-    }),
-  ),
+    }).isRequired,
+  ).isRequired,
   changeSelectCount: PropTypes.func.isRequired,
   onDeleteBook: PropTypes.func.isRequired,
 };

@@ -19,5 +19,5 @@ BookList.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
     }),
-  ),
+  ).isRequired,
 };

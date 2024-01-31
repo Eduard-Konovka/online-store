@@ -55,7 +55,7 @@ export default function CountForm({
           type="number"
           min={min}
           max={max}
-          value={value}
+          value={value > 0 ? value : ''}
           className={styles.inputStyle}
           onKeyPress={handleKeyPress}
           onChange={handleChange}
@@ -71,7 +71,7 @@ export default function CountForm({
 }
 
 CountForm.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.number.isRequired,
   price: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
@@ -79,8 +79,9 @@ CountForm.propTypes = {
     formStyle: PropTypes.string,
     labelStyle: PropTypes.string,
     inputStyle: PropTypes.string,
+    totalPriceStyle: PropTypes.string,
     totalPriceTitleStyle: PropTypes.string,
     totalPriceValueStyle: PropTypes.string,
-  }),
+  }).isRequired,
   setCount: PropTypes.func.isRequired,
 };

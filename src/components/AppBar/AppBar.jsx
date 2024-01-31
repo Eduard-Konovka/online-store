@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useUser } from 'context';
 import { Button } from 'components';
 import defaultAvatar from 'assets/defaultAvatar.png';
-import s from './Appbar.module.css';
+import s from './AppBar.module.css';
 
-export default function Appbar({ setBooksByTag, onSignOut }) {
+export default function AppBar({ setBooksByTag, onSignOut }) {
   const user = useUser();
 
   return (
@@ -75,7 +75,7 @@ export default function Appbar({ setBooksByTag, onSignOut }) {
   );
 }
 
-Appbar.propTypes = {
+AppBar.propTypes = {
   setBooksByTag: PropTypes.func.isRequired,
   onSignOut: PropTypes.func.isRequired,
 };

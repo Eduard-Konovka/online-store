@@ -55,5 +55,5 @@ Book.propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     shortDescription: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };

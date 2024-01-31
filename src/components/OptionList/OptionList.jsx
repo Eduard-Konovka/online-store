@@ -30,6 +30,6 @@ OptionList.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
   ),
 };
