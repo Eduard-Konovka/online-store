@@ -53,6 +53,16 @@ export default function BooksView({ booksByTag, setBooks }) {
     setOptionList(true);
   }, [optionList]);
 
+  function handleKeyPress(event) {
+    if (event.charCode === GLOBAL.keyСodes.enter) {
+      event.preventDefault();
+    }
+  }
+
+  function handleChange(event) {
+    setSearchByName(event.target.value);
+  }
+
   function handleNameClick() {
     const visibleBooksToLowerCase = books.map(book => ({
       ...book,
@@ -203,7 +213,8 @@ export default function BooksView({ booksByTag, setBooks }) {
                   placeholder="Search by book name"
                   value={searchByName}
                   className={s.inputByName}
-                  onChange={e => setSearchByName(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  onChange={handleChange}
                 />
 
                 <Button

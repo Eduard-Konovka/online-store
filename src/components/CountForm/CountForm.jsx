@@ -19,8 +19,8 @@ export default function CountForm({
 
   function handleKeyPress(event) {
     if (
-      GLOBAL.prohibitedKeyСodes.includes(event.charCode) ||
-      (event.charCode === 48 && !event.target.value)
+      GLOBAL.keyСodes.prohibited.includes(event.charCode) ||
+      (event.charCode === GLOBAL.keyСodes.zero && !event.target.value)
     ) {
       event.preventDefault();
     }

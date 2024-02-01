@@ -33,8 +33,8 @@ export default function SignInView({ setUser }) {
             title="The length of the name must not be less than 4 and more than 16 characters. The name can only consist of letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan, etc."
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             placeholder="Enter your name..."
-            minLength={GLOBAL.SignInViewInput.minLength}
-            maxLength={GLOBAL.SignInViewInput.maxLength}
+            minLength={GLOBAL.signInViewInput.minLength}
+            maxLength={GLOBAL.signInViewInput.maxLength}
             className={s.input}
             onChange={handleChange}
           />
@@ -44,13 +44,13 @@ export default function SignInView({ setUser }) {
             type="button"
             typeForm="signin"
             disabled={
-              name.length < GLOBAL.SignInViewInput.minLength ||
-              name.length > GLOBAL.SignInViewInput.maxLength
+              name.length < GLOBAL.signInViewInput.minLength ||
+              name.length > GLOBAL.signInViewInput.maxLength
             }
             onClick={() => setUser({ name })}
           >
-            {name.length >= GLOBAL.SignInViewInput.minLength &&
-            name.length <= GLOBAL.SignInViewInput.maxLength ? (
+            {name.length >= GLOBAL.signInViewInput.minLength &&
+            name.length <= GLOBAL.signInViewInput.maxLength ? (
               <Link to="/books" className={s.btnLink}>
                 Sign in
               </Link>
