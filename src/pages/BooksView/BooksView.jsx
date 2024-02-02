@@ -92,7 +92,9 @@ export default function BooksView({ booksByTag, setBooks }) {
 
     const targetBooks = books.filter(book => bookIds.includes(book._id));
 
-    if (targetBooks.length > 0) {
+    if (!searchByName) {
+      setBooksByName(books);
+    } else if (targetBooks.length > 0) {
       setBooksByName(targetBooks);
     } else {
       toast.error('Please enter the correct book title!');
