@@ -74,7 +74,7 @@
 - [x] В атрибуті “to” зі значенням “id” передається із зайвим символом “:”,
       двокрапки.  
        `` <Link to={`/books/:${book._id}`} className={s.btnLink}>  ``
-- [ ] Тест “1. Render CountForm component” лише рендерить компонент, але нічого
+- [x] Тест “1. Render CountForm component” лише рендерить компонент, але нічого
       не перевіряє.
 - [ ] В тестах краще використовувати userEvent замість fireEvent.
 
