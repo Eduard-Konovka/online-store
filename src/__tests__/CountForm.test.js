@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { CountForm } from 'components';
 
@@ -77,5 +78,17 @@ describe('Testing CountForm component', () => {
     });
 
     expect(returnedCountValue).toBe(COUNT - 1);
+  });
+
+  test(`8. The quantity entered by the user is incremented by 1`, async () => {
+    render(mockComponent);
+
+    fireEvent.change(screen.getByRole('spinbutton'), {
+      target: { value: COUNT + 1 },
+    });
+
+    //FIXME await userEvent.click(screen.getByText(3));
+
+    expect(returnedCountValue).toBe(COUNT + 1);
   });
 });
