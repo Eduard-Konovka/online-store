@@ -63,7 +63,9 @@ describe('Testing CountForm component', () => {
   test(`6. Count input with value incremented by 1`, async () => {
     render(mockComponent);
 
-    fireEvent.change(screen.getByRole('spinbutton'), {
+    const input = screen.getByRole('spinbutton');
+
+    fireEvent.change(input, {
       target: { value: COUNT + 1 },
     });
 
@@ -73,7 +75,9 @@ describe('Testing CountForm component', () => {
   test(`7. Count input with value reduced by 1`, async () => {
     render(mockComponent);
 
-    fireEvent.change(screen.getByRole('spinbutton'), {
+    const input = screen.getByRole('spinbutton');
+
+    fireEvent.change(input, {
       target: { value: COUNT - 1 },
     });
 
@@ -83,12 +87,20 @@ describe('Testing CountForm component', () => {
   test(`8. The quantity entered by the user is incremented by 1`, async () => {
     render(mockComponent);
 
-    fireEvent.change(screen.getByRole('spinbutton'), {
-      target: { value: COUNT + 1 },
-    });
+    const input = screen.getByRole('spinbutton');
 
-    //FIXME await userEvent.click(screen.getByText(3));
+    await userEvent.click(input);
 
     expect(returnedCountValue).toBe(COUNT + 1);
+  });
+
+  test(`9. The quantity entered by the user is reduced by 1`, async () => {
+    render(mockComponent);
+
+    const input = screen.getByRole('spinbutton');
+
+    await userEvent.click(input);
+
+    expect(returnedCountValue).toBe(COUNT - 1);
   });
 });
