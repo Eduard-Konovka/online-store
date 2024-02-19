@@ -85,22 +85,38 @@ describe('Testing CountForm component', () => {
   });
 
   test(`8. The quantity entered by the user is incremented by 1`, async () => {
+    const user = userEvent.setup();
+
     render(mockComponent);
 
-    const input = screen.getByRole('spinbutton');
+    const input = screen.getByLabelText('Count, units:');
 
-    await userEvent.click(input);
+    await user.type(input, COUNT - 1);
 
-    expect(returnedCountValue).toBe(COUNT + 1);
+    expect(returnedCountValue).toBe(COUNT - 1);
   });
 
   test(`9. The quantity entered by the user is reduced by 1`, async () => {
+    const user = userEvent.setup();
+
     render(mockComponent);
 
     const input = screen.getByRole('spinbutton');
 
-    await userEvent.click(input);
+    await user.type(input, (COUNT - 1).toString());
 
     expect(returnedCountValue).toBe(COUNT - 1);
+  });
+
+  test(`10. One digit is added to the amount entered by the user`, async () => {
+    const user = userEvent.setup();
+
+    render(mockComponent);
+
+    const input = screen.getByLabelText('Count, units:');
+
+    await user.type(input, '1');
+
+    expect(returnedCountValue).toBe(Number(COUNT.toString() + '1'));
   });
 });
