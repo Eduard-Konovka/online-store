@@ -15,7 +15,6 @@ const STYLES = {
   totalPriceStyle: 'total-price-style',
 };
 let returnedCountValue;
-const SET_COUNT = count => (returnedCountValue = count);
 
 const mockComponent = (
   <CountForm
@@ -24,7 +23,7 @@ const mockComponent = (
     min={MIN}
     max={MAX}
     styles={STYLES}
-    setCount={SET_COUNT}
+    setCount={count => (returnedCountValue = count)}
   />
 );
 
@@ -89,11 +88,13 @@ describe('Testing CountForm component', () => {
 
     render(mockComponent);
 
-    const input = screen.getByLabelText('Count, units:');
+    const input = screen.getByRole('spinbutton', {
+      name: /count, units:/i,
+    });
 
-    await user.type(input, COUNT - 1);
+    await user.type(input, (COUNT + 1).toString());
 
-    expect(returnedCountValue).toBe(COUNT - 1);
+    expect(returnedCountValue).toBe(COUNT + 1);
   });
 
   test(`9. The quantity entered by the user is reduced by 1`, async () => {
@@ -101,7 +102,7 @@ describe('Testing CountForm component', () => {
 
     render(mockComponent);
 
-    const input = screen.getByRole('spinbutton');
+    const input = screen.getByLabelText('Count, units:');
 
     await user.type(input, (COUNT - 1).toString());
 
