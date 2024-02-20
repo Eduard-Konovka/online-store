@@ -92,7 +92,10 @@ describe('Testing CountForm component', () => {
       name: /count, units:/i,
     });
 
-    await user.type(input, (COUNT + 1).toString());
+    await user.type(input, (COUNT + 1).toString(), {
+      initialSelectionStart: 0,
+      initialSelectionEnd: 1,
+    });
 
     expect(returnedCountValue).toBe(COUNT + 1);
   });
@@ -104,7 +107,10 @@ describe('Testing CountForm component', () => {
 
     const input = screen.getByLabelText('Count, units:');
 
-    await user.type(input, (COUNT - 1).toString());
+    await user.type(input, (COUNT - 1).toString(), {
+      initialSelectionStart: 0,
+      initialSelectionEnd: 1,
+    });
 
     expect(returnedCountValue).toBe(COUNT - 1);
   });
