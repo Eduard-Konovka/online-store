@@ -5,11 +5,13 @@ import { GLOBAL } from '../../constants';
 
 export default function TempCountForm({
   value,
+  text,
   price,
   min = 1,
   max = Infinity,
   styles,
   setCount,
+  setText,
 }) {
   const [totalPrice, setTotalPrice] = useState(price);
 
@@ -42,6 +44,10 @@ export default function TempCountForm({
     }
   }
 
+  function handleChangeText(event) {
+    setText(event.target.value);
+  }
+
   return (
     <>
       <form className={styles.formStyle}>
@@ -69,10 +75,9 @@ export default function TempCountForm({
           name="textCount"
           id="textCount"
           type="text"
-          value={value > 0 ? Number(value) : ''}
+          defaultValue={text}
           className={styles.inputStyle}
-          onKeyPress={handleKeyPress}
-          onChange={handleChange}
+          onChange={handleChangeText}
         />
       </form>
 
