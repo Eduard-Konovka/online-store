@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { CountForm } from 'components';
 
-const COUNT = 9;
+const COUNT = 3;
 const PRICE = 7.77;
 const MIN = 1;
 const MAX = 42;

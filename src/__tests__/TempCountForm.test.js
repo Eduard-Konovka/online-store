@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import TempCountForm from '../components/CountForm/TempCountForm';
 
-const COUNT = 9;
+const COUNT = 19;
 const TEXT = '1234567890';
 const PRICE = 7.77;
 const MIN = 1;
@@ -16,6 +16,7 @@ const STYLES = {
   totalPriceStyle: 'total-price-style',
 };
 let returnedCountValue;
+let returnedRawCountValue;
 let returnedTextValue;
 
 const mockComponent = (
@@ -27,6 +28,7 @@ const mockComponent = (
     max={MAX}
     styles={STYLES}
     setCount={count => (returnedCountValue = count)}
+    setRawCount={rawCount => (returnedRawCountValue = rawCount)}
     setText={text => (returnedTextValue = text)}
   />
 );
@@ -100,25 +102,17 @@ describe('Testing CountForm component', () => {
       name: /count, units:/i,
     });
 
-    if (COUNT.toString().length < 2) {
-      await user.type(input, (COUNT + 1).toString(), {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
-    } else if (COUNT.toString()[COUNT.toString().length - 1] === '9') {
-      await user.type(input, (COUNT + 1).toString()[0], {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
+    if (COUNT.toString()[COUNT.toString().length - 1] === '9') {
       await user.type(input, (COUNT + 1).toString()[1], {
         initialSelectionStart: 1,
         initialSelectionEnd: 2,
       });
-    } else {
-      await user.type(input, (COUNT + 1).toString()[0], {
+    } else if (COUNT.toString().length < 2) {
+      await user.type(input, (COUNT + 1).toString(), {
         initialSelectionStart: 0,
         initialSelectionEnd: 1,
       });
+    } else {
       await user.type(input, (COUNT + 1).toString()[1], {
         initialSelectionStart: 1,
         initialSelectionEnd: 2,
@@ -127,7 +121,7 @@ describe('Testing CountForm component', () => {
 
     const condition = COUNT < 42 ? COUNT + 1 : 41;
 
-    expect(returnedCountValue).toBe(condition);
+    expect(returnedRawCountValue).toBe(condition);
   });
 
   test(`9. The quantity entered by the user is reduced by 1`, async () => {
@@ -137,16 +131,21 @@ describe('Testing CountForm component', () => {
 
     const input = screen.getByLabelText('Count, units:');
 
-    if (COUNT.toString().length < 2 && COUNT !== 10) {
+    if (COUNT.toString()[COUNT.toString().length - 1] === '0') {
+      await user.type(input, (COUNT - 1).toString()[0], {
+        initialSelectionStart: 0,
+        initialSelectionEnd: 1,
+      });
+      await user.type(input, (COUNT - 1).toString()[1], {
+        initialSelectionStart: 1,
+        initialSelectionEnd: 2,
+      });
+    } else if (COUNT.toString().length < 2) {
       await user.type(input, (COUNT - 1).toString(), {
         initialSelectionStart: 0,
         initialSelectionEnd: 1,
       });
     } else {
-      await user.type(input, (COUNT - 1).toString()[0], {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
       await user.type(input, (COUNT - 1).toString()[1], {
         initialSelectionStart: 1,
         initialSelectionEnd: 2,

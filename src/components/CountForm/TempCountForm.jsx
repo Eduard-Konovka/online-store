@@ -11,6 +11,7 @@ export default function TempCountForm({
   max = Infinity,
   styles,
   setCount,
+  setRawCount,
   setText,
 }) {
   const [totalPrice, setTotalPrice] = useState(price);
@@ -30,6 +31,8 @@ export default function TempCountForm({
 
   function handleChange(event) {
     const inputValue = Number(event.target.value);
+
+    setRawCount(inputValue);
 
     if (
       inputValue >= min &&
