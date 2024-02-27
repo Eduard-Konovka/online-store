@@ -76,6 +76,6 @@
        `` <Link to={`/books/:${book._id}`} className={s.btnLink}>  ``
 - [x] Тест “1. Render CountForm component” лише рендерить компонент, але нічого
       не перевіряє.
-- [ ] В тестах краще використовувати userEvent замість fireEvent.
+- [x] В тестах краще використовувати userEvent замість fireEvent.
 
 ## Сумарний бал – 8.4 з 12

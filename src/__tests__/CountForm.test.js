@@ -87,7 +87,7 @@ describe('Testing CountForm component', () => {
     expect(returnedCountValue).toBe(condition);
   });
 
-  test(`8. The quantity entered by the user is incremented by 1`, async () => {
+  test(`8. The user increases the count by 1`, async () => {
     const user = userEvent.setup();
 
     render(mockComponent);
@@ -96,58 +96,29 @@ describe('Testing CountForm component', () => {
       name: /count, units:/i,
     });
 
-    if (COUNT.toString().length < 2) {
-      await user.type(input, (COUNT + 1).toString(), {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
-    } else if (COUNT.toString()[COUNT.toString().length - 1] === '9') {
-      await user.type(input, (COUNT + 1).toString()[0], {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
-      await user.type(input, (COUNT + 1).toString()[1], {
-        initialSelectionStart: 1,
-        initialSelectionEnd: 2,
-      });
-    } else {
-      await user.type(input, (COUNT + 1).toString()[0], {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
-      await user.type(input, (COUNT + 1).toString()[1], {
-        initialSelectionStart: 1,
-        initialSelectionEnd: 2,
-      });
-    }
+    await input.stepUp();
+    await user.type(input, (COUNT + 1).toString()[0], {
+      initialSelectionStart: 0,
+      initialSelectionEnd: 1,
+    });
 
-    const condition = COUNT < 42 ? COUNT + 1 : 41;
+    const condition = COUNT < 42 ? COUNT + 1 : 42;
 
     expect(returnedCountValue).toBe(condition);
   });
 
-  test(`9. The quantity entered by the user is reduced by 1`, async () => {
+  test(`9. The user reduces the count by 1`, async () => {
     const user = userEvent.setup();
 
     render(mockComponent);
 
     const input = screen.getByLabelText('Count, units:');
 
-    if (COUNT.toString().length < 2 && COUNT !== 10) {
-      await user.type(input, (COUNT - 1).toString(), {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
-    } else {
-      await user.type(input, (COUNT - 1).toString()[0], {
-        initialSelectionStart: 0,
-        initialSelectionEnd: 1,
-      });
-      await user.type(input, (COUNT - 1).toString()[1], {
-        initialSelectionStart: 1,
-        initialSelectionEnd: 2,
-      });
-    }
+    await input.stepDown();
+    await user.type(input, (COUNT - 1).toString()[0], {
+      initialSelectionStart: 0,
+      initialSelectionEnd: 1,
+    });
 
     const condition = COUNT > 1 ? COUNT - 1 : 2;
 
