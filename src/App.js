@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
 import { sendСart } from 'api';
+import { GlobalState } from 'state';
 import {
   UserProvider,
   BooksProvider,
@@ -121,107 +122,109 @@ export default function App() {
   }
 
   return (
-    <Container>
-      <UserProvider value={user}>
-        <AppBar
-          setBooksByTag={() => setBooksByTag([])}
-          onSignOut={() => setUser({})}
-        />
+    <GlobalState>
+      <Container>
+        <UserProvider value={user}>
+          <AppBar
+            setBooksByTag={() => setBooksByTag([])}
+            onSignOut={() => setUser({})}
+          />
 
-        <Suspense
-          fallback={
-            <Puff
-              height="200"
-              width="200"
-              radius={1}
-              color="#00BFFF"
-              ariaLabel="puff-loading"
-              wrapperStyle={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-              }}
-              wrapperClass=""
-              visible={true}
-            />
-          }
-        >
-          <MainHeightProvider value={mainHeight}>
-            <BooksProvider value={books}>
-              <CartProvider value={cart}>
-                <Routes>
-                  <Route path="/" element={<Navigate to="/signin" />} />
+          <Suspense
+            fallback={
+              <Puff
+                height="200"
+                width="200"
+                radius={1}
+                color="#00BFFF"
+                ariaLabel="puff-loading"
+                wrapperStyle={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                }}
+                wrapperClass=""
+                visible={true}
+              />
+            }
+          >
+            <MainHeightProvider value={mainHeight}>
+              <BooksProvider value={books}>
+                <CartProvider value={cart}>
+                  <Routes>
+                    <Route path="/" element={<Navigate to="/signin" />} />
 
-                  <Route
-                    path="/signin"
-                    element={
-                      <PublicRoute redirectTo="/books" restricted>
-                        <SignInView
-                          setBooksByName={setBooksByTag}
-                          setUser={setUser}
-                        />
-                      </PublicRoute>
-                    }
-                  />
+                    <Route
+                      path="/signin"
+                      element={
+                        <PublicRoute redirectTo="/books" restricted>
+                          <SignInView
+                            setBooksByName={setBooksByTag}
+                            setUser={setUser}
+                          />
+                        </PublicRoute>
+                      }
+                    />
 
-                  <Route
-                    path="/books"
-                    element={
-                      <PrivateRoute redirectTo="/signin">
-                        <BooksView
-                          booksByTag={booksByTag}
-                          setBooks={setBooks}
-                        />
-                      </PrivateRoute>
-                    }
-                  />
+                    <Route
+                      path="/books"
+                      element={
+                        <PrivateRoute redirectTo="/signin">
+                          <BooksView
+                            booksByTag={booksByTag}
+                            setBooks={setBooks}
+                          />
+                        </PrivateRoute>
+                      }
+                    />
 
-                  <Route
-                    path="/books/:id"
-                    element={
-                      <PrivateRoute redirectTo="/signin">
-                        <SpecificBookView
-                          setBooksByTag={setBooksByTag}
-                          changeSelectCount={changeCount}
-                          addToCart={addToCart}
-                        />
-                      </PrivateRoute>
-                    }
-                  />
+                    <Route
+                      path="/books/:id"
+                      element={
+                        <PrivateRoute redirectTo="/signin">
+                          <SpecificBookView
+                            setBooksByTag={setBooksByTag}
+                            changeSelectCount={changeCount}
+                            addToCart={addToCart}
+                          />
+                        </PrivateRoute>
+                      }
+                    />
 
-                  <Route
-                    path="/cart"
-                    element={
-                      <PrivateRoute redirectTo="/signin">
-                        <CartView
-                          sending={sending}
-                          changeSelectCount={changeCount}
-                          onDeleteBook={removeFromCart}
-                          onSubmit={submitCart}
-                        />
-                      </PrivateRoute>
-                    }
-                  />
+                    <Route
+                      path="/cart"
+                      element={
+                        <PrivateRoute redirectTo="/signin">
+                          <CartView
+                            sending={sending}
+                            changeSelectCount={changeCount}
+                            onDeleteBook={removeFromCart}
+                            onSubmit={submitCart}
+                          />
+                        </PrivateRoute>
+                      }
+                    />
 
-                  <Route
-                    path="*"
-                    element={
-                      <PrivateRoute redirectTo="/signin">
-                        <NotFoundView message="Check the correctness of the entered in the address bar" />
-                      </PrivateRoute>
-                    }
-                  />
-                </Routes>
-              </CartProvider>
-            </BooksProvider>
-          </MainHeightProvider>
+                    <Route
+                      path="*"
+                      element={
+                        <PrivateRoute redirectTo="/signin">
+                          <NotFoundView message="Check the correctness of the entered in the address bar" />
+                        </PrivateRoute>
+                      }
+                    />
+                  </Routes>
+                </CartProvider>
+              </BooksProvider>
+            </MainHeightProvider>
 
-          <Footer />
-        </Suspense>
+            <Footer />
+          </Suspense>
 
-        <ToastContainer />
-      </UserProvider>
-    </Container>
+          <ToastContainer />
+        </UserProvider>
+      </Container>
+    </GlobalState>
   );
 }

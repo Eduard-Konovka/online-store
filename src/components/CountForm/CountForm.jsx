@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { GLOBAL } from '../../constants';
+import { GLOBAL } from 'constants';
 
 export default function CountForm({
   value,
