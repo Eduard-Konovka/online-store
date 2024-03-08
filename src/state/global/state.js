@@ -1,13 +1,7 @@
 export const global = {
-  modalVisible: false,
-  isShowKeyboard: false,
-  isFirstDownload: false,
-  country: null,
+  mainHeight: null,
   language: null,
-  services: {
-    bluetooth: false,
-    location: false,
-    notifications: false,
-    contacts: false,
-  },
+  user: JSON.parse(localStorage.getItem('user')) || {},
+  books: [],
+  cart: JSON.parse(localStorage.getItem('cart')) || [],
 };
