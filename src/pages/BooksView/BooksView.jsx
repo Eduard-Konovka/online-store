@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
-import { useBooks, useMainHeight } from 'context';
+import { useGlobalState, useChangeGlobalState, updateBooks } from 'state';
 import { fetchBooks } from 'api';
 import { Spinner, Blank, Button, OptionList, BookList } from 'components';
 import { GLOBAL } from 'constants';
@@ -9,9 +9,9 @@ import { ReactComponent as SearchIcon } from 'assets/search.svg';
 import imageBlank from 'assets/shop.jpg';
 import s from './BooksView.module.css';
 
-export default function BooksView({ booksByTag, setBooks }) {
-  const books = useBooks();
-  const mainHeight = useMainHeight();
+export default function BooksView({ booksByTag }) {
+  const { mainHeight, books } = useGlobalState('global');
+  const changeGlobalState = useChangeGlobalState();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -28,7 +28,7 @@ export default function BooksView({ booksByTag, setBooks }) {
       fetchBooks()
         .then(books => {
           books.sort((firstBook, secondBook) => firstBook.id - secondBook.id);
-          setBooks(books);
+          changeGlobalState(updateBooks, books);
           setBooksByName(books);
           setBooksByPrice(books);
         })
@@ -278,5 +278,4 @@ export default function BooksView({ booksByTag, setBooks }) {
 
 BooksView.propTypes = {
   booksByTag: PropTypes.array.isRequired,
-  setBooks: PropTypes.func.isRequired,
 };

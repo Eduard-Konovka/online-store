@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useCart } from 'context';
+import { useGlobalState } from 'state';
 import { CartList, Button } from 'components';
 import s from './CartBar.module.css';
 
 export default function CartBar({ changeSelectCount, onDeleteBook, onSubmit }) {
-  const cart = useCart();
+  const { cart } = useGlobalState('global');
 
   const [totalCost, setTotalCost] = useState(0);
 

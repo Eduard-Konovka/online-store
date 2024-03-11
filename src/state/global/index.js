@@ -1,9 +1,8 @@
 export { global } from './state';
 export {
-  updateModalVisible,
-  updateShowKeyboard,
-  updateFirstDownloadStatus,
-  updateCountry,
   updateLanguage,
-  updateServices,
+  updateMainHeight,
+  updateUser,
+  updateBooks,
+  updateCart,
 } from './actions';

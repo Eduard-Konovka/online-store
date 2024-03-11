@@ -1,12 +1,13 @@
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useUser } from 'context';
+import { useGlobalState, useChangeGlobalState, updateUser } from 'state';
 import { Button } from 'components';
 import defaultAvatar from 'assets/defaultAvatar.png';
 import s from './AppBar.module.css';
 
-export default function AppBar({ setBooksByTag, onSignOut }) {
-  const user = useUser();
+export default function AppBar({ setBooksByTag }) {
+  const { user } = useGlobalState('global');
+  const changeGlobalState = useChangeGlobalState();
 
   return (
     <header className={s.header}>
@@ -52,7 +53,7 @@ export default function AppBar({ setBooksByTag, onSignOut }) {
             <Button
               title="Signing out of your account"
               type="button"
-              onClick={onSignOut}
+              onClick={() => changeGlobalState(updateUser, {})}
             >
               <Link to="/signin" className={s.btnLink}>
                 Sign out
@@ -77,5 +78,4 @@ export default function AppBar({ setBooksByTag, onSignOut }) {
 
 AppBar.propTypes = {
   setBooksByTag: PropTypes.func.isRequired,
-  onSignOut: PropTypes.func.isRequired,
 };

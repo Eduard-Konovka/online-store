@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useMainHeight } from 'context';
+import { useGlobalState } from 'state';
 import sound from 'assets/glassBreak.mp3';
 import s from './NotFoundView.module.css';
 
 export default function NotFoundView({ message }) {
-  const mainHeight = useMainHeight();
+  const { mainHeight } = useGlobalState('global');
 
   useEffect(() => {
     new Audio(sound).play();

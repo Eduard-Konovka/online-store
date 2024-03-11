@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useBooks, useCart, useMainHeight } from 'context';
+import { useGlobalState } from 'state';
 import { fetchBook } from 'api';
 import { Spinner, Button, Tags, Links, CountForm } from 'components';
 import { GLOBAL } from 'constants';
@@ -14,10 +14,7 @@ export default function SpecificBookView({
   addToCart,
 }) {
   const location = useLocation();
-
-  const books = useBooks();
-  const cart = useCart();
-  const mainHeight = useMainHeight();
+  const { mainHeight, books, cart } = useGlobalState('global');
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

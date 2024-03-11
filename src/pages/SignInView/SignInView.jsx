@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { useMainHeight } from 'context';
+import { useGlobalState, useChangeGlobalState, updateUser } from 'state';
 import { Button } from 'components';
 import { GLOBAL } from 'constants';
 import avatar from 'assets/avatar.png';
 import s from './SignInView.module.css';
 
-export default function SignInView({ setUser }) {
-  const mainHeight = useMainHeight();
+export default function SignInView() {
+  const { mainHeight } = useGlobalState('global');
+  const changeGlobalState = useChangeGlobalState();
 
   const [name, setName] = useState('');
 
@@ -47,7 +47,7 @@ export default function SignInView({ setUser }) {
               name.length < GLOBAL.signInViewInput.minLength ||
               name.length > GLOBAL.signInViewInput.maxLength
             }
-            onClick={() => setUser({ name })}
+            onClick={() => changeGlobalState(updateUser, { name })}
           >
             {name.length >= GLOBAL.signInViewInput.minLength &&
             name.length <= GLOBAL.signInViewInput.maxLength ? (
@@ -63,7 +63,3 @@ export default function SignInView({ setUser }) {
     </main>
   );
 }
-
-SignInView.propTypes = {
-  setUser: PropTypes.func.isRequired,
-};

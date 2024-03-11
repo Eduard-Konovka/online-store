@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { useBooks } from 'context';
+import { useGlobalState } from 'state';
 import { getTags } from 'functions';
 import { TAMPLATES } from 'constants';
 import s from './Tags.module.css';
 
 export default function Tags({ title, styles, setBooksByTag }) {
-  const books = useBooks();
+  const { books } = useGlobalState('global');
   const tags = getTags(title.toLowerCase(), TAMPLATES.tags);
 
   function handleTagClick(tag) {

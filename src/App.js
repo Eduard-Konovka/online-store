@@ -3,13 +3,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Puff } from 'react-loader-spinner';
 import { sendСart } from 'api';
-import { GlobalState } from 'state';
 import {
-  UserProvider,
-  BooksProvider,
-  CartProvider,
-  MainHeightProvider,
-} from 'context';
+  GlobalState,
+  useGlobalState,
+  useChangeGlobalState,
+  updateMainHeight,
+  updateCart,
+} from 'state';
 import {
   Container,
   AppBar,
@@ -37,25 +37,12 @@ const NotFoundView = lazy(() =>
   import('pages/NotFoundView' /* webpackChunkName: "NotFoundView" */),
 );
 
-export default function App() {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('user')) || {},
-  );
-  const [books, setBooks] = useState([]);
+function App() {
+  const { user, cart } = useGlobalState('global');
+  const changeGlobalState = useChangeGlobalState();
+
   const [booksByTag, setBooksByTag] = useState([]);
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem('cart')) || [],
-  );
   const [sending, setSending] = useState(false);
-  const [mainHeight, setMainHeight] = useState(null);
-
-  useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user));
-  }, [user]);
-
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
 
   useEffect(() => {
     const appWidth = window.innerWidth;
@@ -78,7 +65,8 @@ export default function App() {
             (appWidth / 27.394 + appWidth / 32) +
             (appWidth / 53.333 + appWidth / 55.56));
 
-    setMainHeight(computedHeight);
+    changeGlobalState(updateMainHeight, computedHeight);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function changeCount(obj) {
@@ -87,7 +75,10 @@ export default function App() {
       return item;
     };
 
-    setCart(cart.map(book => (book._id === obj._id ? setCount(book) : book)));
+    changeGlobalState(
+      updateCart,
+      cart.map(book => (book._id === obj._id ? setCount(book) : book)),
+    );
   }
 
   function addToCart(bookToBeAdded) {
@@ -98,12 +89,12 @@ export default function App() {
       return;
     }
 
-    setCart([...cart, bookToBeAdded]);
+    changeGlobalState(updateCart, [...cart, bookToBeAdded]);
   }
 
   function removeFromCart(_id) {
     const newCart = cart.filter(obj => obj._id !== _id);
-    setCart(newCart);
+    changeGlobalState(updateCart, newCart);
   }
 
   function submitCart(totalCost) {
@@ -115,116 +106,105 @@ export default function App() {
         cart,
         totalCost,
       }).finally(() => {
-        setCart([]);
+        changeGlobalState(updateCart, []);
         setSending(false);
       });
     }, GLOBAL.sending);
   }
 
   return (
-    <GlobalState>
-      <Container>
-        <UserProvider value={user}>
-          <AppBar
-            setBooksByTag={() => setBooksByTag([])}
-            onSignOut={() => setUser({})}
+    <Container>
+      <AppBar setBooksByTag={() => setBooksByTag([])} />
+
+      <Suspense
+        fallback={
+          <Puff
+            height="200"
+            width="200"
+            radius={1}
+            color="#00BFFF"
+            ariaLabel="puff-loading"
+            wrapperStyle={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+            }}
+            wrapperClass=""
+            visible={true}
+          />
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Navigate to="/signin" />} />
+
+          <Route
+            path="/signin"
+            element={
+              <PublicRoute redirectTo="/books" restricted>
+                <SignInView />
+              </PublicRoute>
+            }
           />
 
-          <Suspense
-            fallback={
-              <Puff
-                height="200"
-                width="200"
-                radius={1}
-                color="#00BFFF"
-                ariaLabel="puff-loading"
-                wrapperStyle={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                }}
-                wrapperClass=""
-                visible={true}
-              />
+          <Route
+            path="/books"
+            element={
+              <PrivateRoute redirectTo="/signin">
+                <BooksView booksByTag={booksByTag} />
+              </PrivateRoute>
             }
-          >
-            <MainHeightProvider value={mainHeight}>
-              <BooksProvider value={books}>
-                <CartProvider value={cart}>
-                  <Routes>
-                    <Route path="/" element={<Navigate to="/signin" />} />
+          />
 
-                    <Route
-                      path="/signin"
-                      element={
-                        <PublicRoute redirectTo="/books" restricted>
-                          <SignInView
-                            setBooksByName={setBooksByTag}
-                            setUser={setUser}
-                          />
-                        </PublicRoute>
-                      }
-                    />
+          <Route
+            path="/books/:id"
+            element={
+              <PrivateRoute redirectTo="/signin">
+                <SpecificBookView
+                  setBooksByTag={setBooksByTag}
+                  changeSelectCount={changeCount}
+                  addToCart={addToCart}
+                />
+              </PrivateRoute>
+            }
+          />
 
-                    <Route
-                      path="/books"
-                      element={
-                        <PrivateRoute redirectTo="/signin">
-                          <BooksView
-                            booksByTag={booksByTag}
-                            setBooks={setBooks}
-                          />
-                        </PrivateRoute>
-                      }
-                    />
+          <Route
+            path="/cart"
+            element={
+              <PrivateRoute redirectTo="/signin">
+                <CartView
+                  sending={sending}
+                  changeSelectCount={changeCount}
+                  onDeleteBook={removeFromCart}
+                  onSubmit={submitCart}
+                />
+              </PrivateRoute>
+            }
+          />
 
-                    <Route
-                      path="/books/:id"
-                      element={
-                        <PrivateRoute redirectTo="/signin">
-                          <SpecificBookView
-                            setBooksByTag={setBooksByTag}
-                            changeSelectCount={changeCount}
-                            addToCart={addToCart}
-                          />
-                        </PrivateRoute>
-                      }
-                    />
+          <Route
+            path="*"
+            element={
+              <PrivateRoute redirectTo="/signin">
+                <NotFoundView message="Check the correctness of the entered in the address bar" />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
 
-                    <Route
-                      path="/cart"
-                      element={
-                        <PrivateRoute redirectTo="/signin">
-                          <CartView
-                            sending={sending}
-                            changeSelectCount={changeCount}
-                            onDeleteBook={removeFromCart}
-                            onSubmit={submitCart}
-                          />
-                        </PrivateRoute>
-                      }
-                    />
+        <Footer />
+      </Suspense>
 
-                    <Route
-                      path="*"
-                      element={
-                        <PrivateRoute redirectTo="/signin">
-                          <NotFoundView message="Check the correctness of the entered in the address bar" />
-                        </PrivateRoute>
-                      }
-                    />
-                  </Routes>
-                </CartProvider>
-              </BooksProvider>
-            </MainHeightProvider>
+      <ToastContainer />
+    </Container>
+  );
+}
 
-            <Footer />
-          </Suspense>
-
-          <ToastContainer />
-        </UserProvider>
-      </Container>
+export default function AppWrapper() {
+  return (
+    <GlobalState>
+      <App />
     </GlobalState>
   );
 }

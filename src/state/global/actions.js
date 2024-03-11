@@ -1,30 +1,6 @@
 import { storeLanguage } from 'functions';
 
 const actions = {
-  updateModalVisible: (state, payload) => {
-    const updatedState = { ...state };
-    updatedState.global.modalVisible = payload;
-    return updatedState;
-  },
-
-  updateShowKeyboard: (state, payload) => {
-    const updatedState = { ...state };
-    updatedState.global.isShowKeyboard = payload;
-    return updatedState;
-  },
-
-  updateFirstDownloadStatus: (state, payload) => {
-    const updatedState = { ...state };
-    updatedState.global.isFirstDownload = payload;
-    return updatedState;
-  },
-
-  updateCountry: (state, payload) => {
-    const updatedState = { ...state };
-    updatedState.global.country = payload;
-    return updatedState;
-  },
-
   updateLanguage: (state, payload) => {
     storeLanguage(payload);
 
@@ -33,18 +9,39 @@ const actions = {
     return updatedState;
   },
 
-  updateServices: (state, payload) => {
+  updateMainHeight: (state, payload) => {
     const updatedState = { ...state };
-    updatedState.global.services = payload;
+    updatedState.global.mainHeight = payload;
+    return updatedState;
+  },
+
+  updateUser: (state, payload) => {
+    localStorage.setItem('user', JSON.stringify(payload));
+
+    const updatedState = { ...state };
+    updatedState.global.user = payload;
+    return updatedState;
+  },
+
+  updateBooks: (state, payload) => {
+    const updatedState = { ...state };
+    updatedState.global.books = payload;
+    return updatedState;
+  },
+
+  updateCart: (state, payload) => {
+    localStorage.setItem('cart', JSON.stringify(payload));
+
+    const updatedState = { ...state };
+    updatedState.global.cart = payload;
     return updatedState;
   },
 };
 
 export const {
-  updateModalVisible,
-  updateShowKeyboard,
-  updateFirstDownloadStatus,
-  updateCountry,
   updateLanguage,
-  updateServices,
+  updateMainHeight,
+  updateUser,
+  updateBooks,
+  updateCart,
 } = actions;

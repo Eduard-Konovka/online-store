@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCart, useMainHeight } from 'context';
+import { useGlobalState } from 'state';
 import { CartBar, Blank, Processing } from 'components';
 import imageBlank from 'assets/cartEmpty.png';
 import s from './CartView.module.css';
@@ -10,8 +10,7 @@ export default function CartView({
   onDeleteBook,
   onSubmit,
 }) {
-  const cart = useCart();
-  const mainHeight = useMainHeight();
+  const { mainHeight, cart } = useGlobalState('global');
 
   return (
     <main

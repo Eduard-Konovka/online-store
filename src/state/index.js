@@ -1,10 +1,9 @@
 export { useGlobalState, useChangeGlobalState } from './useGlobalState';
 export {
-  updateModalVisible,
-  updateShowKeyboard,
-  updateFirstDownloadStatus,
-  updateCountry,
   updateLanguage,
-  updateServices,
+  updateMainHeight,
+  updateUser,
+  updateBooks,
+  updateCart,
 } from './global';
 export { default as GlobalState } from './GlobalState.jsx';
