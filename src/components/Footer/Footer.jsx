@@ -3,17 +3,17 @@ import s from './Footer.module.css';
 export default function Footer() {
   return (
     <footer className={s.footer}>
-      Done in
+      Created by
       <a
-        title="Go to the Prometheus website"
-        href="https://prometheus.org.ua/"
+        title="Go to the resume site of Eduard Konovka"
+        href="https://eduard-konovka.github.io/resume-pdf/"
         target="_blank"
         rel="noopener noreferrer"
         className={s.link}
       >
-        Prometheus
+        Eduard Konovka
       </a>
-      ©2023
+      ©{new Date().getFullYear()}
     </footer>
   );
 }
