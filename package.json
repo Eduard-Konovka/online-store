@@ -1,6 +1,6 @@
 {
-  "name": "feb101-course-task",
-  "description": "Book online store",
+  "name": "online-store",
+  "description": "Online store",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Eduard-Konovka/feb101-course-task.git"
+    "url": "git+https://github.com/Eduard-Konovka/online-store.git"
   },
   "author": "Eduard Konovka <ed098ua@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Eduard-Konovka/feb101-course-task/issues"
+    "url": "https://github.com/Eduard-Konovka/online-store/issues"
   },
   "eslintConfig": {
     "extends": [
