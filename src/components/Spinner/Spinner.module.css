@@ -6,27 +6,41 @@
 }
 
 .spinner {
-  animation: spinner 2s infinite linear;
+  animation: spinner 3s infinite linear;
+}
+
+.altSpinner {
+  animation: altSpinner 3s infinite linear;
 }
 
 .black {
-  composes: spinner;
+  composes: altSpinner;
   color: #000000;
 }
 
 .white {
-  composes: spinner;
+  composes: altSpinner;
   color: #ffffff;
 }
 
+.red {
+  composes: altSpinner;
+  color: #ff0000;
+}
+
 .blue {
-  composes: spinner;
+  composes: altSpinner;
   color: #2196f3;
 }
 
 .green {
-  composes: spinner;
+  composes: altSpinner;
   color: #3dbe3d;
+}
+
+.gray {
+  composes: spinner;
+  color: gray;
 }
 
 @keyframes spinner {
@@ -35,5 +49,14 @@
   }
   100% {
     transform: rotate(359deg);
+  }
+}
+
+@keyframes altSpinner {
+  0% {
+    transform: rotate(359deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
