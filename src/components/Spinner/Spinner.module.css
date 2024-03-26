@@ -11,6 +11,7 @@
 
 .altSpinner {
   animation: altSpinner 3s infinite linear;
+  margin-left: -10%;
 }
 
 .black {
@@ -41,6 +42,7 @@
 .gray {
   composes: spinner;
   color: gray;
+  margin-left: -12%;
 }
 
 @keyframes spinner {
