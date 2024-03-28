@@ -18,6 +18,15 @@ export default function languageWrapper(lang, obj) {
     case 'French':
       return obj.fra || obj.eng;
 
+    case 'Italian':
+      return obj.ita || obj.eng;
+
+    case 'Portuguese':
+      return obj.por || obj.eng;
+
+    case 'Hebrew':
+      return obj.heb || obj.eng;
+
     default:
       return obj.eng;
   }
