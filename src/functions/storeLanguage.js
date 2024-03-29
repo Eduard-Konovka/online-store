@@ -1,4 +1,5 @@
 import { languageWrapper } from 'middlewares';
+import { LANGUAGE } from 'constants';
 
 export function storeLanguage(language) {
   const languageDeterminer = obj => languageWrapper(language, obj);
@@ -6,6 +7,6 @@ export function storeLanguage(language) {
   try {
     localStorage.setItem('language', JSON.stringify(language));
   } catch (error) {
-    console.log(error.message);
+    console.log(languageDeterminer(LANGUAGE.errorStoreLanguage), error.message);
   }
 }
