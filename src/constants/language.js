@@ -10,4 +10,16 @@ export const LANGUAGE = {
     por: '',
     heb: '',
   },
+
+  errorBoundary: {
+    eng: 'Oops! Something went wrong...',
+    ger: '',
+    spa: '',
+    ukr: 'Ой! Щось пішло не так...',
+    dan: '',
+    fra: '',
+    ita: '',
+    por: '',
+    heb: '',
+  },
 };

@@ -1,4 +1,9 @@
 import React from 'react';
+import { getLanguage } from 'functions';
+import { languageWrapper } from 'middlewares';
+import { LANGUAGE } from 'constants';
+
+const languageDeterminer = obj => languageWrapper(getLanguage(), obj);
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -18,7 +23,9 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="error-boundary">Oops! Something went wrong...</div>
+        <div className="error-boundary">
+          {languageDeterminer(LANGUAGE.errorBoundary)}
+        </div>
       );
     } else {
       return this.props.children;
