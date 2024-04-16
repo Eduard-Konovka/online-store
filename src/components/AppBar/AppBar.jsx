@@ -1,12 +1,17 @@
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useGlobalState, useChangeGlobalState, updateUser } from 'state';
+import {
+  useGlobalState,
+  useChangeGlobalState,
+  updateUser,
+  updateLanguage,
+} from 'state';
 import { Button } from 'components';
 import defaultAvatar from 'assets/defaultAvatar.png';
 import s from './AppBar.module.css';
 
 export default function AppBar({ setBooksByTag }) {
-  const { user } = useGlobalState('global');
+  const { user, language } = useGlobalState('global');
   const changeGlobalState = useChangeGlobalState();
 
   return (
@@ -72,6 +77,14 @@ export default function AppBar({ setBooksByTag }) {
           <p className={s.user}>Hello, guest!</p>
         )}
       </nav>
+
+      <Button
+        title="Select your language"
+        typeForm="icon"
+        onClick={() => changeGlobalState(updateLanguage, 'en')}
+      >
+        {language || 'null'}
+      </Button>
     </header>
   );
 }
