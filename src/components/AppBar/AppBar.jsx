@@ -81,7 +81,7 @@ export default function AppBar({ setBooksByTag }) {
       <Button
         title="Select your language"
         typeForm="icon"
-        onClick={() => changeGlobalState(updateLanguage, 'ukr')}
+        onClick={() => changeGlobalState(updateLanguage, 'en')}
       >
         {language || 'null'}
       </Button>
