@@ -20,7 +20,7 @@ export default function SpecificBookView({
   const [error, setError] = useState(null);
   const [book, setBook] = useState({});
 
-  const bookId = location.pathname.slice(8, location.pathname.length);
+  const bookId = location.pathname.slice(7, location.pathname.length);
   const selectedBook = cart.filter(book => book._id === bookId)[0];
   const savedBook = books.filter(book => book._id === bookId)[0];
 
@@ -115,7 +115,7 @@ export default function SpecificBookView({
                     <Button
                       title="Add book to cart"
                       type="button"
-                      disabled={count === null}
+                      disabled={count < 1}
                       styles={s.btn}
                       onClick={() =>
                         addToCart({ ...book, count: Number(count) })
